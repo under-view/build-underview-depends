@@ -1,2 +1,25 @@
-# build-underview-depends
-Repo that builds all dependecies needed to develop underview software
+# Build Underview Dependencies
+
+Builds all dependencies needed to develop underview software
+
+## Dependencies
+
+```sh
+$ sudo apt update
+$ sudo apt install -y aptitude
+$ sudo aptitude install -y build-essential cmake clang automake autoconf libtool flex bison m4 yasm
+$ sudo aptitude install -y pkg-config python3-pip ninja-build curl wget git
+$ sudo python3 -m pip install meson==0.61.4 Mako
+```
+
+## Usage
+
+```sh
+./build.sh
+```
+
+**Development**
+```sh
+$ . ./build.sh
+$ underview_create <recipe> <task>
+```
