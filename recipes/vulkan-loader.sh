@@ -7,7 +7,7 @@ do_return_version_vulkan-loader() {
 
 
 do_return_depends_vulkan-loader() {
-  echo "zlib vulkan-headers"
+  echo "vulkan-headers wayland wayland-protocols xcb x11 xext"
 }
 
 
@@ -30,13 +30,10 @@ do_patch_vulkan-loader() {
 }
 
 
-# Turn BUILD_WSI_XCB_SUPPORT & BUILD_WSI_XLIB_SUPPORT off for now until recipes exists
 do_configure_vulkan-loader() {
   cmake -G "${CMAKGENTYPE}" \
         -S "${PACKAGES_DIR}/vulkan-loader" \
         -B "${PACKAGES_DIR}/vulkan-loader/build" \
-        -DBUILD_WSI_XCB_SUPPORT=OFF \
-        -DBUILD_WSI_XLIB_SUPPORT=OFF \
         -DCMAKE_PREFIX_PATH="${INSTALLPREFIX}" \
         -DCMAKE_INSTALL_PREFIX="${INSTALLPREFIX}" || return $FAILURE
 
