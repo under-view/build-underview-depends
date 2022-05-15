@@ -21,5 +21,5 @@ $ sudo python3 -m pip install meson==0.61.4 Mako
 **Development**
 ```sh
 $ . ./build.sh
-$ underview_create <recipe> <task>
+$ underview-create <recipe> <optional task argument>
 ```
