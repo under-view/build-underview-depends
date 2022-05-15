@@ -123,9 +123,9 @@ do_configure_build_vars() {
 # source all scripts to get access to function/task to execute
 ############################################################################
 do_choose_pkgs() {
-  PKGS+=()
+  RECIPES+=()
 
-  for pkg in "${PKGS[@]}"; do source "${CUR_DIR}/recipes/${pkg}.sh" || return $FAILURE ; done
+  for recipe in "${RECIPES[@]}"; do source "${CUR_DIR}/recipes/${recipe}.sh" || return $FAILURE ; done
   chmod 0755 "${CUR_DIR}/recipes"/*
   return $SUCCESS
 }
@@ -192,4 +192,20 @@ underview-create() {
 }
 
 
+main() {
+  do_configure_build_vars
+  do_choose_pkgs
+  [[ $SOURCED -eq 1 ]] && {
+    return $SUCCESS
+  } || {
+    for recipe in "${RECIPES[@]}"; do
+      do_run_all_task "$recipe" "true"
+      wait $!
+    done
+  }
+}
+
+
 trap do_clean EXIT SIGINT
+
+main
