@@ -54,7 +54,9 @@ do_install_wayland-protocols() {
 
 
 do_update_artifacts_wayland-protocols() {
-  :
+  mv "${INSTALLPREFIX}/share/pkgconfig/wayland-protocols.pc" "${INSTALLPREFIX}/lib/pkgconfig"
+  rm -rf "${INSTALLPREFIX}/share/pkgconfig"
+  return $SUCCESS
 }
 
 
