@@ -12,7 +12,7 @@ do_return_depends_zlib() {
 
 
 do_clean_zlib() {
-  rm -rf "${WORKING_DIR}/zlib/build"
+  rm -rf "${PACKAGES_DIR}/zlib/build"
 }
 
 
