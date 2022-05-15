@@ -62,6 +62,6 @@ do_update_artifacts_robin-hood-hashing() {
 
 
 do_check_is_built_robin-hood-hashing() {
-  [[ -f "${INSTALLPREFIX}/include/spirv/1.2/spirv.h" ]] && return $SUCCESS
+  [[ -f "${INSTALLPREFIX}/lib/cmake/robin_hood/robin_hoodConfig.cmake" ]] && return $SUCCESS
   return $FAILURE
 }

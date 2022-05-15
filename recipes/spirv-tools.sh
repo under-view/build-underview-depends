@@ -62,6 +62,6 @@ do_update_artifacts_spirv-tools() {
 
 
 do_check_is_built_spirv-tools() {
-  [[ -f "${INSTALLPREFIX}/include/spirv/1.2/spirv.h" ]] && return $SUCCESS
+  [[ -f "${INSTALLPREFIX}/lib/pkgconfig/SPIRV-Tools-shared.pc" ]] && return $SUCCESS
   return $FAILURE
 }
