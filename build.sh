@@ -190,7 +190,7 @@ underview-create() {
     return $FAILURE
   }
 
-  source "${PACKAGES}/${recipe}.sh"
+  source "${CUR_DIR}/recipes/${recipe}.sh"
   [[ -n "${task}" ]] && {
     $task || return $FAILURE
   } || {
