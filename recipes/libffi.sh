@@ -32,10 +32,10 @@ do_patch_libffi() {
 
 do_configure_libffi() {
   cd "${PACKAGES_DIR}/libffi"
-  ./autogen.sh --prefix="$INSTALLPREFIX" || { cd "${CUR_DIR}" ; return $FAILURE ; }
+  ./autogen.sh --prefix="${INSTALLPREFIX}" || { cd "${CUR_DIR}" ; return $FAILURE ; }
 
-  ./configure --prefix="$INSTALLPREFIX" \
-              --with-sysroot="$INSTALLPREFIX" \
+  ./configure --prefix="${INSTALLPREFIX}" \
+              --with-sysroot="${INSTALLPREFIX}" \
               --includedir="${INSTALLPREFIX}/include" \
               --libdir="${INSTALLPREFIX}/lib" \
               --disable-docs --disable-multi-os-directory \
