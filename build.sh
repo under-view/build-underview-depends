@@ -123,7 +123,8 @@ do_configure_build_vars() {
 # source all scripts to get access to function/task to execute
 ############################################################################
 do_choose_pkgs() {
-  RECIPES+=(zlib llvm libffi xorg-macros x11proto xorgproto xcbproto xorg-font-util wayland wayland-protocols)
+  RECIPES+=(zlib llvm libffi xorg-macros x11proto xorgproto xcbproto xorg-font-util wayland wayland-protocols
+            vulkan-headers vulkan-loader)
 
   for recipe in "${RECIPES[@]}"; do source "${CUR_DIR}/recipes/${recipe}.sh" || return $FAILURE ; done
   chmod 0755 "${CUR_DIR}/recipes"/*
