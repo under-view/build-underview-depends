@@ -123,7 +123,7 @@ do_configure_build_vars() {
 # source all scripts to get access to function/task to execute
 ############################################################################
 do_choose_pkgs() {
-  RECIPES+=(zlib llvm xorg-macros x11proto)
+  RECIPES+=(zlib llvm xorg-macros x11proto xorgproto)
 
   for recipe in "${RECIPES[@]}"; do source "${CUR_DIR}/recipes/${recipe}.sh" || return $FAILURE ; done
   chmod 0755 "${CUR_DIR}/recipes"/*
