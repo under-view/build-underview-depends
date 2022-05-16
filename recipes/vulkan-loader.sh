@@ -7,7 +7,7 @@ do_return_version_vulkan-loader() {
 
 
 do_return_depends_vulkan-loader() {
-  echo "vulkan-headers wayland wayland-protocols xcb x11 xext"
+  echo "wayland wayland-protocols xcb x11 xext vulkan-headers"
 }
 
 
