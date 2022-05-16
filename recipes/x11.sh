@@ -7,7 +7,7 @@ do_return_version_x11() {
 
 
 do_return_depends_x11() {
-  echo "xorg-macros x11proto xdmcp xau xcb"
+  echo "xorg-macros x11proto xtrans xdmcp xau xcb"
 }
 
 

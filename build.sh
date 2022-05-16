@@ -124,8 +124,8 @@ do_configure_build_vars() {
 ############################################################################
 do_choose_pkgs() {
   RECIPES+=(zlib llvm libffi xorg-macros x11proto xorgproto xcbproto wayland wayland-protocols
-            xdmcp xau xcb xcb-ewmh x11 xext vulkan-headers vulkan-loader spirv-headers spirv-tools
-            robin-hood-hashing vulkan-validation-layers vulkan-tools libdrm xshmfence)
+            xdmcp xau xcb xcb-ewmh xtrans x11 xext vulkan-headers vulkan-loader spirv-headers
+            spirv-tools robin-hood-hashing vulkan-validation-layers vulkan-tools libdrm xshmfence)
 
   for recipe in "${RECIPES[@]}"; do source "${CUR_DIR}/recipes/${recipe}.sh" || return $FAILURE ; done
   chmod 0755 "${CUR_DIR}/recipes"/*
