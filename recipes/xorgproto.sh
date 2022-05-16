@@ -20,7 +20,7 @@ do_clean_xorgproto() {
 
 do_fetch_xorgproto() {
   msg="Cloning xorgproto"
-  clone_and_checkout "${WORKING_DIR}/xorgproto" "xorgproto-2021.5" "https://gitlab.freedesktop.org/xorg/proto/xorgproto" "57acac1d4c7967f4661fb1c9f86f48f34a46c48d" "${msg}" || return $FAILURE
+  clone_and_checkout "${PACKAGES_DIR}/xorgproto" "xorgproto-2021.5" "https://gitlab.freedesktop.org/xorg/proto/xorgproto" "57acac1d4c7967f4661fb1c9f86f48f34a46c48d" "${msg}" || return $FAILURE
   [[ $? -ne 0 ]] && return $FAILURE
 
   return $SUCCESS
@@ -33,7 +33,7 @@ do_patch_xorgproto() {
 
 
 do_configure_xorgproto() {
-  cd "${WORKING_DIR}/xorgproto"
+  cd "${PACKAGES_DIR}/xorgproto"
   ./autogen.sh --prefix="$INSTALLPREFIX" || { cd "${CUR_DIR}" ; return $FAILURE ; }
   cd "${CUR_DIR}"
 
@@ -42,13 +42,13 @@ do_configure_xorgproto() {
 
 
 do_compile_xorgproto() {
-  make -j $BUILDTHREADS -C "${WORKING_DIR}/xorgproto" || return $FAILURE
+  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/xorgproto" || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_xorgproto() {
-  make install -C "${WORKING_DIR}/xorgproto" || return $FAILURE
+  make install -C "${PACKAGES_DIR}/xorgproto" || return $FAILURE
   return $SUCCESS
 }
 
