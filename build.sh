@@ -97,7 +97,7 @@ clone_and_checkout() {
 #   7. Update PKG_CONFIG_PATH to point to package files located at ${BUILD_OUTPUT_DIR}/lib/pkgconfig and export it
 #      so that the variable change is seen throughout the build process.
 #   2. Update LDFLAGS so that we are setting rpath of binaries to ${BUILD_OUTPUT_DIR}/lib. Adds redundant
-#      linker flag -L to ensure specifically on macos that we are using our prebuilt libs over the system
+#      linker flag -L to ensure that we are using our prebuilt libs over the system
 ###########################################################################################################################
 do_configure_build_vars() {
   mkdir -p "${DOWNLOADS_DIR}"
@@ -125,7 +125,7 @@ do_configure_build_vars() {
 do_choose_pkgs() {
   RECIPES+=(zlib llvm libffi xorg-macros x11proto xorgproto xcbproto wayland wayland-protocols
             xdmcp xau xcb x11 xext vulkan-headers vulkan-loader spirv-headers spirv-tools
-            robin-hood-hashing vulkan-validation-layers vulkan-tools libdrm)
+            robin-hood-hashing vulkan-validation-layers vulkan-tools libdrm xshmfence)
 
   for recipe in "${RECIPES[@]}"; do source "${CUR_DIR}/recipes/${recipe}.sh" || return $FAILURE ; done
   chmod 0755 "${CUR_DIR}/recipes"/*
