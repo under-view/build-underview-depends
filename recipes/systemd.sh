@@ -34,10 +34,11 @@ do_configure_systemd() {
   meson setup \
         --prefix="$INSTALLPREFIX" \
         --libdir="${INSTALLPREFIX}/lib" \
+        --includedir="${INSTALLPREFIX}/include" \
         -Drootprefix="$INSTALLPREFIX" \
         -Dbashcompletiondir="${INSTALLPREFIX}/usr/share/bash-completion/completions" \
         -Dzshcompletiondir="${INSTALLPREFIX}/share/zsh/site-functions" \
-        -Dinstall-sysconfdir="false" -Dpolkit="false" \
+        -Dinstall-sysconfdir="false" -Dpolkit="false" -Defi="false" -Delfutils="false" \
         "${PACKAGES_DIR}/systemd/build" \
         "${PACKAGES_DIR}/systemd" || return $FAILURE
 
