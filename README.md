@@ -7,7 +7,7 @@ Builds all dependencies used directly when developing underview software
 ```sh
 $ sudo apt update
 $ sudo apt install -y aptitude
-$ sudo aptitude install -y build-essential cmake clang automake autoconf libtool flex bison m4 yasm libcap-dev
+$ sudo aptitude install -y build-essential cmake clang automake autoconf libtool flex bison m4 yasm
 $ sudo aptitude install -y pkg-config python3-pip ninja-build curl wget git gperf
 $ sudo python3 -m pip install meson==0.61.4 Mako jinja2
 ```

@@ -7,7 +7,7 @@ do_return_version_systemd() {
 
 
 do_return_depends_systemd() {
-  :
+  echo "libcap"
 }
 
 
