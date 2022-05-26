@@ -18,6 +18,17 @@ $ sudo python3 -m pip install meson==0.61.4 Mako jinja2
 ./build.sh
 ```
 
+**Override TASKTHREADS/BUILDTHREADS variables**
+
+* BUILDTHREADS - variable used to specify cpu core count when building with ninja/make/etc...
+* TASKTHREADS  - TBA
+
+NOTE: by doing so you are now at the mercy of the Out Of Memory (OOM) killer.
+
+```sh
+BUILDTHREADS=$(nproc) ./build.sh
+```
+
 **Development**
 ```sh
 $ . ./build.sh

@@ -91,7 +91,7 @@ clone_and_checkout() {
 # Configure what we need for building all libs cross platform
 #   1. First create all directories needed
 #   1. Add CMAKGENTYPE variable so there's one variable that determines what build system to use
-#   4. Add BUILDTHREADS variable to specify thread count when buidling with ninja/make/etc..
+#   4. Add BUILDTHREADS variable to specify cpu core count when building with ninja/make/etc..
 #   5. Update INSTALLPREFIX to equal $BUILD_OUTPUT_DIR as its used with the --prefix flag to place built libs
 #   6. Update ACLOCAL/ACLOCAL_PATH to point to $BUILD_OUTPUT_DIR/share/aclocal currently useful when building Xorg libs
 #   7. Update PKG_CONFIG_PATH to point to package files located at ${BUILD_OUTPUT_DIR}/lib/pkgconfig and export it
@@ -106,8 +106,8 @@ do_configure_build_vars() {
 
   # So the OOM (out of memory) killer doesn't give us random build errors
   CCNT=$(nproc)
-  export TASKTHREADS=$(($CCNT/2))
-  export BUILDTHREADS=$(($CCNT/2))
+  [[ -n "$TASKTHREADS" ]]  || export TASKTHREADS=$(($CCNT/2))
+  [[ -n "$BUILDTHREADS" ]] || export BUILDTHREADS=$(($CCNT/2))
   export CMAKGENTYPE="Ninja"
   export INSTALLPREFIX="${BUILD_OUTPUT_DIR}"
   export ACLOCAL="aclocal -I ${BUILD_OUTPUT_DIR}/share/aclocal"
