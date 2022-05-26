@@ -1,0 +1,36 @@
+From 2486a6294839ef735e3f79f7e706e6bdd217085c Mon Sep 17 00:00:00 2001
+From: Vincent Davis Jr <vince@underview.tech>
+Date: Thu, 26 May 2022 02:10:05 -0500
+Subject: [PATCH] remove journalctl command from executing
+
+Upstream-Status: Inappropriate
+
+When building systemd from source and installing
+corresponding build artifacts. Certain artifacts
+want to be stored in locations that normal users
+can't write to. This can be fixed by just updating
+the artifact install paths.
+
+journalctl however want to write to
+/var/lib/systemd/catalog/database which we don't
+have write permissions to.
+
+Signed-off-by: Vincent Davis Jr <vince@underview.tech>
+---
+ catalog/meson.build | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/catalog/meson.build b/catalog/meson.build
+index 7139c2e053..52c2917f35 100644
+--- a/catalog/meson.build
++++ b/catalog/meson.build
+@@ -29,5 +29,5 @@ foreach file : in_files
+                 install_dir : catalogdir)
+ endforeach
+
+-meson.add_install_script('sh', '-c',
+-                         'test -n "$DESTDIR" || @0@/journalctl --update-catalog'.format(rootbindir))
++#meson.add_install_script('sh', '-c',
++#                         'test -n "$DESTDIR" || @0@/journalctl --update-catalog'.format(rootbindir))
+--
+2.25.1

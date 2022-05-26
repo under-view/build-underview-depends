@@ -13,6 +13,7 @@ do_return_depends_systemd() {
 
 do_clean_systemd() {
   rm -rf "${PACKAGES_DIR}/systemd/build"
+  git -C "${PACKAGES_DIR}/systemd" reset --hard > /dev/null 2>&1
 }
 
 
@@ -26,7 +27,10 @@ do_fetch_systemd() {
 
 
 do_patch_systemd() {
-  :
+  git -C "${PACKAGES_DIR}/systemd" apply "${PATCHES_DIR}/systemd/0001-remove-journalctl-command-from-executing.patch" > /dev/null 2>&1
+  [[ $? -ne 0 ]] && return $FAILURE
+
+  return $SUCCESS
 }
 
 
@@ -39,7 +43,12 @@ do_configure_systemd() {
         -Drootprefix="${INSTALLPREFIX}" \
         -Dbashcompletiondir="${INSTALLPREFIX}/usr/share/bash-completion/completions" \
         -Dzshcompletiondir="${INSTALLPREFIX}/share/zsh/site-functions" \
-        -Dinstall-sysconfdir="false" -Dpolkit="false" -Defi="false" -Delfutils="false" \
+        -Dsysvinit-path="${INSTALLPREFIX}/etc/init.d" \
+        -Dsysvrcnd-path="${INSTALLPREFIX}/etc/rc.d" \
+        -Dtelinit-path="${INSTALLPREFIX}/lib/sysvinit/telinit" \
+        -Drc-local="${INSTALLPREFIX}/etc/rc.local" \
+        -Dtests="false" -Dinstall-sysconfdir="false" \
+        -Dpolkit="false" -Defi="false" -Delfutils="false" \
         "${PACKAGES_DIR}/systemd/build" \
         "${PACKAGES_DIR}/systemd" || return $FAILURE
 
@@ -53,10 +62,8 @@ do_compile_systemd() {
 }
 
 
-# Done on purpose. Allow install step to fail
-# TODO: pinpoint all locations systemd recipe attempts to install files into
 do_install_systemd() {
-  ninja install -C "${PACKAGES_DIR}/systemd/build"
+  ninja install -C "${PACKAGES_DIR}/systemd/build" || return $FAILURE
   return $SUCCESS
 }
 
