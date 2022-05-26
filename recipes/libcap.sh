@@ -63,13 +63,14 @@ do_install_libcap() {
 
 
 do_update_artifacts_libcap() {
-  mv -v "${INSTALLPREFIX}/lib64"/* "${INSTALLPREFIX}/lib"
-  mv -v "${INSTALLPREFIX}/usr/include"/* "${INSTALLPREFIX}/include"
+  cp -ar "${INSTALLPREFIX}/lib64"/* "${INSTALLPREFIX}/lib"
+  cp -ar "${INSTALLPREFIX}/usr/include"/* "${INSTALLPREFIX}/include"
+  cp -ar "${INSTALLPREFIX}/usr/share"/* "${INSTALLPREFIX}/share"
   rm -rf "${INSTALLPREFIX}/lib64" "${INSTALLPREFIX}/usr"
 }
 
 
 do_check_is_built_libcap() {
-  [[ -f "${INSTALLPREFIX}/lib/pkgconfig/libelf.pc" ]] && return $SUCCESS
+  [[ -f "${INSTALLPREFIX}/include/sys/capability.h" ]] && return $SUCCESS
   return $FAILURE
 }
