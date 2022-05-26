@@ -64,7 +64,8 @@ do_install_libcap() {
 
 do_update_artifacts_libcap() {
   mv -v "${INSTALLPREFIX}/lib64"/* "${INSTALLPREFIX}/lib"
-  rm -rf "${INSTALLPREFIX}/lib64"
+  mv -v "${INSTALLPREFIX}/usr/include"/* "${INSTALLPREFIX}/include"
+  rm -rf "${INSTALLPREFIX}/lib64" "${INSTALLPREFIX}/usr"
 }
 
 

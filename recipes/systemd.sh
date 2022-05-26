@@ -32,10 +32,11 @@ do_patch_systemd() {
 
 do_configure_systemd() {
   meson setup \
-        --prefix="$INSTALLPREFIX" \
+        --prefix="${INSTALLPREFIX}" \
         --libdir="${INSTALLPREFIX}/lib" \
         --includedir="${INSTALLPREFIX}/include" \
-        -Drootprefix="$INSTALLPREFIX" \
+        -Dc_args="-I${INSTALLPREFIX}/include" \
+        -Drootprefix="${INSTALLPREFIX}" \
         -Dbashcompletiondir="${INSTALLPREFIX}/usr/share/bash-completion/completions" \
         -Dzshcompletiondir="${INSTALLPREFIX}/share/zsh/site-functions" \
         -Dinstall-sysconfdir="false" -Dpolkit="false" -Defi="false" -Delfutils="false" \
