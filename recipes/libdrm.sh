@@ -7,7 +7,7 @@ do_return_version_libdrm() {
 
 
 do_return_depends_libdrm() {
-  echo "zlib"
+  echo "zlib pciaccess"
 }
 
 
