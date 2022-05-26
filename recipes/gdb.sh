@@ -7,7 +7,7 @@ do_return_version_gdb() {
 
 
 do_return_depends_gdb() {
-  echo "zlib"
+  echo "zlib gmp"
 }
 
 
