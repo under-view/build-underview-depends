@@ -13,6 +13,7 @@ do_return_depends_harfbuzz() {
 
 do_clean_harfbuzz() {
   rm -rf "${PACKAGES_DIR}/harfbuzz/build"
+  git -C "${PACKAGES_DIR}/harfbuzz/" reset --hard 2>/dev/null
 }
 
 
@@ -31,6 +32,8 @@ do_patch_harfbuzz() {
 
 
 do_configure_harfbuzz() {
+  rm -rf "${PACKAGES_DIR}/harfbuzz/subprojects"
+
   meson setup \
         --prefix="$INSTALLPREFIX" \
         --libdir="${INSTALLPREFIX}/lib" \
@@ -51,7 +54,7 @@ do_compile_harfbuzz() {
 
 
 do_install_harfbuzz() {
-  ninja -C "${PACKAGES_DIR}/harfbuzz/build" || return $FAILURE
+  ninja install -C "${PACKAGES_DIR}/harfbuzz/build" || return $FAILURE
   return $SUCCESS
 }
 
