@@ -7,7 +7,7 @@ do_return_version_fontconfig() {
 
 
 do_return_depends_fontconfig() {
-  echo "zlib libxml2 glib libpng freetype harfbuzz"
+  echo "zlib glib libpng freetype harfbuzz libxml2"
 }
 
 
