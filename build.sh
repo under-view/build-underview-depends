@@ -127,7 +127,7 @@ do_choose_pkgs() {
             wayland-protocols xdmcp xau xcb xcb-ewmh xtrans x11 xext xrender xrandr vulkan-headers
             vulkan-loader spirv-headers spirv-tools robin-hood-hashing vulkan-validation-layers
             vulkan-tools libdrm xfixes xshmfence xxf86vm mesa libcap systemd glib gobject-introspection
-            libpng freetype gmp gdb valgrind)
+            libpng freetype harfbuzz gmp gdb valgrind)
 
   for recipe in "${RECIPES[@]}"; do source "${CUR_DIR}/recipes/${recipe}.sh" || return $FAILURE ; done
   chmod 0755 "${CUR_DIR}/recipes"/*
