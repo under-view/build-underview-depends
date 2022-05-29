@@ -8,7 +8,7 @@ do_return_version_gtk() {
 
 do_return_depends_gtk() {
   echo "glib gobject-introspection wayland x11 xext xrender xrandr xfixes xkbcommon xi" \
-       "freetype cairo fribidi pango gdk-pixbuf epoxy atk at-spi2-atk" \
+       "freetype cairo fribidi pango gdk-pixbuf epoxy atk at-spi2-atk"
 }
 
 
