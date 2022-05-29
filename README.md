@@ -37,5 +37,5 @@ $ underview-create <recipe> <optional task argument>
 
 **Set environment variables**
 ```sh
-$ . ./setenvars.sh "$(pwd)/working/build_output"
+$ . ./setenvars.sh
 ```
