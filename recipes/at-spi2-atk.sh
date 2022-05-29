@@ -32,8 +32,6 @@ do_patch_at-spi2-atk() {
 
 
 do_configure_at-spi2-atk() {
-  rm -rf "${PACKAGES_DIR}/at-spi2-atk/subprojects/"
-
   meson setup \
         --prefix="${INSTALLPREFIX}" \
         --libdir="${INSTALLPREFIX}/lib" \
