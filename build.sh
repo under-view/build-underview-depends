@@ -128,7 +128,7 @@ do_choose_pkgs() {
             vulkan-loader spirv-headers spirv-tools robin-hood-hashing vulkan-validation-layers
             vulkan-tools libdrm xfixes xshmfence xxf86vm mesa libcap systemd glib gobject-introspection
             libpng pixman freetype harfbuzz libxml2 fontconfig cairo fribidi pango gdk-pixbuf epoxy
-            atk xkbcommon xi dbus xtst at-spi2-atk gmp gdb valgrind)
+            atk xkbcommon xi dbus xtst at-spi2-atk gtk gmp gdb valgrind)
 
   for recipe in "${RECIPES[@]}"; do source "${CUR_DIR}/recipes/${recipe}.sh" || return $FAILURE ; done
   chmod 0755 "${CUR_DIR}/recipes"/*
