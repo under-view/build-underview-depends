@@ -1,0 +1,139 @@
+From 9acac319cbe3bdeb302c85ab0f7afd2208607eb1 Mon Sep 17 00:00:00 2001
+From: Vincent Davis Jr <vince@underview.tech>
+Date: Mon, 30 May 2022 10:58:17 -0500
+Subject: [PATCH] glslc,libshaderc{_util}: update compiler include paths
+
+Upstream-Status: Inappropriate
+
+Specifies to compiler where necessary headers are install for packages:
+	* glslang
+	* spirv-tools
+
+Signed-off-by: Vincent Davis Jr <vince@underview.tech>
+---
+ glslc/CMakeLists.txt           |  4 ++--
+ libshaderc/CMakeLists.txt      | 20 ++++++++++----------
+ libshaderc_util/CMakeLists.txt | 14 +++++++++-----
+ 3 files changed, 21 insertions(+), 17 deletions(-)
+
+diff --git a/glslc/CMakeLists.txt b/glslc/CMakeLists.txt
+index 31664d1..50acf90 100644
+--- a/glslc/CMakeLists.txt
++++ b/glslc/CMakeLists.txt
+@@ -30,7 +30,7 @@ add_library(glslc STATIC
+ )
+ 
+ shaderc_default_compile_options(glslc)
+-target_include_directories(glslc PUBLIC ${glslang_SOURCE_DIR})
++target_include_directories(glslc PUBLIC ${CMAKE_PREFIX_PATH}/include)
+ 
+ if (SHADERC_ENABLE_WGSL_OUTPUT)
+   if (IS_DIRECTORY "${tint_SOURCE_DIR}/include")
+@@ -50,7 +50,7 @@ target_link_libraries(glslc PRIVATE
+ 
+ add_executable(glslc_exe src/main.cc)
+ shaderc_default_compile_options(glslc_exe)
+-target_include_directories(glslc_exe PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/.. ${spirv-tools_SOURCE_DIR}/include)
++target_include_directories(glslc_exe PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/.. ${CMAKE_PREFIX_PATH}/include/spirv-tools)
+ set_target_properties(glslc_exe PROPERTIES OUTPUT_NAME glslc)
+ target_link_libraries(glslc_exe PRIVATE glslc shaderc_util shaderc)
+ add_dependencies(glslc_exe build-version)
+diff --git a/libshaderc/CMakeLists.txt b/libshaderc/CMakeLists.txt
+index 3ada419..88d55b1 100644
+--- a/libshaderc/CMakeLists.txt
++++ b/libshaderc/CMakeLists.txt
+@@ -28,15 +28,15 @@ add_library(shaderc STATIC ${SHADERC_SOURCES})
+ shaderc_default_compile_options(shaderc)
+ target_include_directories(shaderc
+     PUBLIC include
+-    PRIVATE ${glslang_SOURCE_DIR}
+-            ${SPIRV-Headers_SOURCE_DIR}/include)
++    PRIVATE ${CMAKE_PREFIX_PATH}/include/gslang
++            ${CMAKE_PREFIX_PATH}/include)
+ 
+ add_library(shaderc_shared SHARED ${SHADERC_SOURCES})
+ shaderc_default_compile_options(shaderc_shared)
+ target_include_directories(shaderc_shared
+     PUBLIC include
+-    PRIVATE ${glslang_SOURCE_DIR}
+-            ${SPIRV-Headers_SOURCE_DIR}/include)
++    PRIVATE ${CMAKE_PREFIX_PATH}/include/gslang
++            ${CMAKE_PREFIX_PATH}/include)
+ target_compile_definitions(shaderc_shared
+     PRIVATE SHADERC_IMPLEMENTATION
+     PUBLIC SHADERC_SHAREDLIB
+@@ -75,8 +75,8 @@ shaderc_add_tests(
+   TEST_PREFIX shaderc
+   LINK_LIBS shaderc
+   INCLUDE_DIRS include ${shaderc_SOURCE_DIR}/libshaderc_util/include ${glslang_SOURCE_DIR}
+-               ${spirv-tools_SOURCE_DIR}/include
+-               ${SPIRV-Headers_SOURCE_DIR}/include
++               ${CMAKE_PREFIX_PATH}/include/spirv-tools
++               ${CMAKE_PREFIX_PATH}/include
+   TEST_NAMES
+     shaderc
+     shaderc_cpp
+@@ -86,8 +86,8 @@ shaderc_add_tests(
+   TEST_PREFIX shaderc_shared
+   LINK_LIBS shaderc_shared SPIRV-Tools
+   INCLUDE_DIRS include ${shaderc_SOURCE_DIR}/libshaderc_util/include ${glslang_SOURCE_DIR}
+-               ${spirv-tools_SOURCE_DIR}/include
+-               ${SPIRV-Headers_SOURCE_DIR}/include
++               ${CMAKE_PREFIX_PATH}/include/spirv-tools
++               ${CMAKE_PREFIX_PATH}/include
+   TEST_NAMES
+     shaderc
+     shaderc_cpp
+@@ -116,8 +116,8 @@ shaderc_add_tests(
+   TEST_PREFIX shaderc_combined
+   LINK_LIBS shaderc_combined ${CMAKE_THREAD_LIBS_INIT}
+   INCLUDE_DIRS include ${shaderc_SOURCE_DIR}/libshaderc_util/include ${glslang_SOURCE_DIR}
+-               ${spirv-tools_SOURCE_DIR}/include
+-               ${SPIRV-Headers_SOURCE_DIR}/include
++               ${CMAKE_PREFIX_PATH}/include/spirv-tools
++               ${CMAKE_PREFIX_PATH}/include
+   TEST_NAMES
+     shaderc
+     shaderc_cpp)
+diff --git a/libshaderc_util/CMakeLists.txt b/libshaderc_util/CMakeLists.txt
+index 99ce3c4..fb76328 100644
+--- a/libshaderc_util/CMakeLists.txt
++++ b/libshaderc_util/CMakeLists.txt
+@@ -39,7 +39,8 @@ add_library(shaderc_util STATIC
+ 
+ shaderc_default_compile_options(shaderc_util)
+ target_include_directories(shaderc_util
+-  PUBLIC include PRIVATE ${glslang_SOURCE_DIR})
++  PUBLIC include PRIVATE ${CMAKE_PREFIX_PATH}/include
++                         ${CMAKE_PREFIX_PATH}/include/glslang)
+ # We use parts of Glslang's HLSL compilation interface, which
+ # now requires this preprocessor definition.
+ add_definitions(-DENABLE_HLSL)
+@@ -64,17 +65,20 @@ shaderc_add_tests(
+ 
+ if(${SHADERC_ENABLE_TESTS})
+   target_include_directories(shaderc_util_counting_includer_test
+-    PRIVATE ${glslang_SOURCE_DIR})
++    PRIVATE ${CMAKE_PREFIX_PATH}/include
++            ${CMAKE_PREFIX_PATH}/include/glslang)
+   target_include_directories(shaderc_util_version_profile_test
+-    PRIVATE ${glslang_SOURCE_DIR})
++    PRIVATE ${CMAKE_PREFIX_PATH}/include
++            ${CMAKE_PREFIX_PATH}/include/glslang)
+ endif()
+ 
+ shaderc_add_tests(
+   TEST_PREFIX shaderc_util
+   LINK_LIBS shaderc_util
+   INCLUDE_DIRS
+-    ${glslang_SOURCE_DIR}
+-    ${spirv-tools_SOURCE_DIR}/include
++    ${CMAKE_PREFIX_PATH}/include
++    ${CMAKE_PREFIX_PATH}/include/glslang
++    ${CMAKE_PREFIX_PATH}/include/spirv-tools
+   TEST_NAMES
+     compiler)
+ 
+-- 
+2.25.1
+
