@@ -114,7 +114,10 @@ do_configure_build_vars() {
   export ACLOCAL_PATH="${BUILD_OUTPUT_DIR}/share/aclocal"
   export PATH="${WORKING_DIR}/build_output/bin:${PATH}"
   export PKG_CONFIG_PATH="${BUILD_OUTPUT_DIR}/lib/pkgconfig:${PKG_CONFIG_PATH}"
-  export LDFLAGS="-Wl,--disable-new-dtags -Wl,-rpath=${BUILD_OUTPUT_DIR}/lib -L${BUILD_OUTPUT_DIR}/lib"
+  export CFLAGS="-Wno-error -O3 -g -I${INSTALLPREFIX}/include"
+  export CPPFLAGS="${CFLAGS}"
+  export CXXFLAGS="${CFLAGS}"
+  export LDFLAGS="-Wl,--disable-new-dtags -Wl,-rpath=${BUILD_OUTPUT_DIR}/lib -Wl,--dynamic-linker=${INSTALLPREFIX}/lib/ld-linux-x86-64.so.2"
 }
 
 
@@ -123,12 +126,12 @@ do_configure_build_vars() {
 # source all scripts to get access to function/task to execute
 ############################################################################
 do_choose_pkgs() {
-  RECIPES+=(zlib elfutils llvm libffi pciaccess xorg-macros x11proto xorgproto xcbproto wayland
-            wayland-protocols xdmcp xau xcb xcb-ewmh xtrans x11 xext xrender xrandr vulkan-headers
+  RECIPES+=(glibc zlib elfutils llvm libffi pciaccess xorg-macros x11proto xorgproto xcbproto
+            wayland wayland-protocols xdmcp xau xcb xcb-ewmh xtrans x11 xext xrender xrandr vulkan-headers
             vulkan-loader spirv-headers spirv-tools gslang shaderc robin-hood-hashing vulkan-validation-layers
-            vulkan-tools libdrm xfixes xshmfence xxf86vm mesa libcap systemd glib gobject-introspection
+            vulkan-tools libdrm xfixes xshmfence xxf86vm mesa systemd glib gobject-introspection
             libpng pixman freetype harfbuzz libxml2 fontconfig cairo fribidi pango gdk-pixbuf epoxy
-            atk xkbcommon xi dbus xtst at-spi2-atk gtk libinput seatd wlroots gmp gdb valgrind)
+            atk xkbcommon xi dbus xtst at-spi2-atk gtk libinput seatd wlroots gmp libcap gdb valgrind)
 
   for recipe in "${RECIPES[@]}"; do source "${CUR_DIR}/recipes/${recipe}.sh" || return $FAILURE ; done
   chmod 0755 "${CUR_DIR}/recipes"/*
@@ -163,13 +166,13 @@ do_run_all_task() {
   }
 
   do_print_running_recipe "$recipe"
-  do_fetch_$recipe            || { do_clean_$recipe ; [[ $SOURCED -eq 1 ]] && return $FAILURE || exit $FAILURE; }
-  do_patch_$recipe            || { do_clean_$recipe ; [[ $SOURCED -eq 1 ]] && return $FAILURE || exit $FAILURE; }
-  do_configure_$recipe        || { do_clean_$recipe ; [[ $SOURCED -eq 1 ]] && return $FAILURE || exit $FAILURE; }
-  do_compile_$recipe          || { do_clean_$recipe ; [[ $SOURCED -eq 1 ]] && return $FAILURE || exit $FAILURE; }
-  do_install_$recipe          || { do_clean_$recipe ; [[ $SOURCED -eq 1 ]] && return $FAILURE || exit $FAILURE; }
-  do_update_artifacts_$recipe || { do_clean_$recipe ; [[ $SOURCED -eq 1 ]] && return $FAILURE || exit $FAILURE; }
-  do_clean_$recipe
+  do_fetch_$recipe            || { do_clean_$recipe > /dev/null 2>&1 ; [[ $SOURCED -eq 1 ]] && return $FAILURE || exit $FAILURE; }
+  do_patch_$recipe            || { do_clean_$recipe > /dev/null 2>&1 ; [[ $SOURCED -eq 1 ]] && return $FAILURE || exit $FAILURE; }
+  do_configure_$recipe        || { do_clean_$recipe > /dev/null 2>&1 ; [[ $SOURCED -eq 1 ]] && return $FAILURE || exit $FAILURE; }
+  do_compile_$recipe          || { do_clean_$recipe > /dev/null 2>&1 ; [[ $SOURCED -eq 1 ]] && return $FAILURE || exit $FAILURE; }
+  do_install_$recipe          || { do_clean_$recipe > /dev/null 2>&1 ; [[ $SOURCED -eq 1 ]] && return $FAILURE || exit $FAILURE; }
+  do_update_artifacts_$recipe || { do_clean_$recipe > /dev/null 2>&1 ; [[ $SOURCED -eq 1 ]] && return $FAILURE || exit $FAILURE; }
+  do_clean_$recipe > /dev/null 2>&1
 
   return $SUCCESS
 }

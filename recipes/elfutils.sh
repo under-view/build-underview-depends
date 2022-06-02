@@ -7,7 +7,7 @@ do_return_version_elfutils() {
 
 
 do_return_depends_elfutils() {
-  echo "zlib"
+  echo "glibc zlib"
 }
 
 
@@ -46,6 +46,7 @@ do_patch_elfutils() {
 do_configure_elfutils() {
   cd "${PACKAGES_DIR}/elfutils"
 
+  LDFLAGS="${LDFLAGS} -pthread" \
   ./configure --prefix="${INSTALLPREFIX}" \
               --includedir="${INSTALLPREFIX}/include" \
               --libdir="${INSTALLPREFIX}/lib" \

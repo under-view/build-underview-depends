@@ -34,7 +34,7 @@ do_configure_valgrind() {
   cd "${PACKAGES_DIR}/valgrind"
   ./autogen.sh || { cd "${CUR_DIR}" ; return $FAILURE ; }
 
-  CFLAGS="-I/usr/include/x86_64-linux-gnu/" \
+  CFLAGS="-I/usr/include/x86_64-linux-gnu/ ${CFLAGS}" \
   ./configure --prefix="${INSTALLPREFIX}" \
               --includedir="${INSTALLPREFIX}/include" \
               --libdir="${INSTALLPREFIX}/lib" \
