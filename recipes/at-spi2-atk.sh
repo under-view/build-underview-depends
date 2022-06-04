@@ -7,7 +7,7 @@ do_return_version_at-spi2-atk() {
 
 
 do_return_depends_at-spi2-atk() {
-  echo "dbus xtst"
+  echo "dbus xtst at-spi2-core"
 }
 
 
@@ -32,6 +32,8 @@ do_patch_at-spi2-atk() {
 
 
 do_configure_at-spi2-atk() {
+  rm -rf "${PACKAGES_DIR}/at-spi2-atk/subprojects"
+
   meson setup \
         --prefix="${INSTALLPREFIX}" \
         --libdir="${INSTALLPREFIX}/lib" \
