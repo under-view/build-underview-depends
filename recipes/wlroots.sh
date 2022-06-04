@@ -7,7 +7,7 @@ do_return_version_wlroots() {
 
 
 do_return_depends_wlroots() {
-  echo "wayland wayland-protocols vulkan-loader libdrm mesa xkbcommon pixman libinput"
+  echo "wayland wayland-protocols vulkan-loader libdrm mesa xkbcommon pixman libinput seatd"
 }
 
 
