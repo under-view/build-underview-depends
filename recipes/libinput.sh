@@ -7,7 +7,7 @@ do_return_version_libinput() {
 
 
 do_return_depends_libinput() {
-  echo "gtk systemd mtdev libevdev"
+  echo "gtk systemd mtdev libevdev libwacom"
 }
 
 
