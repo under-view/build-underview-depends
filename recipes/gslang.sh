@@ -34,8 +34,9 @@ do_configure_gslang() {
   cmake -G "${CMAKGENTYPE}" \
         -S "${PACKAGES_DIR}/gslang" \
         -B "${PACKAGES_DIR}/gslang/build" \
+        -DENABLE_HLSL="ON" \
         -DCMAKE_BUILD_TYPE=Release \
-        -DBUILD_SHARED_LIBS=ON \
+        -DBUILD_SHARED_LIBS="ON" \
         -DCMAKE_PREFIX_PATH="${INSTALLPREFIX}" \
         -DCMAKE_INSTALL_PREFIX="${INSTALLPREFIX}" || return $FAILURE
 

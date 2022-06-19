@@ -34,6 +34,8 @@ do_configure_spirv-tools() {
   cmake -G "${CMAKGENTYPE}" \
         -S "${PACKAGES_DIR}/spirv-tools" \
         -B "${PACKAGES_DIR}/spirv-tools/build" \
+        -DSPIRV_TOOLS_BUILD_STATIC="OFF" \
+        -DBUILD_SHARED_LIBS="1" \
         -DSPIRV-Headers_SOURCE_DIR="${PACKAGES_DIR}/spirv-headers" \
         -DSPIRV_HEADER_INCLUDE_DIR="${INSTALLPREFIX}/include/spirv" \
         -DCMAKE_BUILD_TYPE=Release \
