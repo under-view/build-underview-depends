@@ -53,7 +53,8 @@ do_install_xcbproto() {
 
 
 do_update_artifacts_xcbproto() {
-  :
+  sed -i'' -e 's|${pc_sysrootdir}${PYTHON_PREFIX}|${prefix}|g' \
+  "${INSTALLPREFIX}/lib/pkgconfig/xcb-proto.pc" || return $FAILURE
 }
 
 
