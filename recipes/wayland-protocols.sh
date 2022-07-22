@@ -7,7 +7,7 @@ do_return_version_wayland-protocols() {
 
 
 do_return_depends_wayland-protocols() {
-  :
+  echo "wayland"
 }
 
 
@@ -18,7 +18,7 @@ do_clean_wayland-protocols() {
 
 do_fetch_wayland-protocols() {
   msg="Cloning wayland-protocols"
-  clone_and_checkout "${PACKAGES_DIR}/wayland-protocols" "1.25" "https://gitlab.freedesktop.org/wayland/wayland-protocols.git" "d324986823519c15b2162fc3e0a720f349e43b0c" "${msg}" || return $FAILURE
+  clone_and_checkout "${PACKAGES_DIR}/wayland-protocols" "1.26" "https://gitlab.freedesktop.org/wayland/wayland-protocols.git" "83866f19d3d61b28e94d71781646466b3a6623d8" "${msg}" || return $FAILURE
   [[ $? -ne 0 ]] && return $FAILURE
 
   return $SUCCESS
