@@ -2,6 +2,10 @@
 
 Builds all dependencies used directly when developing underview software
 
+**Tested Distro's**
+- Ubuntu 20.04
+- Ubuntu 22.04
+
 ## Dependencies
 
 ```sh
