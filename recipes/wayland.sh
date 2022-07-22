@@ -18,7 +18,7 @@ do_clean_wayland() {
 
 do_fetch_wayland() {
   msg="Cloning wayland"
-  clone_and_checkout "${PACKAGES_DIR}/wayland" "1.20.0" "https://gitlab.freedesktop.org/wayland/wayland.git" "75c1a93e2067220fa06208f20f8f096bb463ec08" "${msg}" || return $FAILURE
+  clone_and_checkout "${PACKAGES_DIR}/wayland" "1.21.0" "https://gitlab.freedesktop.org/wayland/wayland.git" "8135e856ebd79872f886466e9cee39affb7d9ee8" "${msg}" || return $FAILURE
   [[ $? -ne 0 ]] && return $FAILURE
 
   return $SUCCESS
