@@ -48,13 +48,13 @@ do_configure_gdk-pixbuf() {
 
 
 do_compile_gdk-pixbuf() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/gdk-pixbuf/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/gdk-pixbuf/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_gdk-pixbuf() {
-  ninja install -C "${PACKAGES_DIR}/gdk-pixbuf/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/gdk-pixbuf/build" || return $FAILURE
   return $SUCCESS
 }
 

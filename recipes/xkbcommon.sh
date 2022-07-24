@@ -44,13 +44,13 @@ do_configure_xkbcommon() {
 
 
 do_compile_xkbcommon() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/xkbcommon/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/xkbcommon/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_xkbcommon() {
-  ninja install -C "${PACKAGES_DIR}/xkbcommon/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/xkbcommon/build" || return $FAILURE
   return $SUCCESS
 }
 

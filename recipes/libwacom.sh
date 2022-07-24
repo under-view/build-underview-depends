@@ -44,13 +44,13 @@ do_configure_libwacom() {
 
 
 do_compile_libwacom() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/libwacom/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/libwacom/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_libwacom() {
-  ninja install -C "${PACKAGES_DIR}/libwacom/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/libwacom/build" || return $FAILURE
   return $SUCCESS
 }
 

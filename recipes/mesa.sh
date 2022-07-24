@@ -42,13 +42,13 @@ do_configure_mesa() {
 
 
 do_compile_mesa() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/mesa/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/mesa/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_mesa() {
-  ninja install -C "${PACKAGES_DIR}/mesa/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/mesa/build" || return $FAILURE
   return $SUCCESS
 }
 

@@ -46,13 +46,13 @@ do_configure_pango() {
 
 
 do_compile_pango() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/pango/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/pango/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_pango() {
-  ninja install -C "${PACKAGES_DIR}/pango/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/pango/build" || return $FAILURE
   return $SUCCESS
 }
 

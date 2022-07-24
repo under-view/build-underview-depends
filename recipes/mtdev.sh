@@ -55,7 +55,7 @@ do_configure_mtdev() {
 
 
 do_compile_mtdev() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/mtdev" || return $FAILURE
+  make -C "${PACKAGES_DIR}/mtdev" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

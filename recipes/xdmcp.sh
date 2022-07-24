@@ -40,7 +40,7 @@ do_configure_xdmcp() {
 
 
 do_compile_xdmcp() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/xdmcp" || return $FAILURE
+  make -C "${PACKAGES_DIR}/xdmcp" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

@@ -42,13 +42,13 @@ do_configure_wayland-protocols() {
 
 
 do_compile_wayland-protocols() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/wayland-protocols/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/wayland-protocols/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_wayland-protocols() {
-  ninja install -C "${PACKAGES_DIR}/wayland-protocols/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/wayland-protocols/build" || return $FAILURE
   return $SUCCESS
 }
 

@@ -40,7 +40,7 @@ do_configure_xi() {
 
 
 do_compile_xi() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/xi" || return $FAILURE
+  make -C "${PACKAGES_DIR}/xi" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

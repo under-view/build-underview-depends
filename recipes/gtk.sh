@@ -50,13 +50,13 @@ do_configure_gtk() {
 
 
 do_compile_gtk() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/gtk/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/gtk/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_gtk() {
-  ninja install -C "${PACKAGES_DIR}/gtk/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/gtk/build" || return $FAILURE
   return $SUCCESS
 }
 
@@ -67,6 +67,6 @@ do_update_artifacts_gtk() {
 
 
 do_check_is_built_gtk() {
-  [[ -f "${INSTALLPREFIX}/lib/pkgconfig/gdk-3.0.pc" ]] && return $SUCCESS
+  [[ -f "${INSTALLPREFIX}/lib/pkgconfig/gtk+-3.0.pc" ]] && return $SUCCESS
   return $FAILURE
 }

@@ -44,13 +44,13 @@ do_configure_libgudev() {
 
 
 do_compile_libgudev() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/libgudev/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/libgudev/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_libgudev() {
-  ninja install -C "${PACKAGES_DIR}/libgudev/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/libgudev/build" || return $FAILURE
   return $SUCCESS
 }
 

@@ -40,7 +40,7 @@ do_configure_xcb() {
 
 
 do_compile_xcb() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/xcb" || return $FAILURE
+  make -C "${PACKAGES_DIR}/xcb" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

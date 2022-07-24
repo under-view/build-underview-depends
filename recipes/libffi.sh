@@ -48,7 +48,7 @@ do_configure_libffi() {
 
 
 do_compile_libffi() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/libffi" || return $FAILURE
+  make -C "${PACKAGES_DIR}/libffi" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

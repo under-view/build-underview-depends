@@ -42,13 +42,13 @@ do_configure_gobject-introspection() {
 
 
 do_compile_gobject-introspection() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/gobject-introspection/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/gobject-introspection/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_gobject-introspection() {
-  ninja install -C "${PACKAGES_DIR}/gobject-introspection/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/gobject-introspection/build" || return $FAILURE
   return $SUCCESS
 }
 

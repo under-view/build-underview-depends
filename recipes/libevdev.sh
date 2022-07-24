@@ -44,13 +44,13 @@ do_configure_libevdev() {
 
 
 do_compile_libevdev() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/libevdev/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/libevdev/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_libevdev() {
-  ninja install -C "${PACKAGES_DIR}/libevdev/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/libevdev/build" || return $FAILURE
   return $SUCCESS
 }
 

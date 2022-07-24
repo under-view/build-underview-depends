@@ -44,13 +44,13 @@ do_configure_seatd() {
 
 
 do_compile_seatd() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/seatd/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/seatd/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_seatd() {
-  ninja install -C "${PACKAGES_DIR}/seatd/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/seatd/build" || return $FAILURE
   return $SUCCESS
 }
 

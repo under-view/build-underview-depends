@@ -40,7 +40,7 @@ do_configure_x11() {
 
 
 do_compile_x11() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/x11" || return $FAILURE
+  make -C "${PACKAGES_DIR}/x11" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

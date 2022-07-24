@@ -40,7 +40,7 @@ do_configure_xshmfence() {
 
 
 do_compile_xshmfence() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/xshmfence" || return $FAILURE
+  make -C "${PACKAGES_DIR}/xshmfence" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

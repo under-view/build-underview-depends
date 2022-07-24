@@ -45,13 +45,13 @@ do_configure_fontconfig() {
 
 
 do_compile_fontconfig() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/fontconfig/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/fontconfig/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_fontconfig() {
-  ninja install -C "${PACKAGES_DIR}/fontconfig/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/fontconfig/build" || return $FAILURE
   return $SUCCESS
 }
 

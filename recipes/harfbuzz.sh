@@ -48,13 +48,13 @@ do_configure_harfbuzz() {
 
 
 do_compile_harfbuzz() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/harfbuzz/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/harfbuzz/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_harfbuzz() {
-  ninja install -C "${PACKAGES_DIR}/harfbuzz/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/harfbuzz/build" || return $FAILURE
   return $SUCCESS
 }
 

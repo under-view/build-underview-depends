@@ -57,13 +57,13 @@ do_configure_systemd() {
 
 
 do_compile_systemd() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/systemd/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/systemd/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_systemd() {
-  ninja install -C "${PACKAGES_DIR}/systemd/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/systemd/build" || return $FAILURE
   return $SUCCESS
 }
 

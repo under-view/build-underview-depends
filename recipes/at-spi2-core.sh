@@ -43,13 +43,13 @@ do_configure_at-spi2-core() {
 
 
 do_compile_at-spi2-core() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/at-spi2-core/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/at-spi2-core/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_at-spi2-core() {
-  ninja install -C "${PACKAGES_DIR}/at-spi2-core/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/at-spi2-core/build" || return $FAILURE
   return $SUCCESS
 }
 

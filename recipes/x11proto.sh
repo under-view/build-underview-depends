@@ -41,7 +41,7 @@ do_configure_x11proto() {
 
 
 do_compile_x11proto() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/x11proto" || return $FAILURE
+  make -C "${PACKAGES_DIR}/x11proto" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

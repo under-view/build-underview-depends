@@ -40,7 +40,7 @@ do_configure_xxf86vm() {
 
 
 do_compile_xxf86vm() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/xxf86vm" || return $FAILURE
+  make -C "${PACKAGES_DIR}/xxf86vm" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

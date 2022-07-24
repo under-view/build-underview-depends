@@ -43,7 +43,7 @@ do_configure_xcb-ewmh() {
 
 
 do_compile_xcb-ewmh() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/xcb-ewmh" || return $FAILURE
+  make -C "${PACKAGES_DIR}/xcb-ewmh" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

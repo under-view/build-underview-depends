@@ -42,13 +42,13 @@ do_configure_atk() {
 
 
 do_compile_atk() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/atk/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/atk/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_atk() {
-  ninja install -C "${PACKAGES_DIR}/atk/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/atk/build" || return $FAILURE
   return $SUCCESS
 }
 

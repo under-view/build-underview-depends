@@ -40,7 +40,7 @@ do_configure_xext() {
 
 
 do_compile_xext() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/xext" || return $FAILURE
+  make -C "${PACKAGES_DIR}/xext" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

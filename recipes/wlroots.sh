@@ -42,13 +42,13 @@ do_configure_wlroots() {
 
 
 do_compile_wlroots() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/wlroots/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/wlroots/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_wlroots() {
-  ninja install -C "${PACKAGES_DIR}/wlroots/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/wlroots/build" || return $FAILURE
   return $SUCCESS
 }
 

@@ -40,7 +40,7 @@ do_configure_xau() {
 
 
 do_compile_xau() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/xau" || return $FAILURE
+  make -C "${PACKAGES_DIR}/xau" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

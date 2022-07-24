@@ -40,7 +40,7 @@ do_configure_xrandr() {
 
 
 do_compile_xrandr() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/xrandr" || return $FAILURE
+  make -C "${PACKAGES_DIR}/xrandr" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

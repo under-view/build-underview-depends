@@ -46,13 +46,13 @@ do_configure_cairo() {
 
 
 do_compile_cairo() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/cairo/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/cairo/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_cairo() {
-  ninja install -C "${PACKAGES_DIR}/cairo/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/cairo/build" || return $FAILURE
   return $SUCCESS
 }
 

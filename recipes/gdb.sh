@@ -45,13 +45,13 @@ do_configure_gdb() {
 
 
 do_compile_gdb() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/gdb" || return $FAILURE
+  make -C "${PACKAGES_DIR}/gdb" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_gdb() {
-  make install -j $BUILDTHREADS -C "${PACKAGES_DIR}/gdb" || return $FAILURE
+  make install -C "${PACKAGES_DIR}/gdb" || return $FAILURE
   return $SUCCESS
 }
 

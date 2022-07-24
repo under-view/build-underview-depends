@@ -43,13 +43,13 @@ do_configure_pciaccess() {
 
 
 do_compile_pciaccess() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/pciaccess/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/pciaccess/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_pciaccess() {
-  ninja install -C "${PACKAGES_DIR}/pciaccess/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/pciaccess/build" || return $FAILURE
   return $SUCCESS
 }
 

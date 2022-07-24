@@ -40,7 +40,7 @@ do_configure_xtst() {
 
 
 do_compile_xtst() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/xtst" || return $FAILURE
+  make -C "${PACKAGES_DIR}/xtst" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

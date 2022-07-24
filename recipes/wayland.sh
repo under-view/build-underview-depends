@@ -45,13 +45,13 @@ do_configure_wayland() {
 
 
 do_compile_wayland() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/wayland/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/wayland/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_wayland() {
-  ninja install -C "${PACKAGES_DIR}/wayland/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/wayland/build" || return $FAILURE
   return $SUCCESS
 }
 

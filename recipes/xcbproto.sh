@@ -41,7 +41,7 @@ do_configure_xcbproto() {
 
 
 do_compile_xcbproto() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/xcbproto" || return $FAILURE
+  make -C "${PACKAGES_DIR}/xcbproto" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

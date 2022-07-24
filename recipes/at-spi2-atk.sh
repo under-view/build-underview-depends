@@ -46,13 +46,13 @@ do_configure_at-spi2-atk() {
 
 
 do_compile_at-spi2-atk() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/at-spi2-atk/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/at-spi2-atk/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_at-spi2-atk() {
-  ninja install -C "${PACKAGES_DIR}/at-spi2-atk/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/at-spi2-atk/build" || return $FAILURE
   return $SUCCESS
 }
 

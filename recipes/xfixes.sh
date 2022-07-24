@@ -40,7 +40,7 @@ do_configure_xfixes() {
 
 
 do_compile_xfixes() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/xfixes" || return $FAILURE
+  make -C "${PACKAGES_DIR}/xfixes" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

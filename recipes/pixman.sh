@@ -40,7 +40,7 @@ do_configure_pixman() {
 
 
 do_compile_pixman() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/pixman" || return $FAILURE
+  make -C "${PACKAGES_DIR}/pixman" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

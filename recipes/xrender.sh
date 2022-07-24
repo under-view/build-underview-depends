@@ -40,7 +40,7 @@ do_configure_xrender() {
 
 
 do_compile_xrender() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/xrender" || return $FAILURE
+  make -C "${PACKAGES_DIR}/xrender" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

@@ -43,13 +43,13 @@ do_configure_libinput() {
 
 
 do_compile_libinput() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/libinput/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/libinput/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_libinput() {
-  ninja install -C "${PACKAGES_DIR}/libinput/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/libinput/build" || return $FAILURE
   return $SUCCESS
 }
 

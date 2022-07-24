@@ -42,7 +42,7 @@ do_configure_xorgproto() {
 
 
 do_compile_xorgproto() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/xorgproto" || return $FAILURE
+  make -C "${PACKAGES_DIR}/xorgproto" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

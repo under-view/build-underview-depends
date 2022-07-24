@@ -40,7 +40,7 @@ do_configure_xtrans() {
 
 
 do_compile_xtrans() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/xtrans" || return $FAILURE
+  make -C "${PACKAGES_DIR}/xtrans" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

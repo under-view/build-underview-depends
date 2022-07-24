@@ -42,13 +42,13 @@ do_configure_epoxy() {
 
 
 do_compile_epoxy() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/epoxy/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/epoxy/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_epoxy() {
-  ninja install -C "${PACKAGES_DIR}/epoxy/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/epoxy/build" || return $FAILURE
   return $SUCCESS
 }
 

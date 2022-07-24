@@ -61,7 +61,7 @@ do_configure_elfutils() {
 
 
 do_compile_elfutils() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/elfutils" || return $FAILURE
+  make -C "${PACKAGES_DIR}/elfutils" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

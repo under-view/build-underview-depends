@@ -42,13 +42,13 @@ do_configure_glib() {
 
 
 do_compile_glib() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/glib/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/glib/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_glib() {
-  ninja install -C "${PACKAGES_DIR}/glib/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/glib/build" || return $FAILURE
   return $SUCCESS
 }
 

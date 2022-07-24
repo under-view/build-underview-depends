@@ -40,7 +40,7 @@ do_configure_xorg-macros() {
 
 
 do_compile_xorg-macros() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/xorg-macros" || return $FAILURE
+  make -C "${PACKAGES_DIR}/xorg-macros" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

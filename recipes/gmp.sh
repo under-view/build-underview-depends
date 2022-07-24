@@ -58,7 +58,7 @@ do_configure_gmp() {
 
 
 do_compile_gmp() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/gmp" || return $FAILURE
+  make -C "${PACKAGES_DIR}/gmp" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

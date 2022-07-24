@@ -43,7 +43,7 @@ do_configure_fribidi() {
 
 
 do_compile_fribidi() {
-  meson compile -j $BUILDTHREADS -C "${PACKAGES_DIR}/fribidi/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/fribidi/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

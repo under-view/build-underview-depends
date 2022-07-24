@@ -50,7 +50,7 @@ do_configure_libcap() {
 
 do_compile_libcap() {
   DESTDIR="${INSTALLPREFIX}" \
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/libcap" || return $FAILURE
+  make -C "${PACKAGES_DIR}/libcap" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

@@ -40,7 +40,7 @@ do_configure_xorg-font-util() {
 
 
 do_compile_xorg-font-util() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/xorg-font-util" || return $FAILURE
+  make -C "${PACKAGES_DIR}/xorg-font-util" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

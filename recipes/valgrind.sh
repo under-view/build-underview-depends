@@ -47,7 +47,7 @@ do_configure_valgrind() {
 
 
 do_compile_valgrind() {
-  make -j $BUILDTHREADS -C "${PACKAGES_DIR}/valgrind" || return $FAILURE
+  make -C "${PACKAGES_DIR}/valgrind" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 

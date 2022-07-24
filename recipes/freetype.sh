@@ -44,13 +44,13 @@ do_configure_freetype() {
 
 
 do_compile_freetype() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/freetype/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/freetype/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_freetype() {
-  ninja install -C "${PACKAGES_DIR}/freetype/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/freetype/build" || return $FAILURE
   return $SUCCESS
 }
 

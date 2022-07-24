@@ -42,13 +42,13 @@ do_configure_libdrm() {
 
 
 do_compile_libdrm() {
-  ninja -j $BUILDTHREADS -C "${PACKAGES_DIR}/libdrm/build" || return $FAILURE
+  meson compile -C "${PACKAGES_DIR}/libdrm/build" -j $BUILDTHREADS || return $FAILURE
   return $SUCCESS
 }
 
 
 do_install_libdrm() {
-  ninja install -C "${PACKAGES_DIR}/libdrm/build" || return $FAILURE
+  meson install -C "${PACKAGES_DIR}/libdrm/build" || return $FAILURE
   return $SUCCESS
 }
 
