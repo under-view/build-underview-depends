@@ -124,7 +124,7 @@ do_configure_build_vars() {
 ############################################################################
 do_choose_pkgs() {
   RECIPES+=(zlib elfutils llvm libffi pciaccess xorg-macros x11proto xorgproto xcbproto wayland
-            wayland-protocols xdmcp xau xcb xcb-ewmh xtrans x11 xext xrender xrandr vulkan-headers
+            wayland-protocols xdmcp xau xcb xcb-ewmh xtrans x11 xext xrender xrandr cglm vulkan-headers
             vulkan-loader spirv-headers spirv-tools gslang shaderc robin-hood-hashing vulkan-validation-layers
             vulkan-tools libdrm xfixes xshmfence xxf86vm mesa libcap systemd glib gobject-introspection
             libpng pixman freetype harfbuzz libxml2 fontconfig cairo fribidi pango gdk-pixbuf epoxy
