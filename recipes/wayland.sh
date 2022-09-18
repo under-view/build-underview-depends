@@ -1,8 +1,8 @@
-# Build wayland 1.20.0
+# Build wayland v1.21.0
 
 
 do_return_version_wayland() {
-  echo "wayland v1.20.0"
+  echo "wayland v1.21.0"
 }
 
 
