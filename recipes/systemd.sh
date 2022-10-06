@@ -69,7 +69,8 @@ do_install_systemd() {
 
 
 do_update_artifacts_systemd() {
-  :
+  mv "${INSTALLPREFIX}/share/pkgconfig"/* "${INSTALLPREFIX}/lib/pkgconfig"
+  rm -rf "${INSTALLPREFIX}/share/pkgconfig"
 }
 
 

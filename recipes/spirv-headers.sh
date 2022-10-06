@@ -55,11 +55,12 @@ do_install_spirv-headers() {
 
 
 do_update_artifacts_spirv-headers() {
-  :
+  mv "${INSTALLPREFIX}/share/pkgconfig"/* "${INSTALLPREFIX}/lib/pkgconfig"
+  rm -rf "${INSTALLPREFIX}/share/pkgconfig"
 }
 
 
 do_check_is_built_spirv-headers() {
-  [[ -f "${INSTALLPREFIX}/include/spirv/1.2/spirv.h" ]] && return $SUCCESS
+  [[ -f "${INSTALLPREFIX}/lib/pkgconfig/SPIRV-Headers.pc" ]] && return $SUCCESS
   return $FAILURE
 }
