@@ -7,7 +7,7 @@ do_return_version_mesa() {
 
 
 do_return_depends_mesa() {
-  echo "zlib elfutils libffi llvm wayland wayland-protocols x11 xcb xfixes xshmfence xxf86vm"
+  echo "zlib elfutils libffi llvm wayland wayland-protocols x11 xcb xfixes xshmfence xxf86vm glvnd"
 }
 
 
@@ -34,6 +34,8 @@ do_configure_mesa() {
   meson setup \
         --prefix="$INSTALLPREFIX" \
         --libdir="${INSTALLPREFIX}/lib" \
+        -Dglvnd=true \
+        -Dgbm=true \
         "${PACKAGES_DIR}/mesa/build" \
         "${PACKAGES_DIR}/mesa" || return $FAILURE
 

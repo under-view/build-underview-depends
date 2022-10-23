@@ -7,7 +7,7 @@ do_return_version_glvnd() {
 
 
 do_return_depends_glvnd() {
-  echo "x11proto x11 xext mesa"
+  echo "x11proto x11 xext"
 }
 
 
