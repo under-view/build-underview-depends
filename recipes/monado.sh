@@ -7,7 +7,7 @@ do_return_version_monado() {
 
 
 do_return_depends_monado() {
-  echo "wayland x11 xext xrandr gslang vulkan-headers vulkan-loader mesa glvnd systemd openxr-sdk eigen"
+  echo "wayland x11 xext xrandr gslang vulkan-headers vulkan-loader glvnd mesa systemd openxr-sdk eigen"
 }
 
 
@@ -39,10 +39,6 @@ do_configure_monado() {
         -DXRT_BUILD_DRIVER_NS=ON \
         -DFEATURE_STEAMVR_PLUGIN=ON \
         -DXRT_BUILD_DRIVER_ARDUINO=OFF \
-        -DXRT_HAVE_OPENGL=FALSE \
-        -DXRT_HAVE_OPENGL_GLX=FALSE \
-        -DXRT_HAVE_OPENGLES=FALSE \
-        -DXRT_HAVE_EGL=FALSE \
         -DCMAKE_PREFIX_PATH="${INSTALLPREFIX}" \
         -DCMAKE_INSTALL_PREFIX="${INSTALLPREFIX}" || return $FAILURE
 
