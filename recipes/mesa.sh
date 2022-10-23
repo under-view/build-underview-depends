@@ -61,6 +61,6 @@ do_update_artifacts_mesa() {
 
 
 do_check_is_built_mesa() {
-  [[ -f "${INSTALLPREFIX}/lib/pkgconfig/gl.pc" ]] && return $SUCCESS
+  [[ -f "${INSTALLPREFIX}/lib/pkgconfig/gbm.pc" ]] && return $SUCCESS
   return $FAILURE
 }
