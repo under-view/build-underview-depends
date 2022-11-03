@@ -18,7 +18,7 @@ do_clean_wlroots() {
 
 do_fetch_wlroots() {
   msg="Cloning wlroots"
-  clone_and_checkout "${PACKAGES_DIR}/wlroots" "0.15.1" "https://gitlab.freedesktop.org/wlroots/wlroots.git" "29938b74251e826f3778f6bf9c54974a30488cc1" "${msg}" || return $FAILURE
+  clone_and_checkout "${PACKAGES_DIR}/wlroots" "master" "https://gitlab.freedesktop.org/wlroots/wlroots.git" "05454618cd2d49fb3a5f0c560b0d2c455cf32467" "${msg}" || return $FAILURE
   [[ $? -ne 0 ]] && return $FAILURE
 
   return $SUCCESS
