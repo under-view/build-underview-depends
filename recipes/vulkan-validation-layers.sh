@@ -1,8 +1,8 @@
-# Build vulkan-validation-layers v1.3.212
+# Build vulkan-validation-layers v1.3.230
 
 
 do_return_version_vulkan-validation-layers() {
-  echo "vulkan-validation-layers v1.3.212"
+  echo "vulkan-validation-layers v1.3.230"
 }
 
 
@@ -18,7 +18,7 @@ do_clean_vulkan-validation-layers() {
 
 do_fetch_vulkan-validation-layers() {
   msg="Cloning Vulkan-ValidationLayers"
-  clone_and_checkout "${PACKAGES_DIR}/vulkan-validation-layers" "v1.3.212" "https://github.com/KhronosGroup/Vulkan-ValidationLayers.git" "42277168e8cd9a6f844de55714841b59196dc598" "${msg}" || return $FAILURE
+  clone_and_checkout "${PACKAGES_DIR}/vulkan-validation-layers" "v1.3.230" "https://github.com/KhronosGroup/Vulkan-ValidationLayers.git" "81d18b6afb8e2abb521d8565a97630ec7dc5d621" "${msg}" || return $FAILURE
   [[ $? -ne 0 ]] && return $FAILURE
 
   return $SUCCESS
