@@ -31,7 +31,7 @@ do_patch_spirv-headers() {
 
 
 do_configure_spirv-headers() {
-  cmake -G "${CMAKGENTYPE}" \
+  cmake -G "${CMAKEGENTYPE}" \
         -S "${PACKAGES_DIR}/spirv-headers" \
         -B "${PACKAGES_DIR}/spirv-headers/build" \
         -DCMAKE_BUILD_TYPE=Release \

@@ -31,7 +31,7 @@ do_patch_monado() {
 
 
 do_configure_monado() {
-  cmake -G "${CMAKGENTYPE}" \
+  cmake -G "${CMAKEGENTYPE}" \
         -S "${PACKAGES_DIR}/monado" \
         -B "${PACKAGES_DIR}/monado/build" \
         -DCMAKE_BUILD_TYPE=Release \

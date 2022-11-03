@@ -90,7 +90,7 @@ clone_and_checkout() {
 ###########################################################################################################################
 # Configure what we need for building all libs cross platform
 #   1. First create all directories needed
-#   1. Add CMAKGENTYPE variable so there's one variable that determines what build system to use
+#   1. Add CMAKEGENTYPE variable so there's one variable that determines what build system to use
 #   4. Add BUILDTHREADS variable to specify cpu core count when building with ninja/make/etc..
 #   5. Update INSTALLPREFIX to equal $BUILD_OUTPUT_DIR as its used with the --prefix flag to place built libs
 #   6. Update ACLOCAL/ACLOCAL_PATH to point to $BUILD_OUTPUT_DIR/share/aclocal currently useful when building Xorg libs
@@ -108,7 +108,7 @@ do_configure_build_vars() {
   CCNT=$(nproc)
   [[ -n "$TASKTHREADS" ]]  || export TASKTHREADS=$(($CCNT/2))
   [[ -n "$BUILDTHREADS" ]] || export BUILDTHREADS=$(($CCNT/2))
-  export CMAKGENTYPE="Ninja"
+  export CMAKEGENTYPE="Ninja"
   export INSTALLPREFIX="${BUILD_OUTPUT_DIR}"
   export ACLOCAL="aclocal -I ${BUILD_OUTPUT_DIR}/share/aclocal"
   export ACLOCAL_PATH="${BUILD_OUTPUT_DIR}/share/aclocal"

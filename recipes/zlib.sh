@@ -31,7 +31,7 @@ do_patch_zlib() {
 
 
 do_configure_zlib() {
-  cmake -G "${CMAKGENTYPE}" \
+  cmake -G "${CMAKEGENTYPE}" \
         -S "${PACKAGES_DIR}/zlib" \
         -B "${PACKAGES_DIR}/zlib/build" \
         -DBUILD_SHARED_LIBS=ON \

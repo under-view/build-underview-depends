@@ -32,7 +32,7 @@ do_patch_dbus() {
 
 do_configure_dbus() {
   CFLAGS="-I${INSTALLPREFIX}/include" \
-  cmake -G "${CMAKGENTYPE}" \
+  cmake -G "${CMAKEGENTYPE}" \
         -S "${PACKAGES_DIR}/dbus" \
         -B "${PACKAGES_DIR}/dbus/build" \
         -DDBUS_INSTALL_DIR="${INSTALLPREFIX}" \

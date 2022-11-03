@@ -33,7 +33,7 @@ do_patch_llvm() {
 # https://llvm.org/docs/CMake.html#llvm-related-variables
 # https://llvm.org/docs/GettingStarted.html#local-llvm-configuration
 do_configure_llvm() {
-  cmake -G "${CMAKGENTYPE}" \
+  cmake -G "${CMAKEGENTYPE}" \
         -S "${PACKAGES_DIR}/llvm/llvm" \
         -B "${PACKAGES_DIR}/llvm/build" \
         -DCMAKE_BUILD_TYPE=Release \

@@ -38,7 +38,7 @@ do_patch_shaderc() {
 
 
 do_configure_shaderc() {
-  cmake -G "${CMAKGENTYPE}" \
+  cmake -G "${CMAKEGENTYPE}" \
         -S "${PACKAGES_DIR}/shaderc" \
         -B "${PACKAGES_DIR}/shaderc/build" \
         -DCMAKE_BUILD_TYPE="Release" \

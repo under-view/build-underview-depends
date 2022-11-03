@@ -31,7 +31,7 @@ do_patch_spirv-tools() {
 
 
 do_configure_spirv-tools() {
-  cmake -G "${CMAKGENTYPE}" \
+  cmake -G "${CMAKEGENTYPE}" \
         -S "${PACKAGES_DIR}/spirv-tools" \
         -B "${PACKAGES_DIR}/spirv-tools/build" \
         -DSPIRV_TOOLS_BUILD_STATIC="OFF" \

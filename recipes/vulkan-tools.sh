@@ -31,7 +31,7 @@ do_patch_vulkan-tools() {
 
 
 do_configure_vulkan-tools() {
-  cmake -G "${CMAKGENTYPE}" \
+  cmake -G "${CMAKEGENTYPE}" \
         -S "${PACKAGES_DIR}/vulkan-tools" \
         -B "${PACKAGES_DIR}/vulkan-tools/build" \
         -DCMAKE_BUILD_TYPE=Release \

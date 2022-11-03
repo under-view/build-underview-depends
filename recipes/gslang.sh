@@ -31,7 +31,7 @@ do_patch_gslang() {
 
 
 do_configure_gslang() {
-  cmake -G "${CMAKGENTYPE}" \
+  cmake -G "${CMAKEGENTYPE}" \
         -S "${PACKAGES_DIR}/gslang" \
         -B "${PACKAGES_DIR}/gslang/build" \
         -DENABLE_HLSL="ON" \

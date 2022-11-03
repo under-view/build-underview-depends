@@ -31,7 +31,7 @@ do_patch_libxml2() {
 
 
 do_configure_libxml2() {
-  cmake -G "${CMAKGENTYPE}" \
+  cmake -G "${CMAKEGENTYPE}" \
         -S "${PACKAGES_DIR}/libxml2" \
         -B "${PACKAGES_DIR}/libxml2/build" \
         -DBUILD_SHARED_LIBS=ON \

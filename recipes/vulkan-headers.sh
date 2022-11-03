@@ -31,7 +31,7 @@ do_patch_vulkan-headers() {
 
 
 do_configure_vulkan-headers() {
-  cmake -G "${CMAKGENTYPE}" \
+  cmake -G "${CMAKEGENTYPE}" \
         -S "${PACKAGES_DIR}/vulkan-headers" \
         -B "${PACKAGES_DIR}/vulkan-headers/build" \
         -DCMAKE_PREFIX_PATH="${INSTALLPREFIX}" \

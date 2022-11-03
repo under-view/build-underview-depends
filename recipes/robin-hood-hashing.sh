@@ -31,7 +31,7 @@ do_patch_robin-hood-hashing() {
 
 
 do_configure_robin-hood-hashing() {
-  cmake -G "${CMAKGENTYPE}" \
+  cmake -G "${CMAKEGENTYPE}" \
         -S "${PACKAGES_DIR}/robin-hood-hashing" \
         -B "${PACKAGES_DIR}/robin-hood-hashing/build" \
         -DRH_STANDALONE_PROJECT=OFF \

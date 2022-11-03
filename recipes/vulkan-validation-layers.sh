@@ -31,7 +31,7 @@ do_patch_vulkan-validation-layers() {
 
 
 do_configure_vulkan-validation-layers() {
-  cmake -G "${CMAKGENTYPE}" \
+  cmake -G "${CMAKEGENTYPE}" \
         -S "${PACKAGES_DIR}/vulkan-validation-layers" \
         -B "${PACKAGES_DIR}/vulkan-validation-layers/build" \
         -DVulkanRegistry_DIR="${INSTALLPREFIX}/share/vulkan/registry" \

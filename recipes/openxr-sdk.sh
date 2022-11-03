@@ -31,7 +31,7 @@ do_patch_openxr-sdk() {
 
 
 do_configure_openxr-sdk() {
-  cmake -G "${CMAKGENTYPE}" \
+  cmake -G "${CMAKEGENTYPE}" \
         -S "${PACKAGES_DIR}/openxr-sdk" \
         -B "${PACKAGES_DIR}/openxr-sdk/build" \
         -DCMAKE_BUILD_TYPE=Release \

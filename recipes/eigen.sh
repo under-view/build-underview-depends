@@ -31,7 +31,7 @@ do_patch_eigen() {
 
 
 do_configure_eigen() {
-  cmake -G "${CMAKGENTYPE}" \
+  cmake -G "${CMAKEGENTYPE}" \
         -S "${PACKAGES_DIR}/eigen" \
         -B "${PACKAGES_DIR}/eigen/build" \
         -DCMAKE_BUILD_TYPE=Release \

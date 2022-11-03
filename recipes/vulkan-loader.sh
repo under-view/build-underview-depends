@@ -31,7 +31,7 @@ do_patch_vulkan-loader() {
 
 
 do_configure_vulkan-loader() {
-  cmake -G "${CMAKGENTYPE}" \
+  cmake -G "${CMAKEGENTYPE}" \
         -S "${PACKAGES_DIR}/vulkan-loader" \
         -B "${PACKAGES_DIR}/vulkan-loader/build" \
         -DCMAKE_PREFIX_PATH="${INSTALLPREFIX}" \

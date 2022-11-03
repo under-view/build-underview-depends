@@ -43,7 +43,7 @@ do_patch_libpng() {
 
 
 do_configure_libpng() {
-  cmake -G "${CMAKGENTYPE}" \
+  cmake -G "${CMAKEGENTYPE}" \
         -S "${PACKAGES_DIR}/libpng" \
         -B "${PACKAGES_DIR}/libpng/build" \
         -DCMAKE_PREFIX_PATH="${INSTALLPREFIX}" \
