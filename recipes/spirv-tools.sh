@@ -1,8 +1,8 @@
-# Build spirv-tools v2022.2
+# Build spirv-tools sdk-1.3.231.1
 
 
 do_return_version_spirv-tools() {
-  echo "spirv-tools v2022.2"
+  echo "spirv-tools sdk-1.3.231.1"
 }
 
 
@@ -18,7 +18,7 @@ do_clean_spirv-tools() {
 
 do_fetch_spirv-tools() {
   msg="Cloning spirv-tools"
-  clone_and_checkout "${PACKAGES_DIR}/spirv-tools" "v2022.2" "https://github.com/KhronosGroup/SPIRV-Tools.git" "7826e1941eab1aa66fbe84c48b95921bff402a96" "${msg}" || return $FAILURE
+  clone_and_checkout "${PACKAGES_DIR}/spirv-tools" "sdk-1.3.231.1" "https://github.com/KhronosGroup/SPIRV-Tools.git" "eb0a36633d2acf4de82588504f951ad0f2cecacb" "${msg}" || return $FAILURE
   [[ $? -ne 0 ]] && return $FAILURE
 
   return $SUCCESS
