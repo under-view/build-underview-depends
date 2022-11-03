@@ -1,8 +1,8 @@
-# Build vulkan-headers v1.3.213
+# Build vulkan-headers v1.3.231
 
 
 do_return_version_vulkan-headers() {
-  echo "vulkan-headers v1.3.213"
+  echo "vulkan-headers v1.3.231"
 }
 
 
@@ -18,7 +18,7 @@ do_clean_vulkan-headers() {
 
 do_fetch_vulkan-headers() {
   msg="Cloning vulkan-headers"
-  clone_and_checkout "${PACKAGES_DIR}/vulkan-headers" "v1.3.213" "https://github.com/KhronosGroup/Vulkan-Headers.git" "33d4dd987fc8fc6475ff9ca2b4f0c3cc6e793337" "${msg}" || return $FAILURE
+  clone_and_checkout "${PACKAGES_DIR}/vulkan-headers" "v1.3.231" "https://github.com/KhronosGroup/Vulkan-Headers.git" "98f440ce6868c94f5ec6e198cc1adda4760e8849" "${msg}" || return $FAILURE
   [[ $? -ne 0 ]] && return $FAILURE
 
   return $SUCCESS
