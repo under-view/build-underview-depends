@@ -7,7 +7,7 @@ do_return_version_wlroots() {
 
 
 do_return_depends_wlroots() {
-  echo "wayland wayland-protocols vulkan-loader libdrm mesa xkbcommon pixman libinput seatd"
+  echo "wayland wayland-protocols vulkan-loader libdrm mesa xkbcommon pixman libinput seatd xcb-render-util"
 }
 
 
@@ -34,6 +34,7 @@ do_configure_wlroots() {
   meson setup \
         --prefix="$INSTALLPREFIX" \
         --libdir="${INSTALLPREFIX}/lib" \
+        -Dbackends="drm,libinput,x11" \
         "${PACKAGES_DIR}/wlroots/build" \
         "${PACKAGES_DIR}/wlroots" || return $FAILURE
 
