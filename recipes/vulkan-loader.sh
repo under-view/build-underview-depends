@@ -1,8 +1,8 @@
-# Build vulkan-loader v1.3.213
+# Build vulkan-loader v1.3.231
 
 
 do_return_version_vulkan-loader() {
-  echo "vulkan-loader v1.3.213"
+  echo "vulkan-loader v1.3.231"
 }
 
 
@@ -18,7 +18,7 @@ do_clean_vulkan-loader() {
 
 do_fetch_vulkan-loader() {
   msg="Cloning vulkan-loader"
-  clone_and_checkout "${PACKAGES_DIR}/vulkan-loader" "v1.3.213" "https://github.com/KhronosGroup/Vulkan-Loader.git" "5aa2ee48c9da55ff6682ff2e5802d60eb52dcf1f" "${msg}" || return $FAILURE
+  clone_and_checkout "${PACKAGES_DIR}/vulkan-loader" "v1.3.231" "https://github.com/KhronosGroup/Vulkan-Loader.git" "61187c40845c92a80bcd2216089dd01badcda7ac" "${msg}" || return $FAILURE
   [[ $? -ne 0 ]] && return $FAILURE
 
   return $SUCCESS
