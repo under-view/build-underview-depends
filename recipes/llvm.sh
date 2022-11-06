@@ -37,9 +37,9 @@ do_configure_llvm() {
         -S "${PACKAGES_DIR}/llvm/llvm" \
         -B "${PACKAGES_DIR}/llvm/build" \
         -DCMAKE_BUILD_TYPE=Release \
-        -DLLVM_TARGETS_TO_BUILD="AMDGPU;X86;AArch64;ARM" \
+        -DLLVM_TARGETS_TO_BUILD="AMDGPU;X86" \
         -DLLVM_TARGET_ARCH=host \
-        -DBUILD_SHARED_LIBS=ON \
+        -DLLVM_LINK_LLVM_DYLIB=ON \
         -DLLVM_ENABLE_RTTI=ON \
         -DLLVM_ENABLE_LTO=OFF \
         -DLLVM_TOOL_LTO_BUILD=OFF \
@@ -63,7 +63,8 @@ do_install_llvm() {
 
 
 do_update_artifacts_llvm() {
-  :
+  rm "${INSTALLPREFIX}/build_output/lib"/*LLVM*.a
+  return $SUCCESS
 }
 
 
