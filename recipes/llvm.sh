@@ -63,7 +63,7 @@ do_install_llvm() {
 
 
 do_update_artifacts_llvm() {
-  rm "${INSTALLPREFIX}/build_output/lib"/*LLVM*.a
+  rm "${INSTALLPREFIX}/lib"/*LLVM*.a
   return $SUCCESS
 }
 
