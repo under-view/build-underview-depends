@@ -30,6 +30,9 @@ do_patch_systemd() {
   git -C "${PACKAGES_DIR}/systemd" apply "${PATCHES_DIR}/systemd/0001-remove-journalctl-command-from-executing.patch" > /dev/null 2>&1
   [[ $? -ne 0 ]] && return $FAILURE
 
+  git -C "${PACKAGES_DIR}/systemd" apply "${PATCHES_DIR}/systemd/0002-check-filesystem-fix-not-in-filesystem-gperf.gperf.patch" > /dev/null 2>&1
+  [[ $? -ne 0 ]] && return $FAILURE
+
   return $SUCCESS
 }
 

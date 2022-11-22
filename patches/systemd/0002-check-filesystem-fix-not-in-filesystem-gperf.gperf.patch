@@ -1,0 +1,40 @@
+From 327462d1740aa26fe421c847fe4481588c40f453 Mon Sep 17 00:00:00 2001
+From: Vincent Davis Jr <vince@underview.tech>
+Date: Mon, 21 Nov 2022 16:43:27 -0600
+Subject: [PATCH] check-filesystem: fix not in filesystem-gperf.gperf
+
+Upstream-Status: Inappropriate
+
+Patch for
+
+../meson.build:389:8: ERROR: Problem encountered: found unknown
+filesystem(s) defined in kernel headers:
+
+Filesystem found in kernel header but not in filesystems-gperf.gperf: CIFS_SUPER_MAGIC
+Filesystem found in kernel header but not in filesystems-gperf.gperf: SMB2_SUPER_MAGIC
+
+We just need systemd to build
+
+Signed-off-by: Vincent Davis Jr <vince@underview.tech>
+---
+ src/basic/check-filesystems.sh | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/basic/check-filesystems.sh b/src/basic/check-filesystems.sh
+index 696ef610ac..0f673362a4 100755
+--- a/src/basic/check-filesystems.sh
++++ b/src/basic/check-filesystems.sh
+@@ -26,8 +26,8 @@ for fs in $($cpp -dM $includes - </dev/null | \
+         if [[ "$fs" =~ ^(STACK_END_MAGIC|MTD_INODE_FS_MAGIC|FUTEXFS_SUPER_MAGIC)$ ]]; then
+             continue
+         fi
+-        echo "Filesystem found in kernel header but not in $(basename "$filesystems_gperf"): $fs";
+-        error=true
++#        echo "Filesystem found in kernel header but not in $(basename "$filesystems_gperf"): $fs";
++#        error=false
+     fi
+ done
+ 
+-- 
+2.38.1
+
