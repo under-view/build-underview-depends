@@ -1,0 +1,34 @@
+From 66bef1a2fe7a468a1be9d0206fa89b96b3dc3dcf Mon Sep 17 00:00:00 2001
+From: Vincent Davis Jr <vince@underview.tech>
+Date: Fri, 25 Nov 2022 22:56:12 -0600
+Subject: [PATCH] meson: remove -Werror=array-bounds
+
+Remove flags as it fails to build
+with gcc v11+
+
+Upstream-Status: Pending
+
+Relevant discussion
+
+https://gitlab.gnome.org/GNOME/gtk/-/issues/3776
+
+Signed-off-by: Vincent Davis Jr <vince@underview.tech>
+---
+ meson.build | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index c599843862..b2357801c8 100644
+--- a/meson.build
++++ b/meson.build
+@@ -312,7 +312,6 @@ elif cc.get_id() == 'gcc' or cc.get_id() == 'clang'
+     '-Werror=sequence-point',
+     '-Werror=return-type',
+     '-Werror=trigraphs',
+-    '-Werror=array-bounds',
+     '-Werror=write-strings',
+     '-Werror=address',
+     '-Werror=int-to-pointer-cast',
+-- 
+2.38.1
+

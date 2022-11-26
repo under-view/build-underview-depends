@@ -28,7 +28,10 @@ do_fetch_gtk() {
 
 
 do_patch_gtk() {
-  :
+  git -C "${PACKAGES_DIR}/gtk" apply "${PATCHES_DIR}/gtk/0001-meson-remove-Werror-array-bounds.patch"
+  [[ $? -ne 0 ]] && return $FAILURE
+
+  return $SUCCESS
 }
 
 
