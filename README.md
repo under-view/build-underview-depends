@@ -5,6 +5,7 @@ Builds all dependencies used directly when developing underview software
 **Tested Distro's**
 - Ubuntu 20.04
 - Ubuntu 22.04
+- Arch Linux ([sway](https://github.com/swaywm/sway))
 
 ## Dependencies
 
@@ -23,7 +24,6 @@ $ sudo python3 -m pip install meson==0.61.4 Mako jinja2
 $ sudo pacman -Syyu --noconfirm
 $ sudo pacman -S --noconfirm base-devel cmake clang wget zip yasm
 $ sudo pacman -S --noconfirm python3 python-pip ninja curl git gperf
-$ yay -S --noconfirm bmap-tools
 $ sudo python3 -m pip install meson==0.61.4 Mako jinja2
 ```
 
