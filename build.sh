@@ -49,6 +49,25 @@ print_me() {
 }
 
 
+#############################################################
+# Just to display colorful banner before compiling package
+#############################################################
+do_display_banner() {
+  columns="$(tput cols)"
+  print_me warn "%*s\n" "${COLUMNS:-$(tput cols)}" | tr ' ' '*'
+
+  echo "${1}" |
+  while IFS= read -r line
+  do
+    print_me warn "%*s\n" $(((${#line} + columns) / 2)) "$line"
+  done
+
+  print_me warn "%*s\n" "${COLUMNS:-$(tput cols)}" | tr ' ' '*'
+
+  return $SUCCESS
+}
+
+
 #############################################################################
 # Basically clean any build artifacts process cross platform and
 # reset github repo commits to the specific one used when compiled
@@ -137,14 +156,6 @@ do_choose_pkgs() {
 }
 
 
-do_print_running_recipe() {
-  recipe=$1
-  print_me warn "***************************************************************************************************************\n"
-  print_me warn "\t\t\t\t\t Running recipe $recipe \n"
-  print_me warn "***************************************************************************************************************\n"
-}
-
-
 #################################################################################################
 # Provides a command to run all task in a given recipe
 # Given parameters
@@ -163,7 +174,7 @@ do_run_all_task() {
     do_check_is_built_$recipe && return $SUCCESS
   }
 
-  do_print_running_recipe "$recipe"
+  do_display_banner "Building Package ${recipe}"
   do_fetch_$recipe            || { do_clean_$recipe ; [[ $SOURCED -eq 1 ]] && return $FAILURE || exit $FAILURE; }
   do_patch_$recipe            || { do_clean_$recipe ; [[ $SOURCED -eq 1 ]] && return $FAILURE || exit $FAILURE; }
   do_configure_$recipe        || { do_clean_$recipe ; [[ $SOURCED -eq 1 ]] && return $FAILURE || exit $FAILURE; }
