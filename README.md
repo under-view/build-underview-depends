@@ -22,7 +22,7 @@ $ sudo python3 -m pip install meson==0.61.4 Mako jinja2
 
 ```sh
 $ sudo pacman -Syyu --noconfirm
-$ sudo pacman -S --noconfirm base-devel cmake clang wget zip yasm
+$ sudo pacman -S --noconfirm base-devel cmake clang wget zip yasm hwdata
 $ sudo pacman -S --noconfirm python3 python-pip ninja curl git gperf
 $ sudo python3 -m pip install meson==0.61.4 Mako jinja2
 ```
