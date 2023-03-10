@@ -61,6 +61,7 @@ do_install_hwdata() {
 do_update_artifacts_hwdata() {
   mv "${INSTALLPREFIX}/usr/share/pkgconfig"/*.pc "${INSTALLPREFIX}/lib/pkgconfig"
   rm -rf "${INSTALLPREFIX}/usr/share/pkgconfig"
+  sed -i "s/pc_sysrootdir/prefix/g" "${INSTALLPREFIX}/lib/pkgconfig/hwdata.pc"
   return $SUCCESS
 }
 
