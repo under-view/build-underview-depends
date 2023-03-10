@@ -13,7 +13,7 @@ Builds all dependencies used directly when developing underview software
 ```sh
 $ sudo apt update
 $ sudo apt install -y aptitude
-$ sudo aptitude install -y build-essential cmake clang automake autoconf libtool flex bison m4 yasm hwdata
+$ sudo aptitude install -y build-essential cmake clang automake autoconf libtool flex bison m4 yasm dos2unix
 $ sudo aptitude install -y pkg-config python3-pip ninja-build curl wget git gperf texinfo libmount-dev
 $ sudo python3 -m pip install meson==0.61.4 Mako jinja2
 ```
@@ -22,7 +22,7 @@ $ sudo python3 -m pip install meson==0.61.4 Mako jinja2
 
 ```sh
 $ sudo pacman -Syyu --noconfirm
-$ sudo pacman -S --noconfirm base-devel cmake clang wget zip yasm hwdata
+$ sudo pacman -S --noconfirm base-devel cmake clang wget zip yasm dos2unix
 $ sudo pacman -S --noconfirm python3 python-pip ninja curl git gperf
 $ sudo python3 -m pip install meson==0.61.4 Mako jinja2
 ```

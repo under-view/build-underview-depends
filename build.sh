@@ -148,7 +148,7 @@ do_choose_pkgs() {
             vulkan-tools libdrm xfixes xshmfence xxf86vm glvnd mesa libcap systemd glib gobject-introspection
             libpng pixman freetype harfbuzz libxml2 fontconfig cairo fribidi pango gdk-pixbuf epoxy
             atk xkbcommon xi dbus xtst at-spi2-core at-spi2-atk gtk mtdev libevdev libgudev libwacom
-            libinput seatd xcb-render-util wlroots gmp gdb openxr-sdk-utils eigen monado)
+            libinput seatd xcb-render-util hwdata wlroots gmp gdb openxr-sdk-utils eigen monado)
 
   for recipe in "${RECIPES[@]}"; do source "${CUR_DIR}/recipes/${recipe}.sh" || return $FAILURE ; done
   chmod 0755 "${CUR_DIR}/recipes"/*
