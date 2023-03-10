@@ -1,13 +1,13 @@
-# Build wlroots v0.17.1-dev
+# Build wlroots v0.17.2-dev
 
 
 do_return_version_wlroots() {
-  echo "wlroots v0.17.1-dev"
+  echo "wlroots v0.17.2-dev"
 }
 
 
 do_return_depends_wlroots() {
-  echo "wayland wayland-protocols vulkan-loader libdrm mesa xkbcommon pixman libinput seatd xcb-render-util"
+  echo "wayland wayland-protocols vulkan-loader libdrm mesa xkbcommon pixman libinput seatd xcb-render-util hwdata display-info"
 }
 
 
@@ -18,7 +18,7 @@ do_clean_wlroots() {
 
 do_fetch_wlroots() {
   msg="Cloning wlroots"
-  clone_and_checkout "${PACKAGES_DIR}/wlroots" "master" "https://gitlab.freedesktop.org/wlroots/wlroots.git" "5f264a7d6c8af27d41ff440c05262b022c055593" "${msg}" || return $FAILURE
+  clone_and_checkout "${PACKAGES_DIR}/wlroots" "master" "https://gitlab.freedesktop.org/wlroots/wlroots.git" "039cca8a51ed0783d45fb7a5215e9ae83e4e02e2" "${msg}" || return $FAILURE
   [[ $? -ne 0 ]] && return $FAILURE
 
   return $SUCCESS
