@@ -1,8 +1,8 @@
-# Build cglm v0.8.9
+# Build cglm HEAD
 
 
 do_return_version_cglm() {
-  echo "cglm v0.8.9"
+  echo "cglm HEAD"
 }
 
 
@@ -18,7 +18,7 @@ do_clean_cglm() {
 
 do_fetch_cglm() {
   msg="Cloning cglm"
-  clone_and_checkout "${PACKAGES_DIR}/cglm" "master" "https://github.com/recp/cglm.git" "c51040cd4139b628fba2a0e6751ad4aecbc0c81a" "${msg}" || return $FAILURE
+  clone_and_checkout "${PACKAGES_DIR}/cglm" "master" "https://github.com/recp/cglm.git" "92a8e3816275ecfbebfbaec5af6e4fce4e6f9b84" "${msg}" || return $FAILURE
   [[ $? -ne 0 ]] && return $FAILURE
 
   return $SUCCESS
