@@ -2,63 +2,63 @@
 
 
 do_return_version_epoxy() {
-  echo "epoxy v1.5.10"
+	echo "epoxy v1.5.10"
 }
 
 
 do_return_depends_epoxy() {
-  echo "x11 mesa"
+	echo "x11 mesa"
 }
 
 
 do_clean_epoxy() {
-  rm -rf "${PACKAGES_DIR}/epoxy/build"
+	rm -rf "${PACKAGES_DIR}/epoxy/build"
 }
 
 
 do_fetch_epoxy() {
-  msg="Cloning epoxy"
-  clone_and_checkout "${PACKAGES_DIR}/epoxy" "1.5.10" "https://github.com/anholt/libepoxy.git" "c84bc9459357a40e46e2fec0408d04fbdde2c973" "${msg}" || return $FAILURE
-  [[ $? -ne 0 ]] && return $FAILURE
+	msg="Cloning epoxy"
+	clone_and_checkout "${PACKAGES_DIR}/epoxy" "1.5.10" "https://github.com/anholt/libepoxy.git" "c84bc9459357a40e46e2fec0408d04fbdde2c973" "${msg}" || return $FAILURE
+	[[ $? -ne 0 ]] && return $FAILURE
 
-  return $SUCCESS
+	return $SUCCESS
 }
 
 
 do_patch_epoxy() {
-  :
+	:
 }
 
 
 do_configure_epoxy() {
-  meson setup \
-        --prefix="${INSTALLPREFIX}" \
-        --libdir="${INSTALLPREFIX}/lib" \
-        "${PACKAGES_DIR}/epoxy/build" \
-        "${PACKAGES_DIR}/epoxy" || return $FAILURE
+	meson setup \
+	      --prefix="${INSTALLPREFIX}" \
+	      --libdir="${INSTALLPREFIX}/lib" \
+	      "${PACKAGES_DIR}/epoxy/build" \
+	      "${PACKAGES_DIR}/epoxy" || return $FAILURE
 
-  return $SUCCESS
+	return $SUCCESS
 }
 
 
 do_compile_epoxy() {
-  meson compile -C "${PACKAGES_DIR}/epoxy/build" -j $BUILDTHREADS || return $FAILURE
-  return $SUCCESS
+	meson compile -C "${PACKAGES_DIR}/epoxy/build" -j $BUILDTHREADS || return $FAILURE
+	return $SUCCESS
 }
 
 
 do_install_epoxy() {
-  meson install -C "${PACKAGES_DIR}/epoxy/build" || return $FAILURE
-  return $SUCCESS
+	meson install -C "${PACKAGES_DIR}/epoxy/build" || return $FAILURE
+	return $SUCCESS
 }
 
 
 do_update_artifacts_epoxy() {
-  :
+	:
 }
 
 
 do_check_is_built_epoxy() {
-  [[ -f "${INSTALLPREFIX}/lib/pkgconfig/epoxy.pc" ]] && return $SUCCESS
-  return $FAILURE
+	[[ -f "${INSTALLPREFIX}/lib/pkgconfig/epoxy.pc" ]] && return $SUCCESS
+	return $FAILURE
 }
