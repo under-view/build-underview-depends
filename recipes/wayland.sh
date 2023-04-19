@@ -1,8 +1,8 @@
-# Build wayland v1.21.0
+# Build wayland v1.22.0
 
 
 do_return_version_wayland() {
-	echo "wayland v1.21.0"
+	echo "wayland v1.22.0"
 }
 
 
@@ -18,7 +18,7 @@ do_clean_wayland() {
 
 do_fetch_wayland() {
 	msg="Cloning wayland"
-	clone_and_checkout "${PACKAGES_DIR}/wayland" "1.21.0" "https://gitlab.freedesktop.org/wayland/wayland.git" "8135e856ebd79872f886466e9cee39affb7d9ee8" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/wayland" "1.22.0" "https://gitlab.freedesktop.org/wayland/wayland.git" "b2649cb3ee6bd70828a17e50beb16591e6066288" "${msg}" || return $FAILURE
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
@@ -35,8 +35,8 @@ do_configure_wayland() {
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
 	      -Ddocumentation=false \
-	      -Dtests=false \
 	      -Ddtd_validation=false \
+	      -Dtests=false \
 	      "${PACKAGES_DIR}/wayland/build" \
 	      "${PACKAGES_DIR}/wayland" || return $FAILURE
 
@@ -57,7 +57,7 @@ do_install_wayland() {
 
 
 do_update_artifacts_wayland() {
-:
+	:
 }
 
 
