@@ -1,8 +1,8 @@
-# Build mesa 22.0.1
+# Build mesa 23.0.2
 
 
 do_return_version_mesa() {
-	echo "mesa v22.0.1"
+	echo "mesa v23.0.2"
 }
 
 
@@ -18,7 +18,7 @@ do_clean_mesa() {
 
 do_fetch_mesa() {
 	msg="Cloning mesa"
-	clone_and_checkout "${PACKAGES_DIR}/mesa" "22.0" "https://gitlab.freedesktop.org/mesa/mesa" "4a8d3189fdb81688c43c9b438c892a3423367c73" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/mesa" "23.0" "https://gitlab.freedesktop.org/mesa/mesa.git" "4d5e73870ecfc14e83bc577af1525c0531e503cc" "${msg}" || return $FAILURE
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
