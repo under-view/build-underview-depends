@@ -18,7 +18,7 @@ do_clean_cglm() {
 
 do_fetch_cglm() {
 	msg="Cloning cglm"
-	clone_and_checkout "${PACKAGES_DIR}/cglm" "master" "https://github.com/recp/cglm.git" "92a8e3816275ecfbebfbaec5af6e4fce4e6f9b84" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/cglm" "master" "https://github.com/recp/cglm.git" "56d9e4146530629f42ccbd38892072a60a12809f" "${msg}" || return $FAILURE
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
