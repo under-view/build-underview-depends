@@ -11,11 +11,20 @@ Builds all dependencies used directly when developing underview software
 
 **Debian**
 ```sh
-$ sudo apt update
+$ sudo apt update -y && sudo apt upgrade -y
+# reboot
 $ sudo apt install -y aptitude
 $ sudo aptitude install -y build-essential cmake clang automake autoconf libtool flex bison m4 yasm dos2unix
 $ sudo aptitude install -y pkg-config python3-pip ninja-build curl wget git gperf texinfo libmount-dev
 $ sudo python3 -m pip install meson==0.61.4 Mako jinja2
+
+# Update Kernel Version >= 5.20.0
+$ sudo add-apt-repository ppa:cappelikan/ppa -y
+$ sudo aptitude update -y
+$ sudo aptitude install -y mainline
+$ mainline --list
+$ mainline --install 6.3.4
+# reboot
 ```
 
 **Arch Linux**
