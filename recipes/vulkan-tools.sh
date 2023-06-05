@@ -34,7 +34,7 @@ do_configure_vulkan-tools() {
 	cmake -G "${CMAKEGENTYPE}" \
 	      -S "${PACKAGES_DIR}/vulkan-tools" \
 	      -B "${PACKAGES_DIR}/vulkan-tools/build" \
-	      -DCMAKE_BUILD_TYPE=Release \
+	      -DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}" \
 	      -DCMAKE_PREFIX_PATH="${INSTALLPREFIX}" \
 	      -DCMAKE_INSTALL_PREFIX="${INSTALLPREFIX}" || return $FAILURE
 
@@ -43,13 +43,13 @@ do_configure_vulkan-tools() {
 
 
 do_compile_vulkan-tools() {
-	cmake --build "${PACKAGES_DIR}/vulkan-tools/build" -j $BUILDTHREADS || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/vulkan-tools/build" --config "${CMAKE_BUILD_TYPE}" -j $BUILDTHREADS || return $FAILURE
 	return $SUCCESS
 }
 
 
 do_install_vulkan-tools() {
-	cmake --build "${PACKAGES_DIR}/vulkan-tools/build" --target install || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/vulkan-tools/build" --config "${CMAKE_BUILD_TYPE}" --target install || return $FAILURE
 	return $SUCCESS
 }
 

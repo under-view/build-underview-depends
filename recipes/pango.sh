@@ -34,10 +34,13 @@ do_configure_pango() {
 	rm -rf "${PACKAGES_DIR}/pango/subprojects"
 
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
+	      --prefix="${INSTALLPREFIX}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
 	      -Dcairo="enabled" \
-	      -Dsysprof="disabled" -Dlibthai="disabled" \
+	      -Dsysprof="disabled" \
+	      -Dlibthai="disabled" \
 	      "${PACKAGES_DIR}/pango/build" \
 	      "${PACKAGES_DIR}/pango" || return $FAILURE
 

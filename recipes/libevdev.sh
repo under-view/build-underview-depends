@@ -32,6 +32,7 @@ do_patch_libevdev() {
 
 do_configure_libevdev() {
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
 	      -Dtests="disabled" \

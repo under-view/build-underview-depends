@@ -32,6 +32,7 @@ do_patch_wayland-protocols() {
 
 do_configure_wayland-protocols() {
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
 	      "${PACKAGES_DIR}/wayland-protocols/build" \

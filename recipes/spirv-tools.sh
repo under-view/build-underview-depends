@@ -34,11 +34,11 @@ do_configure_spirv-tools() {
 	cmake -G "${CMAKEGENTYPE}" \
 	      -S "${PACKAGES_DIR}/spirv-tools" \
 	      -B "${PACKAGES_DIR}/spirv-tools/build" \
-	      -DSPIRV_TOOLS_BUILD_STATIC="OFF" \
 	      -DBUILD_SHARED_LIBS="1" \
+	      -DSPIRV_TOOLS_BUILD_STATIC="OFF" \
 	      -DSPIRV-Headers_SOURCE_DIR="${PACKAGES_DIR}/spirv-headers" \
 	      -DSPIRV_HEADER_INCLUDE_DIR="${INSTALLPREFIX}/include/spirv" \
-	      -DCMAKE_BUILD_TYPE=Release \
+	      -DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}" \
 	      -DCMAKE_PREFIX_PATH="${INSTALLPREFIX}" \
 	      -DCMAKE_INSTALL_PREFIX="${INSTALLPREFIX}" || return $FAILURE
 
@@ -47,13 +47,13 @@ do_configure_spirv-tools() {
 
 
 do_compile_spirv-tools() {
-	cmake --build "${PACKAGES_DIR}/spirv-tools/build" --config Release -j $BUILDTHREADS || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/spirv-tools/build" --config "${CMAKE_BUILD_TYPE}" -j $BUILDTHREADS || return $FAILURE
 	return $SUCCESS
 }
 
 
 do_install_spirv-tools() {
-	cmake --build "${PACKAGES_DIR}/spirv-tools/build" --config Release --target install || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/spirv-tools/build" --config "${CMAKE_BUILD_TYPE}" --target install || return $FAILURE
 	return $SUCCESS
 }
 

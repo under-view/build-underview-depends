@@ -35,7 +35,7 @@ do_configure_vulkan-validation-layers() {
 	      -S "${PACKAGES_DIR}/vulkan-validation-layers" \
 	      -B "${PACKAGES_DIR}/vulkan-validation-layers/build" \
 	      -DVulkanRegistry_DIR="${INSTALLPREFIX}/share/vulkan/registry" \
-	      -DCMAKE_BUILD_TYPE=Release \
+	      -DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}" \
 	      -DCMAKE_PREFIX_PATH="${INSTALLPREFIX}" \
 	      -DCMAKE_INSTALL_PREFIX="${INSTALLPREFIX}" || return $FAILURE
 
@@ -44,13 +44,13 @@ do_configure_vulkan-validation-layers() {
 
 
 do_compile_vulkan-validation-layers() {
-	cmake --build "${PACKAGES_DIR}/vulkan-validation-layers/build" --config Release -j $BUILDTHREADS || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/vulkan-validation-layers/build" --config "${CMAKE_BUILD_TYPE}" -j $BUILDTHREADS || return $FAILURE
 	return $SUCCESS
 }
 
 
 do_install_vulkan-validation-layers() {
-	cmake --build "${PACKAGES_DIR}/vulkan-validation-layers/build" --config Release --target install || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/vulkan-validation-layers/build" --config "${CMAKE_BUILD_TYPE}" --target install || return $FAILURE
 	return $SUCCESS
 }
 

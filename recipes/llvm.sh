@@ -36,13 +36,13 @@ do_configure_llvm() {
 	cmake -G "${CMAKEGENTYPE}" \
 	      -S "${PACKAGES_DIR}/llvm/llvm" \
 	      -B "${PACKAGES_DIR}/llvm/build" \
-	      -DCMAKE_BUILD_TYPE=Release \
 	      -DLLVM_TARGETS_TO_BUILD="AMDGPU;X86" \
-	      -DLLVM_TARGET_ARCH=host \
-	      -DLLVM_LINK_LLVM_DYLIB=ON \
-	      -DLLVM_ENABLE_RTTI=ON \
-	      -DLLVM_ENABLE_LTO=OFF \
-	      -DLLVM_TOOL_LTO_BUILD=OFF \
+	      -DLLVM_TARGET_ARCH="host" \
+	      -DLLVM_LINK_LLVM_DYLIB="ON" \
+	      -DLLVM_ENABLE_RTTI="ON" \
+	      -DLLVM_ENABLE_LTO="OFF" \
+	      -DLLVM_TOOL_LTO_BUILD="OFF" \
+	      -DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}" \
 	      -DCMAKE_PREFIX_PATH="${INSTALLPREFIX}" \
 	      -DCMAKE_INSTALL_PREFIX="${INSTALLPREFIX}" || return $FAILURE
 
@@ -51,13 +51,13 @@ do_configure_llvm() {
 
 
 do_compile_llvm() {
-	cmake --build "${PACKAGES_DIR}/llvm/build" -j $BUILDTHREADS || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/llvm/build" --config "${CMAKE_BUILD_TYPE}" -j $BUILDTHREADS || return $FAILURE
 	return $SUCCESS
 }
 
 
 do_install_llvm() {
-	cmake --build "${PACKAGES_DIR}/llvm/build" --target install || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/llvm/build" --config "${CMAKE_BUILD_TYPE}" --target install || return $FAILURE
 	return $SUCCESS
 }
 

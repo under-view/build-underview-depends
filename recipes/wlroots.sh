@@ -32,6 +32,7 @@ do_patch_wlroots() {
 
 do_configure_wlroots() {
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
 	      -Dbackends="drm,libinput,x11" \

@@ -32,6 +32,7 @@ do_patch_cglm() {
 
 do_configure_cglm() {
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
 	      "${PACKAGES_DIR}/cglm/build" \

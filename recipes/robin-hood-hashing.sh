@@ -34,10 +34,10 @@ do_configure_robin-hood-hashing() {
 	cmake -G "${CMAKEGENTYPE}" \
 	      -S "${PACKAGES_DIR}/robin-hood-hashing" \
 	      -B "${PACKAGES_DIR}/robin-hood-hashing/build" \
-	      -DRH_STANDALONE_PROJECT=OFF \
-	      -DCMAKE_BUILD_TYPE=Release \
-	      -DCMAKE_INSTALL_LIBDIR="${INSTALLPREFIX}/lib" \
+	      -DRH_STANDALONE_PROJECT="OFF" \
+	      -DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}" \
 	      -DCMAKE_PREFIX_PATH="${INSTALLPREFIX}" \
+	      -DCMAKE_INSTALL_LIBDIR="${INSTALLPREFIX}/lib" \
 	      -DCMAKE_INSTALL_PREFIX="${INSTALLPREFIX}" || return $FAILURE
 
 	return $SUCCESS
@@ -45,13 +45,13 @@ do_configure_robin-hood-hashing() {
 
 
 do_compile_robin-hood-hashing() {
-	cmake --build "${PACKAGES_DIR}/robin-hood-hashing/build" --config Release -j $BUILDTHREADS || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/robin-hood-hashing/build" --config "${CMAKE_BUILD_TYPE}" -j $BUILDTHREADS || return $FAILURE
 	return $SUCCESS
 }
 
 
 do_install_robin-hood-hashing() {
-	cmake --build "${PACKAGES_DIR}/robin-hood-hashing/build" --config Release --target install || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/robin-hood-hashing/build" --config "${CMAKE_BUILD_TYPE}" --target install || return $FAILURE
 	return $SUCCESS
 }
 

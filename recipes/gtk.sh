@@ -39,12 +39,13 @@ do_configure_gtk() {
 	rm -rf "${PACKAGES_DIR}/gtk/subprojects"
 
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
 	      --bindir="${INSTALLPREFIX}/bin" \
 	      --includedir="${INSTALLPREFIX}/include" \
-	      -Ddemos=false -Dtests=false -Dexamples=false \
-	      -Dgtk_doc=false -Dprint_backends="auto" -Dcolord=no \
+	      -Ddemos="false" -Dtests="false" -Dexamples="false" \
+	      -Dgtk_doc="false" -Dprint_backends="auto" -Dcolord="no" \
 	      "${PACKAGES_DIR}/gtk/build" \
 	      "${PACKAGES_DIR}/gtk" || return $FAILURE
 

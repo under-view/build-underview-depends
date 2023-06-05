@@ -41,6 +41,7 @@ do_patch_mtdev() {
 	:
 }
 
+
 do_configure_mtdev() {
 	cd "${PACKAGES_DIR}/mtdev"
 

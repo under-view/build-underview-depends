@@ -32,6 +32,7 @@ do_patch_at-spi2-core() {
 
 do_configure_at-spi2-core() {
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
 	      -Ddocs="false" -Dx11="yes" \

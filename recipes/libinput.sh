@@ -32,9 +32,10 @@ do_patch_libinput() {
 
 do_configure_libinput() {
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
-	      -Dtests=false \
+	      -Dtests="false" \
 	      "${PACKAGES_DIR}/libinput/build" \
 	      "${PACKAGES_DIR}/libinput" || return $FAILURE
 

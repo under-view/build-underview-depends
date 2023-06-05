@@ -32,6 +32,7 @@ do_patch_freetype() {
 
 do_configure_freetype() {
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
 	      -Dbrotli="disabled" -Dbzip2="disabled" \

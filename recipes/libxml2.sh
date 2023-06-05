@@ -34,12 +34,13 @@ do_configure_libxml2() {
 	cmake -G "${CMAKEGENTYPE}" \
 	      -S "${PACKAGES_DIR}/libxml2" \
 	      -B "${PACKAGES_DIR}/libxml2/build" \
-	      -DBUILD_SHARED_LIBS=ON \
-	      -DLIBXML2_WITH_ICONV=OFF \
-	      -DLIBXML2_WITH_LZMA=OFF \
-	      -DLIBXML2_WITH_PYTHON=OFF \
-	      -DLIBXML2_WITH_TESTS=OFF \
-	      -DCMAKE_BUILD_TYPE=Release \
+	      -DLIBXML2_WITH_ICONV="OFF" \
+	      -DLIBXML2_WITH_LZMA="OFF" \
+	      -DLIBXML2_WITH_PYTHON="OFF" \
+	      -DLIBXML2_WITH_TESTS="OFF" \
+	      -DBUILD_SHARED_LIBS="ON" \
+	      -DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}" \
+	      -DCMAKE_PREFIX_PATH="${INSTALLPREFIX}" \
 	      -DCMAKE_PREFIX_PATH="${INSTALLPREFIX}" \
 	      -DCMAKE_INSTALL_PREFIX="${INSTALLPREFIX}" || return $FAILURE
 
@@ -48,13 +49,13 @@ do_configure_libxml2() {
 
 
 do_compile_libxml2() {
-	cmake --build "${PACKAGES_DIR}/libxml2/build" -j $BUILDTHREADS || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/libxml2/build" --config "${CMAKE_BUILD_TYPE}" -j $BUILDTHREADS || return $FAILURE
 	return $SUCCESS
 }
 
 
 do_install_libxml2() {
-	cmake --build "${PACKAGES_DIR}/libxml2/build" --target install || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/libxml2/build" --config "${CMAKE_BUILD_TYPE}" --target install || return $FAILURE
 	return $SUCCESS
 }
 

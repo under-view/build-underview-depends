@@ -32,11 +32,12 @@ do_patch_xkbcommon() {
 
 do_configure_xkbcommon() {
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
-	      -Denable-x11=true \
-	      -Denable-wayland=true \
-	      -Denable-docs=false \
+	      -Denable-x11="true" \
+	      -Denable-wayland="true" \
+	      -Denable-docs="false" \
 	      "${PACKAGES_DIR}/xkbcommon/build" \
 	      "${PACKAGES_DIR}/xkbcommon" || return $FAILURE
 

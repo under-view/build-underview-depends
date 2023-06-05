@@ -32,6 +32,7 @@ do_patch_libdrm() {
 
 do_configure_libdrm() {
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
 	      "${PACKAGES_DIR}/libdrm/build" \

@@ -34,7 +34,7 @@ do_configure_spirv-headers() {
 	cmake -G "${CMAKEGENTYPE}" \
 	      -S "${PACKAGES_DIR}/spirv-headers" \
 	      -B "${PACKAGES_DIR}/spirv-headers/build" \
-	      -DCMAKE_BUILD_TYPE=Release \
+	      -DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}" \
 	      -DCMAKE_PREFIX_PATH="${INSTALLPREFIX}" \
 	      -DCMAKE_INSTALL_PREFIX="${INSTALLPREFIX}" || return $FAILURE
 
@@ -43,13 +43,13 @@ do_configure_spirv-headers() {
 
 
 do_compile_spirv-headers() {
-	cmake --build "${PACKAGES_DIR}/spirv-headers/build" --config Release -j $BUILDTHREADS || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/spirv-headers/build" --config "${CMAKE_BUILD_TYPE}" -j $BUILDTHREADS || return $FAILURE
 	return $SUCCESS
 }
 
 
 do_install_spirv-headers() {
-	cmake --build "${PACKAGES_DIR}/spirv-headers/build" --config Release --target install || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/spirv-headers/build" --config "${CMAKE_BUILD_TYPE}" --target install || return $FAILURE
 	return $SUCCESS
 }
 

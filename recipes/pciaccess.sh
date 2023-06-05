@@ -32,6 +32,8 @@ do_patch_pciaccess() {
 
 do_configure_pciaccess() {
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
+	      --prefix="${INSTALLPREFIX}" \
 	      --prefix="$INSTALLPREFIX" \
 	      --libdir="${INSTALLPREFIX}/lib" \
 	      -Dzlib="enabled" \

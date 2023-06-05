@@ -32,9 +32,10 @@ do_patch_fribidi() {
 
 do_configure_fribidi() {
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
-	      -Ddocs=false \
+	      -Ddocs="false" \
 	      "${PACKAGES_DIR}/fribidi/build" \
 	      "${PACKAGES_DIR}/fribidi" || return $FAILURE
 

@@ -41,13 +41,13 @@ do_configure_shaderc() {
 	cmake -G "${CMAKEGENTYPE}" \
 	      -S "${PACKAGES_DIR}/shaderc" \
 	      -B "${PACKAGES_DIR}/shaderc/build" \
-	      -DCMAKE_BUILD_TYPE="Release" \
 	      -DBUILD_SHARED_LIBS="ON" \
 	      -DSHADERC_SKIP_TESTS="ON" \
 	      -DSHADERC_SKIP_EXAMPLES="ON" \
 	      -Dglslang_SOURCE_DIR="${PACKAGES_DIR}/glslang" \
 	      -Dshaderc_SOURCE_DIR="${PACKAGES_DIR}/shaderc" \
 	      -Dspirv-tools_SOURCE_DIR="${PACKAGES_DIR}/spirv-tools" \
+	      -DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}" \
 	      -DCMAKE_PREFIX_PATH="${INSTALLPREFIX}" \
 	      -DCMAKE_INSTALL_LIBDIR="${INSTALLPREFIX}/lib" \
 	      -DCMAKE_INSTALL_INCLUDEDIR="${INSTALLPREFIX}/include" \
@@ -58,13 +58,13 @@ do_configure_shaderc() {
 
 
 do_compile_shaderc() {
-	cmake --build "${PACKAGES_DIR}/shaderc/build" -j $BUILDTHREADS || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/shaderc/build" --config "${CMAKE_BUILD_TYPE}" -j $BUILDTHREADS || return $FAILURE
 	return $SUCCESS
 }
 
 
 do_install_shaderc() {
-	cmake --build "${PACKAGES_DIR}/shaderc/build" --target install || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/shaderc/build" --config "${CMAKE_BUILD_TYPE}" --target install || return $FAILURE
 	return $SUCCESS
 }
 

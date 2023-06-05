@@ -32,6 +32,7 @@ do_patch_glvnd() {
 
 do_configure_glvnd() {
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
 	      -Dentrypoint-patching="enabled" \

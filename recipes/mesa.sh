@@ -32,10 +32,11 @@ do_patch_mesa() {
 
 do_configure_mesa() {
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="$INSTALLPREFIX" \
 	      --libdir="${INSTALLPREFIX}/lib" \
-	      -Dglvnd=true \
-	      -Dgbm=true \
+	      -Dglvnd="true" \
+	      -Dgbm="true" \
 	      "${PACKAGES_DIR}/mesa/build" \
 	      "${PACKAGES_DIR}/mesa" || return $FAILURE
 

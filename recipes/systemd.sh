@@ -39,6 +39,7 @@ do_patch_systemd() {
 
 do_configure_systemd() {
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
 	      --includedir="${INSTALLPREFIX}/include" \

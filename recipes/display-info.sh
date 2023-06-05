@@ -32,6 +32,7 @@ do_patch_display-info() {
 
 do_configure_display-info() {
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
 	      "${PACKAGES_DIR}/display-info/build" \

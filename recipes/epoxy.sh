@@ -32,6 +32,7 @@ do_patch_epoxy() {
 
 do_configure_epoxy() {
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
 	      "${PACKAGES_DIR}/epoxy/build" \

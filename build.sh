@@ -109,14 +109,17 @@ clone_and_checkout() {
 ###########################################################################################################################
 # Configure what we need for building all libs cross platform
 #	1. First create all directories needed
-#	1. Add CMAKEGENTYPE variable so there's one variable that determines what build system to use
-#	4. Add BUILDTHREADS variable to specify cpu core count when building with ninja/make/etc..
+#	2. Add BUILDTHREADS variable to specify cpu core count when building with ninja/make/etc..
+#	3. Add BUILDTYPE to specify compiler flags to use when generating files.
+#	4. Add CMAKEGENTYPE variable so there's one variable that determines what build system to use
 #	5. Update INSTALLPREFIX to equal $BUILD_OUTPUT_DIR as its used with the --prefix flag to place built libs
 #	6. Update ACLOCAL/ACLOCAL_PATH to point to $BUILD_OUTPUT_DIR/share/aclocal currently useful when building Xorg libs
 #	7. Update PKG_CONFIG_PATH to point to package files located at ${BUILD_OUTPUT_DIR}/lib/pkgconfig and export it
 #	   so that the variable change is seen throughout the build process.
-#	2. Update LDFLAGS so that we are setting rpath of binaries to ${BUILD_OUTPUT_DIR}/lib. Adds redundant
+#	8. Update LDFLAGS so that we are setting rpath of binaries to ${BUILD_OUTPUT_DIR}/lib. Adds redundant
 #	   linker flag -L to ensure that we are using our prebuilt libs over the system
+#	9. Add CMAKE_BUILD_TYPE_TO_MESON_BUILD_TYPE and CMAKE_BUILD_TYPE_TO_COMPILER_FLAGS. Key being
+#	   CMAKE_CONFIGURATION_TYPES value being meson --buildtype compatible and actual compiler flags compatible
 ###########################################################################################################################
 do_configure_build_vars() {
 	mkdir -p "${DOWNLOADS_DIR}"
@@ -127,6 +130,8 @@ do_configure_build_vars() {
 	CCNT=$(nproc)
 	[[ -n "$TASKTHREADS"  ]] || export TASKTHREADS=$(($CCNT/2))
 	[[ -n "$BUILDTHREADS" ]] || export BUILDTHREADS=$(($CCNT/2))
+	[[ -n "$BUILDTYPE"    ]] || BUILDTYPE="Release"
+
 	export CMAKEGENTYPE="Ninja"
 	export INSTALLPREFIX="${BUILD_OUTPUT_DIR}"
 	export ACLOCAL="aclocal -I ${BUILD_OUTPUT_DIR}/share/aclocal"
@@ -134,6 +139,23 @@ do_configure_build_vars() {
 	export PATH="${WORKING_DIR}/build_output/bin:${PATH}"
 	export PKG_CONFIG_PATH="${BUILD_OUTPUT_DIR}/lib/pkgconfig:${PKG_CONFIG_PATH}"
 	export LDFLAGS="-Wl,--disable-new-dtags -Wl,-rpath=${BUILD_OUTPUT_DIR}/lib -L${BUILD_OUTPUT_DIR}/lib"
+
+	declare -A CMAKE_BUILD_TYPE_TO_MESON_BUILD_TYPE=(
+		["Debug"]="debug"
+		["Release"]="release"
+		["RelWithDebInfo"]="debugoptimized"
+		["MinSizeRel"]="minsize"
+	)
+
+	declare -A CMAKE_BUILD_TYPE_TO_COMPILER_FLAGS=(
+		["Debug"]="-g"
+		["Release"]="-O3 -DNDEBUG"
+		["RelWithDebInfo"]="-O2 -g -DNDEBUG"
+		["MinSizeRel"]="-Os -DNDEBUG"
+	)
+
+	export CMAKE_BUILD_TYPE="${BUILDTYPE}"
+	export MESON_BUILD_TYPE="${CMAKE_BUILD_TYPE_TO_MESON_BUILD_TYPE[${BUILDTYPE}]}"
 }
 
 

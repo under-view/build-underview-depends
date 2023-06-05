@@ -32,6 +32,7 @@ do_patch_libwacom() {
 
 do_configure_libwacom() {
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
 	      -Dudev-dir="${INSTALLPREFIX}" \

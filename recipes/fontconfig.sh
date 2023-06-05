@@ -32,6 +32,7 @@ do_patch_fontconfig() {
 
 do_configure_fontconfig() {
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
 	      -Dtools="disabled" -Dcache-build="disabled" \

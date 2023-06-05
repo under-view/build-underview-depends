@@ -32,6 +32,7 @@ do_patch_libgudev() {
 
 do_configure_libgudev() {
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
 	      -Dtests="disabled" \

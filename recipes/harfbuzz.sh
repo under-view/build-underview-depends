@@ -35,6 +35,7 @@ do_configure_harfbuzz() {
 	rm -rf "${PACKAGES_DIR}/harfbuzz/subprojects"
 
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
 	      -Dglib="enabled" -Dgobject="enabled" \

@@ -35,9 +35,10 @@ do_configure_cairo() {
 	rm -rf "${PACKAGES_DIR}/cairo/subprojects"
 
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
-	      -Dgtk2-utils=disabled -Dtests=disabled \
+	      -Dgtk2-utils="disabled" -Dtests="disabled" \
 	      "${PACKAGES_DIR}/cairo/build" \
 	      "${PACKAGES_DIR}/cairo" || return $FAILURE
 

@@ -32,11 +32,12 @@ do_patch_wayland() {
 
 do_configure_wayland() {
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
-	      -Ddocumentation=false \
-	      -Ddtd_validation=false \
-	      -Dtests=false \
+	      -Ddocumentation="false" \
+	      -Ddtd_validation="false" \
+	      -Dtests="false" \
 	      "${PACKAGES_DIR}/wayland/build" \
 	      "${PACKAGES_DIR}/wayland" || return $FAILURE
 

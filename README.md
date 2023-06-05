@@ -40,7 +40,7 @@ $ sudo python3 -m pip install meson==0.61.4 Mako jinja2
 ## Usage
 
 ```sh
-./build.sh
+$ ./build.sh
 ```
 
 **Override TASKTHREADS/BUILDTHREADS variables**
@@ -51,8 +51,22 @@ $ sudo python3 -m pip install meson==0.61.4 Mako jinja2
 NOTE: by doing so you are now at the mercy of the Out Of Memory (OOM) killer.
 
 ```sh
-BUILDTHREADS=$(nproc) ./build.sh
+$ BUILDTHREADS=$(nproc) ./build.sh
 ```
+
+**Changing Build Types**
+
+By Default `BUILDTYPE` is set to `Release`. `BUILDTYPE` potential value have a one to
+one relation with `CMAKE_BUILD_TYPE` values
+(see [CMAKE_CONFIGURATION_TYPES](https://cmake.org/cmake/help/latest/variable/CMAKE_CONFIGURATION_TYPES.html#variable:CMAKE_CONFIGURATION_TYPES)).
+
+* Options
+
+	```sh
+	$ BUILDTYPE="Debug" ./build.sh
+	$ BUILDTYPE="RelWithDebInfo" ./build.sh
+	$ BUILDTYPE="MinSizeRel" ./build.sh
+	```
 
 **Development**
 ```sh

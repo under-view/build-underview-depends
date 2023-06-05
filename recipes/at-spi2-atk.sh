@@ -35,6 +35,7 @@ do_configure_at-spi2-atk() {
 	rm -rf "${PACKAGES_DIR}/at-spi2-atk/subprojects"
 
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
 	      -Ddisable_p2p=true -Dtests=false \

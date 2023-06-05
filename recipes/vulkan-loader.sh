@@ -34,6 +34,7 @@ do_configure_vulkan-loader() {
 	cmake -G "${CMAKEGENTYPE}" \
 	      -S "${PACKAGES_DIR}/vulkan-loader" \
 	      -B "${PACKAGES_DIR}/vulkan-loader/build" \
+	      -DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}" \
 	      -DCMAKE_PREFIX_PATH="${INSTALLPREFIX}" \
 	      -DCMAKE_INSTALL_PREFIX="${INSTALLPREFIX}" || return $FAILURE
 
@@ -42,13 +43,13 @@ do_configure_vulkan-loader() {
 
 
 do_compile_vulkan-loader() {
-	cmake --build "${PACKAGES_DIR}/vulkan-loader/build" --config Release -j $BUILDTHREADS || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/vulkan-loader/build" --config "${CMAKE_BUILD_TYPE}" -j $BUILDTHREADS || return $FAILURE
 	return $SUCCESS
 }
 
 
 do_install_vulkan-loader() {
-	cmake --build "${PACKAGES_DIR}/vulkan-loader/build" --config Release --target install || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/vulkan-loader/build" --config "${CMAKE_BUILD_TYPE}" --target install || return $FAILURE
 	return $SUCCESS
 }
 

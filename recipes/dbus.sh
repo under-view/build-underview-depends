@@ -35,6 +35,7 @@ do_configure_dbus() {
 	cmake -G "${CMAKEGENTYPE}" \
 	      -S "${PACKAGES_DIR}/dbus" \
 	      -B "${PACKAGES_DIR}/dbus/build" \
+	      -DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}" \
 	      -DDBUS_INSTALL_DIR="${INSTALLPREFIX}" \
 	      -DCMAKE_PREFIX_PATH="${INSTALLPREFIX}" \
 	      -DCMAKE_INSTALL_PREFIX="${INSTALLPREFIX}" || return $FAILURE
@@ -44,13 +45,13 @@ do_configure_dbus() {
 
 
 do_compile_dbus() {
-	cmake --build "${PACKAGES_DIR}/dbus/build" -j $BUILDTHREADS || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/dbus/build" --config "${CMAKE_BUILD_TYPE}" -j $BUILDTHREADS || return $FAILURE
 	return $SUCCESS
 }
 
 
 do_install_dbus() {
-	cmake --build "${PACKAGES_DIR}/dbus/build" --target install || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/dbus/build" --config "${CMAKE_BUILD_TYPE}" --target install || return $FAILURE
 	return $SUCCESS
 }
 

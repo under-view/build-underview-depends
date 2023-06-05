@@ -46,6 +46,7 @@ do_configure_libpng() {
 	cmake -G "${CMAKEGENTYPE}" \
 	      -S "${PACKAGES_DIR}/libpng" \
 	      -B "${PACKAGES_DIR}/libpng/build" \
+	      -DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}" \
 	      -DCMAKE_PREFIX_PATH="${INSTALLPREFIX}" \
 	      -DCMAKE_INSTALL_PREFIX="${INSTALLPREFIX}" || return $FAILURE
 
@@ -54,13 +55,13 @@ do_configure_libpng() {
 
 
 do_compile_libpng() {
-	cmake --build "${PACKAGES_DIR}/libpng/build" -j $BUILDTHREADS || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/libpng/build" --config "${CMAKE_BUILD_TYPE}" -j $BUILDTHREADS || return $FAILURE
 	return $SUCCESS
 }
 
 
 do_install_libpng() {
-	cmake --build "${PACKAGES_DIR}/libpng/build" --target install || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/libpng/build" --config "${CMAKE_BUILD_TYPE}" --target install || return $FAILURE
 	return $SUCCESS
 }
 

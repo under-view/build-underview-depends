@@ -34,8 +34,8 @@ do_configure_openxr-sdk-utils() {
 	cmake -G "${CMAKEGENTYPE}" \
 	      -S "${PACKAGES_DIR}/openxr-sdk-utils" \
 	      -B "${PACKAGES_DIR}/openxr-sdk-utils/build" \
-	      -DCMAKE_BUILD_TYPE=Release \
-	      -DBUILD_SHARED_LIBS=ON \
+	      -DBUILD_SHARED_LIBS="ON" \
+	      -DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}" \
 	      -DCMAKE_PREFIX_PATH="${INSTALLPREFIX}" \
 	      -DCMAKE_INSTALL_PREFIX="${INSTALLPREFIX}" || return $FAILURE
 
@@ -44,13 +44,13 @@ do_configure_openxr-sdk-utils() {
 
 
 do_compile_openxr-sdk-utils() {
-	cmake --build "${PACKAGES_DIR}/openxr-sdk-utils/build" -j $BUILDTHREADS || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/openxr-sdk-utils/build" --config "${CMAKE_BUILD_TYPE}" -j $BUILDTHREADS || return $FAILURE
 	return $SUCCESS
 }
 
 
 do_install_openxr-sdk-utils() {
-	cmake --build "${PACKAGES_DIR}/openxr-sdk-utils/build" --target install || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/openxr-sdk-utils/build" --config "${CMAKE_BUILD_TYPE}" --target install || return $FAILURE
 	return $SUCCESS
 }
 

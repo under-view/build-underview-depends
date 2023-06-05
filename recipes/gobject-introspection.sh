@@ -32,6 +32,7 @@ do_patch_gobject-introspection() {
 
 do_configure_gobject-introspection() {
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
 	      "${PACKAGES_DIR}/gobject-introspection/build" \

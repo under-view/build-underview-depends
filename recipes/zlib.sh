@@ -34,7 +34,8 @@ do_configure_zlib() {
 	cmake -G "${CMAKEGENTYPE}" \
 	      -S "${PACKAGES_DIR}/zlib" \
 	      -B "${PACKAGES_DIR}/zlib/build" \
-	      -DBUILD_SHARED_LIBS=ON \
+	      -DBUILD_SHARED_LIBS="ON" \
+	      -DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}" \
 	      -DCMAKE_PREFIX_PATH="${INSTALLPREFIX}" \
 	      -DCMAKE_INSTALL_PREFIX="${INSTALLPREFIX}" || return $FAILURE
 
@@ -43,13 +44,13 @@ do_configure_zlib() {
 
 
 do_compile_zlib() {
-	cmake --build "${PACKAGES_DIR}/zlib/build" -j $BUILDTHREADS || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/zlib/build" --config "${CMAKE_BUILD_TYPE}" -j $BUILDTHREADS || return $FAILURE
 	return $SUCCESS
 }
 
 
 do_install_zlib() {
-	cmake --build "${PACKAGES_DIR}/zlib/build" --target install || return $FAILURE
+	cmake --build "${PACKAGES_DIR}/zlib/build" --config "${CMAKE_BUILD_TYPE}" --target install || return $FAILURE
 	return $SUCCESS
 }
 

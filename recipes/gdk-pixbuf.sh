@@ -35,6 +35,7 @@ do_configure_gdk-pixbuf() {
 	rm -rf "${PACKAGES_DIR}/gdk-pixbuf/gdk-pixbuf/subprojects"
 
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
 	      -Dpng=enabled -Dtiff=disabled -Dman=false \

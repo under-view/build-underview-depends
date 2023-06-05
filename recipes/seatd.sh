@@ -32,6 +32,7 @@ do_patch_seatd() {
 
 do_configure_seatd() {
 	meson setup \
+	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
 	      -Dwerror="false" \
