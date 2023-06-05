@@ -18,7 +18,7 @@ do_clean_dbus() {
 
 do_fetch_dbus() {
 	msg="Cloning dbus"
-	clone_and_checkout "${PACKAGES_DIR}/dbus" "dbus-1.13.22" "https://github.com/freedesktop/dbus.git" "0381298e4565b2dff34c682c8e3d38731d07bc16" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/dbus" "dbus-1.13.22" "https://gitlab.freedesktop.org/dbus/dbus.git" "0381298e4565b2dff34c682c8e3d38731d07bc16" "${msg}" || return $FAILURE
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
