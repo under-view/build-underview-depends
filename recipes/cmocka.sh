@@ -12,7 +12,7 @@ do_return_depends_cmocka() {
 
 
 do_clean_cmocka() {
-	rm -rf "${PACKAGES_DIR}/cmocka/build"
+	:
 }
 
 
@@ -50,6 +50,8 @@ do_compile_cmocka() {
 
 do_install_cmocka() {
 	meson install -C "${PACKAGES_DIR}/cmocka/build" || return $FAILURE
+	cp -av "${PACKAGES_DIR}/cmocka/build/libcmocka.so" \
+	       "${INSTALLPREFIX}/lib" || return $FAILURE
 	return $SUCCESS
 }
 
