@@ -1,8 +1,9 @@
-# Build xcbproto 1.14.1
+# Build xcbproto 1.16.0
 
+PV="1.16.0"
 
 do_return_version_xcbproto() {
-	echo "xcbproto-1.14.1"
+	echo "xcbproto-${PV}"
 }
 
 
@@ -19,8 +20,7 @@ do_clean_xcbproto() {
 
 do_fetch_xcbproto() {
 	msg="Cloning xcbproto"
-	clone_and_checkout "${PACKAGES_DIR}/xcbproto" "xcb-proto-1.14.1" "https://gitlab.freedesktop.org/xorg/proto/xcbproto.git" "496e3ce329c3cc9b32af4054c30fa0f306deb007" "${msg}" || return $FAILURE
-	[[ $? -ne 0 ]] && return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/xcbproto" "xcb-proto-${PV}" "https://gitlab.freedesktop.org/xorg/proto/xcbproto.git" "98eeebfc2d7db5377b85437418fb942ea30ffc0d" "${msg}" || return $FAILURE
 
 	return $SUCCESS
 }
@@ -53,7 +53,12 @@ do_install_xcbproto() {
 
 
 do_update_artifacts_xcbproto() {
-	sed -i'' -e 's|${pc_sysrootdir}${PYTHON_PREFIX}|${prefix}|g' \
+	mv -v "${INSTALLPREFIX}/share/pkgconfig/xcb-proto.pc" \
+	      "${INSTALLPREFIX}/lib/pkgconfig/xcb-proto.pc" || return $FAILURE
+
+	rm -dv "${INSTALLPREFIX}/share/pkgconfig"
+
+	sed -i'' -e 's|${pc_sysrootdir}||g' \
 	            "${INSTALLPREFIX}/lib/pkgconfig/xcb-proto.pc" || return $FAILURE
 }
 
