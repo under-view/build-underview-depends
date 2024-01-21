@@ -1,8 +1,9 @@
-# Build libffi v3.4.2
+# Build libffi v3.4.4
 
+PV="v3.4.4"
 
 do_return_version_libffi() {
-	echo "libffi v3.4.2"
+	echo "libffi ${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_libffi() {
 
 do_fetch_libffi() {
 	msg="Cloning libffi"
-	clone_and_checkout "${PACKAGES_DIR}/libffi" "v3.4.2" "https://github.com/libffi/libffi.git" "f9ea41683444ebe11cfa45b05223899764df28fb" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/libffi" "${PV}" "https://github.com/libffi/libffi.git" "f24180be1367f942824365b131ae894b9c769c7d" "${msg}" || return $FAILURE
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
