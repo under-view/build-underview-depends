@@ -172,7 +172,6 @@ do_choose_pkgs() {
 	          atk xkbcommon xi dbus xtst at-spi2-core at-spi2-atk gtk mtdev libevdev libgudev libwacom
 	          libinput seatd xcb-render-util hwdata display-info wlroots gmp gdb openxr-sdk-utils eigen monado)
 
-	for recipe in "${RECIPES[@]}"; do source "${CUR_DIR}/recipes/${recipe}.sh" || return $FAILURE ; done
 	chmod 0755 "${CUR_DIR}/recipes"/*
 	return $SUCCESS
 }
@@ -243,17 +242,21 @@ underview-create() {
 main() {
 	do_configure_build_vars
 	do_choose_pkgs
+
 	[[ $SOURCED -eq 1 ]] && {
 		return $SUCCESS
 	} || {
 		for recipe in "${RECIPES[@]}"; do
-			do_run_all_task "$recipe" "true"
+			source "${CUR_DIR}/recipes/${recipe}.sh" || return $FAILURE
+			do_run_all_task "$recipe" "true" || return $FAILURE
 			wait $!
 		done
 	}
+
+	return $SUCCESS
 }
 
 
 trap do_clean EXIT SIGINT
 
-main
+main || exit $FAILURE
