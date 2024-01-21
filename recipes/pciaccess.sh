@@ -1,8 +1,9 @@
-# Build pciaccess v0.17-alpha
+# Build pciaccess v0.17
 
+PV="0.17"
 
 do_return_version_pciaccess() {
-	echo "pciaccess v0.17-alpha"
+	echo "pciaccess v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_pciaccess() {
 
 do_fetch_pciaccess() {
 	msg="Cloning pciaccess"
-	clone_and_checkout "${PACKAGES_DIR}/pciaccess" "master" "https://gitlab.freedesktop.org/xorg/lib/libpciaccess.git" "22a93f8b9b4a79eefbdd0b2c412526f6141ac7a8" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/pciaccess" "master" "https://gitlab.freedesktop.org/xorg/lib/libpciaccess.git" "935f0b4d6983f77c4f35e6d492f9f2c2d1ed57f9" "${msg}" || return $FAILURE
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
