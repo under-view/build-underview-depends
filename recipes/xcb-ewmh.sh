@@ -1,8 +1,9 @@
-# Build xcb-ewmh v0.4.1
+# Build xcb-ewmh v0.4.2
 
+PV="0.4.2"
 
 do_return_version_xcb-ewmh() {
-	echo "xcb-ewmh v0.4.1"
+	echo "xcb-ewmh v${PV}"
 }
 
 
@@ -18,8 +19,7 @@ do_clean_xcb-ewmh() {
 
 do_fetch_xcb-ewmh() {
 	msg="Cloning libxcb-ewmh"
-	clone_and_checkout "${PACKAGES_DIR}/xcb-ewmh" "0.4.1" "https://gitlab.freedesktop.org/xorg/lib/libxcb-wm.git" "24eb17df2e1245885e72c9d4bbb0a0f69f0700f2" "${msg}" || return $FAILURE
-	[[ $? -ne 0 ]] && return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/xcb-ewmh" "xcb-util-wm-${PV}" "https://gitlab.freedesktop.org/xorg/lib/libxcb-wm.git" "24eb17df2e1245885e72c9d4bbb0a0f69f0700f2" "${msg}" || return $FAILURE
 
 	git -C "${PACKAGES_DIR}/xcb-ewmh" submodule update --init
 	[[ $? -ne 0 ]] && return $FAILURE
