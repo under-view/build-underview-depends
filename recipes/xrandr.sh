@@ -1,8 +1,9 @@
-# Build Xrandr 1.5.2
+# Build libxrandr 1.5.3
 
+PV="1.5.3"
 
 do_return_version_xrandr() {
-	echo "Xrandr v1.5.2"
+	echo "libxrandr v${PV}"
 }
 
 
@@ -18,8 +19,7 @@ do_clean_xrandr() {
 
 do_fetch_xrandr() {
 	msg="Cloning xrandr"
-	clone_and_checkout "${PACKAGES_DIR}/xrandr" "libXrandr-1.5.2" "https://gitlab.freedesktop.org/xorg/lib/libxrandr" "55dcda4518eda8ae03ef25ea29d3c994ad71eb0a" "${msg}" || return $FAILURE
-	[[ $? -ne 0 ]] && return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/xrandr" "libXrandr-${PV}" "https://gitlab.freedesktop.org/xorg/lib/libxrandr" "3387129532899eaeee3477a2d92fa662d7292a84" "${msg}" || return $FAILURE
 
 	return $SUCCESS
 }
