@@ -1,8 +1,9 @@
-# Build llvm v14.0.1
+# Build llvm v17.0.6
 
+PV="17.0.6"
 
 do_return_version_llvm() {
-	echo "llvm v14.0.1"
+	echo "llvm v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_llvm() {
 
 do_fetch_llvm() {
 	msg="Cloning llvm"
-	clone_and_checkout "${PACKAGES_DIR}/llvm" "llvmorg-14.0.1" "https://github.com/llvm/llvm-project.git" "c62053979489ccb002efe411c3af059addcb5d7d" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/llvm" "llvmorg-${PV}" "https://github.com/llvm/llvm-project.git" "6009708b4367171ccdbf4b5905cb6a803753fe18" "${msg}" || return $FAILURE
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
