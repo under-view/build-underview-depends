@@ -1,8 +1,9 @@
-# Build wayland-protocols v1.31
+# Build wayland-protocols v1.32
 
+PV="1.32"
 
 do_return_version_wayland-protocols() {
-	echo "wayland-protocols v1.31"
+	echo "wayland-protocols v${PV}"
 }
 
 
@@ -18,8 +19,7 @@ do_clean_wayland-protocols() {
 
 do_fetch_wayland-protocols() {
 	msg="Cloning wayland-protocols"
-	clone_and_checkout "${PACKAGES_DIR}/wayland-protocols" "1.31" "https://gitlab.freedesktop.org/wayland/wayland-protocols.git" "4624cfaaf563cd7be5e2e2087c8de6d3a48ea867" "${msg}" || return $FAILURE
-	[[ $? -ne 0 ]] && return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/wayland-protocols" "${PV}" "https://gitlab.freedesktop.org/wayland/wayland-protocols.git" "681c33c8547d6aefe24455ba2bffe1c5ae11fee5" "${msg}" || return $FAILURE
 
 	return $SUCCESS
 }
