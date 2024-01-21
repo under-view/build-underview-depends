@@ -1,8 +1,9 @@
-# Build elfutils v0.186
+# Build elfutils v0.189
 
+PV="0.189"
 
 do_return_version_elfutils() {
-	echo "elfutils v0.186"
+	echo "elfutils v${PV}"
 }
 
 
@@ -17,8 +18,8 @@ do_clean_elfutils() {
 
 
 do_fetch_elfutils() {
-	[[ -f "${WORKING_DIR}/downloads/elfutils-0.186.tar.bz2" ]] || {
-		wget https://sourceware.org/elfutils/ftp/0.186/elfutils-0.186.tar.bz2 -O "${WORKING_DIR}/downloads/elfutils-0.186.tar.bz2" > /dev/null
+	[[ -f "${WORKING_DIR}/downloads/elfutils-${PV}.tar.bz2" ]] || {
+		wget https://sourceware.org/elfutils/ftp/${PV}/elfutils-${PV}.tar.bz2 -O "${WORKING_DIR}/downloads/elfutils-${PV}.tar.bz2"
 		[[ $? -ne 0 ]] && return $FAILURE
 
 		# Just encase elfutils folder was created somehow
@@ -26,12 +27,12 @@ do_fetch_elfutils() {
 	}
 
 	[[ -d "${PACKAGES_DIR}/elfutils" ]] || {
-		tar xf "${WORKING_DIR}/downloads/elfutils-0.186.tar.bz2" -C "${PACKAGES_DIR}" || return $FAILURE
+		tar xf "${WORKING_DIR}/downloads/elfutils-${PV}.tar.bz2" -C "${PACKAGES_DIR}" || return $FAILURE
 		[[ $? -ne 0 ]] && return $FAILURE
 
 		wait $!
 
-		mv "${PACKAGES_DIR}/elfutils-0.186" "${PACKAGES_DIR}/elfutils"
+		mv "${PACKAGES_DIR}/elfutils-${PV}" "${PACKAGES_DIR}/elfutils"
 	}
 
 	return $SUCCESS
