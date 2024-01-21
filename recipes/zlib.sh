@@ -1,8 +1,8 @@
-# Build zlib v1.2.12
+# Build zlib v1.3
 
 
 do_return_version_zlib() {
-	echo "zlib v1.2.12"
+	echo "zlib v1.3"
 }
 
 
@@ -18,7 +18,7 @@ do_clean_zlib() {
 
 do_fetch_zlib() {
 	msg="Cloning zlib"
-	clone_and_checkout "${PACKAGES_DIR}/zlib" "v1.2.12" "https://github.com/madler/zlib.git" "21767c654d31d2dccdde4330529775c6c5fd5389" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/zlib" "v1.3" "https://github.com/madler/zlib.git" "09155eaa2f9270dc4ed1fa13e2b4b2613e6e4851" "${msg}" || return $FAILURE
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
