@@ -1,8 +1,9 @@
-# Build xrender v0.9.10
+# Build xrender v0.9.11
 
+PV="0.9.11"
 
 do_return_version_xrender() {
-	echo "libXrender v0.9.10"
+	echo "libXrender v${PV}"
 }
 
 
@@ -18,8 +19,7 @@ do_clean_xrender() {
 
 do_fetch_xrender() {
 	msg="Cloning xrender"
-	clone_and_checkout "${PACKAGES_DIR}/xrender" "libXrender-0.9.10" "https://gitlab.freedesktop.org/xorg/lib/libxrender.git" "845716f8f14963d338e5a8d5d2424baafc90fb30" "${msg}" || return $FAILURE
-	[[ $? -ne 0 ]] && return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/xrender" "libXrender-${PV}" "https://gitlab.freedesktop.org/xorg/lib/libxrender.git" "e5e23272394c90731debd7e18dd167e8c25b5c15" "${msg}" || return $FAILURE
 
 	return $SUCCESS
 }
