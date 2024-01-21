@@ -1,8 +1,9 @@
-# Build Xorg-macros 1.19.3
+# Build Xorg-macros 1.20.0
 
+PV="1.20.0"
 
 do_return_version_xorg-macros() {
-	echo "xorg-macros-1.19.3"
+	echo "xorg-macros-${PV}"
 }
 
 
@@ -18,8 +19,7 @@ do_clean_xorg-macros() {
 
 do_fetch_xorg-macros() {
 	msg="Cloning xorg-macros"
-	clone_and_checkout "${PACKAGES_DIR}/xorg-macros" "util-macros-1.19.3" "https://gitlab.freedesktop.org/xorg/util/macros" "b8766308d2f78bc572abe5198007cf7aeec9b761" "${msg}" || return $FAILURE
-	[[ $? -ne 0 ]] && return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/xorg-macros" "util-macros-${PV}" "https://gitlab.freedesktop.org/xorg/util/macros" "cb147377e9341af05232f95814022abdecf14024" "${msg}" || return $FAILURE
 
 	return $SUCCESS
 }
