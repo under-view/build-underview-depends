@@ -1,8 +1,9 @@
-# Build xdmcp v1.1.3
+# Build xdmcp v1.1.4
 
+PV="1.1.4"
 
 do_return_version_xdmcp() {
-	echo "xdmcp v1.1.3"
+	echo "xdmcp v${PV}"
 }
 
 
@@ -18,8 +19,7 @@ do_clean_xdmcp() {
 
 do_fetch_xdmcp() {
 	msg="Cloning xdmcp"
-	clone_and_checkout "${PACKAGES_DIR}/xdmcp" "libXdmcp-1.1.3" "https://gitlab.freedesktop.org/xorg/lib/libXdmcp.git" "618b3ba5f826d930df2ca6a6a0ce212fa75cef42" "${msg}" || return $FAILURE
-	[[ $? -ne 0 ]] && return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/xdmcp" "libXdmcp-${PV}" "https://gitlab.freedesktop.org/xorg/lib/libXdmcp.git" "7f5677e87df575298f62320d76408823b54cd883" "${msg}" || return $FAILURE
 
 	return $SUCCESS
 }
