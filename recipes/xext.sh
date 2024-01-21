@@ -1,8 +1,9 @@
-# Build xext v1.3.4
+# Build xext v1.3.5
 
+PV = "1.3.5"
 
 do_return_version_xext() {
-	echo "xext v1.3.4"
+	echo "xext v${PV}"
 }
 
 
@@ -18,8 +19,7 @@ do_clean_xext() {
 
 do_fetch_xext() {
 	msg="Cloning xext"
-	clone_and_checkout "${PACKAGES_DIR}/xext" "libXext-1.3.4" "https://gitlab.freedesktop.org/xorg/lib/libxext.git" "ebb167f34a3514783966775fb12573c4ed209625" "${msg}" || return $FAILURE
-	[[ $? -ne 0 ]] && return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/xext" "libXext-${PV}" "https://gitlab.freedesktop.org/xorg/lib/libxext.git" "67e82cc395f44faddd83ec3d0d21624fe91c6fc0" "${msg}" || return $FAILURE
 
 	return $SUCCESS
 }
