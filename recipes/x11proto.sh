@@ -1,4 +1,4 @@
-# Build x11proto 1.19.3
+# Build x11proto 7.0.31
 
 
 do_return_version_x11proto() {
