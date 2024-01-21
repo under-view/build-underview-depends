@@ -1,8 +1,9 @@
-# Build spirv-headers sdk-1.3.231.1
+# Build spirv-headers v1.3.268.0
 
+PV="1.3.268.0"
 
 do_return_version_spirv-headers() {
-	echo "spirv-headers sdk-1.3.231.1"
+	echo "spirv-headers v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_spirv-headers() {
 
 do_fetch_spirv-headers() {
 	msg="Cloning spirv-headers"
-	clone_and_checkout "${PACKAGES_DIR}/spirv-headers" "sdk-1.3.231.1" "https://github.com/KhronosGroup/SPIRV-Headers.git" "85a1ed200d50660786c1a88d9166e871123cce39" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/spirv-headers" "vulkan-sdk-${PV}" "https://github.com/KhronosGroup/SPIRV-Headers.git" "e867c06631767a2d96424cbec530f9ee5e78180" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
