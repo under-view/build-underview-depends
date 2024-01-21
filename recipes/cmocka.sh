@@ -1,8 +1,9 @@
-# Build cmocka v1.1.5
+# Build cmocka v1.1.7
 
+PV="v1.1.7"
 
 do_return_version_cmocka() {
-	echo "cmocka v1.1.5"
+	echo "cmocka ${PV}"
 }
 
 
@@ -18,8 +19,7 @@ do_clean_cmocka() {
 
 do_fetch_cmocka() {
 	msg="Cloning cmocka"
-	clone_and_checkout "${PACKAGES_DIR}/cmocka" "master" "https://github.com/clibs/cmocka.git" "ec387ac76d0ce9eece7cb8f523fca79f0e417ac8" "${msg}" || return $FAILURE
-	[[ $? -ne 0 ]] && return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/cmocka" "stable-1.1" "https://git.cryptomilk.org/projects/cmocka.git" "a01cc69ee9536f90e57c61a198f2d1944d3d4313" "${msg}" || return $FAILURE
 
 	return $SUCCESS
 }
