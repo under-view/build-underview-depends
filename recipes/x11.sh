@@ -1,8 +1,9 @@
-# Build X11 1.7.5
+# Build X11 1.8.7
 
+PV="1.8.7"
 
 do_return_version_x11() {
-	echo "X11 v1.7.5"
+	echo "X11 v${PV}"
 }
 
 
@@ -18,8 +19,7 @@ do_clean_x11() {
 
 do_fetch_x11() {
 	msg="Cloning libX11"
-	clone_and_checkout "${PACKAGES_DIR}/x11" "libX11-1.7.5" "https://gitlab.freedesktop.org/xorg/lib/libx11.git" "9ac6859c20be2fc5e70c2908de60c6e466ec04e1" "${msg}" || return $FAILURE
-	[[ $? -ne 0 ]] && return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/x11" "libX11-${PV}" "https://gitlab.freedesktop.org/xorg/lib/libx11.git" "c745719e23af44a4b40ab4508447637b35d91a1e" "${msg}" || return $FAILURE
 
 	return $SUCCESS
 }
