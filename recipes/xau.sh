@@ -1,8 +1,9 @@
-# Build xau v1.0.9
+# Build xau v1.0.11
 
+PV="1.0.11"
 
 do_return_version_xau() {
-	echo "xau v1.0.9"
+	echo "xau v${PV}"
 }
 
 
@@ -18,8 +19,7 @@ do_clean_xau() {
 
 do_fetch_xau() {
 	msg="Cloning xau"
-	clone_and_checkout "${PACKAGES_DIR}/xau" "master" "https://gitlab.freedesktop.org/xorg/lib/libxau.git" "d9443b2c57b512cfb250b35707378654d86c7dea" "${msg}" || return $FAILURE
-	[[ $? -ne 0 ]] && return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/xau" "libXau-${PV}" "https://gitlab.freedesktop.org/xorg/lib/libxau.git" "14fdf25db9f21c8f3ad37f0d32a5b8e726efdc0d" "${msg}" || return $FAILURE
 
 	return $SUCCESS
 }
