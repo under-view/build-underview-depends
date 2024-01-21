@@ -1,13 +1,14 @@
-# Build vulkan-headers v1.3.231
+# Build vulkan-headers v1.3.268.0
 
+PV="1.3.268.0"
 
 do_return_version_vulkan-headers() {
-	echo "vulkan-headers v1.3.231"
+	echo "vulkan-headers v${PV}"
 }
 
 
 do_return_depends_vulkan-headers() {
-	echo "zlib vulkan-headers"
+	echo "zlib"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_vulkan-headers() {
 
 do_fetch_vulkan-headers() {
 	msg="Cloning vulkan-headers"
-	clone_and_checkout "${PACKAGES_DIR}/vulkan-headers" "v1.3.231" "https://github.com/KhronosGroup/Vulkan-Headers.git" "98f440ce6868c94f5ec6e198cc1adda4760e8849" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/vulkan-headers" "vulkan-sdk-${PV}" "https://github.com/KhronosGroup/Vulkan-Headers.git" "7b3466a1f47a9251ac1113efbe022ff016e2f95b" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
