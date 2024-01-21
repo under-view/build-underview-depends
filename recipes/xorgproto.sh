@@ -1,8 +1,9 @@
-# Build inputproto 2021.5
+# Build inputproto 2023.2
 
+PV="2023.2"
 
 do_return_version_xorgproto() {
-	echo "xorgproto 2021.5"
+	echo "xorgproto ${PV}"
 }
 
 
@@ -20,7 +21,7 @@ do_clean_xorgproto() {
 
 do_fetch_xorgproto() {
 	msg="Cloning xorgproto"
-	clone_and_checkout "${PACKAGES_DIR}/xorgproto" "xorgproto-2021.5" "https://gitlab.freedesktop.org/xorg/proto/xorgproto" "57acac1d4c7967f4661fb1c9f86f48f34a46c48d" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/xorgproto" "xorgproto-${PV}" "https://gitlab.freedesktop.org/xorg/proto/xorgproto" "766967322209f2dcb72e6a8edea0c651f586201d" "${msg}" || return $FAILURE
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
