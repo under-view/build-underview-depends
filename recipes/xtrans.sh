@@ -1,8 +1,9 @@
-# Build xtrans v1.4.0
+# Build xtrans v1.5.0
 
+PV="1.5.0"
 
 do_return_version_xtrans() {
-	echo "xtrans v1.4.0"
+	echo "xtrans v${PV}"
 }
 
 
@@ -18,8 +19,7 @@ do_clean_xtrans() {
 
 do_fetch_xtrans() {
 	msg="Cloning xtrans"
-	clone_and_checkout "${PACKAGES_DIR}/xtrans" "xtrans-1.4.0" "https://gitlab.freedesktop.org/xorg/lib/libxtrans.git" "c4262efc9688e495261d8b23a12f956ab38e006f" "${msg}" || return $FAILURE
-	[[ $? -ne 0 ]] && return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/xtrans" "xtrans-${PV}" "https://gitlab.freedesktop.org/xorg/lib/libxtrans.git" "3b3a3bd75d86aec78f6ef893b198c3efc378bc64" "${msg}" || return $FAILURE
 
 	return $SUCCESS
 }
