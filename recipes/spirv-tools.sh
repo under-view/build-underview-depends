@@ -1,8 +1,9 @@
-# Build spirv-tools sdk-1.3.231.1
+# Build spirv-tools v1.3.268.0
 
+PV="1.3.268.0"
 
 do_return_version_spirv-tools() {
-	echo "spirv-tools sdk-1.3.231.1"
+	echo "spirv-tools v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_spirv-tools() {
 
 do_fetch_spirv-tools() {
 	msg="Cloning spirv-tools"
-	clone_and_checkout "${PACKAGES_DIR}/spirv-tools" "sdk-1.3.231.1" "https://github.com/KhronosGroup/SPIRV-Tools.git" "eb0a36633d2acf4de82588504f951ad0f2cecacb" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/spirv-tools" "vulkan-sdk-${PV}" "https://github.com/KhronosGroup/SPIRV-Tools.git" "360d469b9eac54d6c6e20f609f9ec35e3a5380ad" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
