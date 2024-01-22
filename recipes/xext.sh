@@ -1,6 +1,6 @@
 # Build xext v1.3.5
 
-PV = "1.3.5"
+PV="1.3.5"
 
 do_return_version_xext() {
 	echo "xext v${PV}"
