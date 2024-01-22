@@ -1,8 +1,9 @@
-# Build xcb 1.14
+# Build xcb 1.16
 
+PV="1.16"
 
 do_return_version_xcb() {
-	echo "xcb v1.14"
+	echo "xcb v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_xcb() {
 
 do_fetch_xcb() {
 	msg="Cloning libxcb"
-	clone_and_checkout "${PACKAGES_DIR}/xcb" "libxcb-1.14" "https://gitlab.freedesktop.org/xorg/lib/libxcb.git" "4b40b44cb6d088b6ffa2fb5cf3ad8f12da588cef" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/xcb" "libxcb-${PV}" "https://gitlab.freedesktop.org/xorg/lib/libxcb.git" "cc4b93c9cd93bad15b7106747b0213e4b9c53a1c" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
