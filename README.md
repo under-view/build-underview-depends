@@ -27,6 +27,14 @@ $ mainline --install 6.3.4
 # reboot
 ```
 
+Switching GCC version
+
+```sh
+$ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 100 --slave /usr/bin/g++ g++ /usr/bin/g++-12 --slave /usr/bin/gcov gcov /usr/bin/gcov-12
+$ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 90 --slave /usr/bin/g++ g++ /usr/bin/g++-11 --slave /usr/bin/gcov gcov /usr/bin/gcov-11
+$ sudo update-alternatives --config gcc
+```
+
 **Arch Linux**
 
 ```sh
@@ -35,7 +43,6 @@ $ sudo pacman -S --noconfirm base-devel cmake clang wget zip yasm dos2unix
 $ sudo pacman -S --noconfirm python3 python-pip ninja curl git gperf
 $ sudo python3 -m pip install meson==0.61.4 Mako jinja2
 ```
-
 
 ## Usage
 
