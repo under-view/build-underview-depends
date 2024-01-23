@@ -58,11 +58,25 @@ do_install_glslang() {
 
 
 do_update_artifacts_glslang() {
-	:
+	cat > ${INSTALLPREFIX}/lib/pkgconfig/glslang.pc << EOF
+prefix=${INSTALLPREFIX}
+libdir=\${prefix}/lib
+includedir=\${prefix}/include
+
+Name: glslang
+Description: Khronos-reference front end for GLSL/ESSL, partial front end for HLSL, and a SPIR-V generator.
+URL: https://github.com/KhronosGroup/glslang
+Version: ${PV}
+Libs: -L\${libdir} -lglslang
+Libs.private:
+Cflags: -I\${includedir}
+EOF
+	return $SUCCESS
 }
 
 
 do_check_is_built_glslang() {
 	[[ -f "${INSTALLPREFIX}/bin/glslangValidator" ]] && return $SUCCESS
+	[[ -f "${INSTALLPREFIX}/lib/pkgconfig/glslang.pc" ]] && return $SUCCESS
 	return $FAILURE
 }
