@@ -14,12 +14,13 @@ do_return_depends_glslang() {
 
 do_clean_glslang() {
 	rm -rf "${PACKAGES_DIR}/glslang/build"
+	git -C "${PACKAGES_DIR}/glslang" reset --hard > /dev/null 2>&1
 }
 
 
 do_fetch_glslang() {
 	msg="Cloning glslang"
-	clone_and_checkout "${PACKAGES_DIR}/glslang" "vulkan-sdk-${PV}" "https://github.com/KhronosGroup/glslang.git" "9bb8cfffb0eed010e07132282c41d73064a7a609" "${msg}"
+	clone_and_checkout "${PACKAGES_DIR}/glslang" "main" "https://github.com/KhronosGroup/glslang.git" "36d08c0d940cf307a23928299ef52c7970d8cee6" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
@@ -27,7 +28,10 @@ do_fetch_glslang() {
 
 
 do_patch_glslang() {
-	:
+	git -C "${PACKAGES_DIR}/glslang" apply "${PATCHES_DIR}/glslang/0001-update-package-to-search-SPIRV-Tools-opt-SPIRV-Tools.patch" > /dev/null 2>&1
+	[[ $? -ne 0 ]] && return $FAILURE
+
+	return $SUCCESS
 }
 
 
@@ -35,8 +39,12 @@ do_configure_glslang() {
 	cmake -G "${CMAKEGENTYPE}" \
 	      -S "${PACKAGES_DIR}/glslang" \
 	      -B "${PACKAGES_DIR}/glslang/build" \
-	      -DENABLE_HLSL="ON" \
 	      -DBUILD_SHARED_LIBS="ON" \
+	      -DENABLE_HLSL="ON" \
+	      -DENABLE_PCH="OFF" \
+	      -DENABLE_OPT="ON" \
+	      -DBUILD_EXTERNAL="OFF" \
+	      -DALLOW_EXTERNAL_SPIRV_TOOLS="ON" \
 	      -DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}" \
 	      -DCMAKE_PREFIX_PATH="${INSTALLPREFIX}" \
 	      -DCMAKE_INSTALL_PREFIX="${INSTALLPREFIX}" || return $FAILURE
@@ -78,5 +86,6 @@ EOF
 do_check_is_built_glslang() {
 	[[ -f "${INSTALLPREFIX}/bin/glslangValidator" ]] && return $SUCCESS
 	[[ -f "${INSTALLPREFIX}/lib/pkgconfig/glslang.pc" ]] && return $SUCCESS
+
 	return $FAILURE
 }

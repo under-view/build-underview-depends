@@ -1,0 +1,73 @@
+From 97a0514f0840193662b0bdefe914ad115e4cc9c1 Mon Sep 17 00:00:00 2001
+From: Vincent Davis Jr <vince@underview.tech>
+Date: Tue, 23 Jan 2024 08:23:07 -0500
+Subject: [PATCH] update package to search SPIRV-Tools-opt -> SPIRV-Tools
+
+Upstream-Status: Inappropriate [build-underview-depends specific]
+
+Signed-off-by: Vincent Davis Jr <vince@underview.tech>
+---
+ CMakeLists.txt          | 11 +++--------
+ External/CMakeLists.txt |  2 +-
+ SPIRV/CMakeLists.txt    |  6 +++---
+ 3 files changed, 7 insertions(+), 12 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a734ad1f..eb2512e6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -264,17 +264,12 @@ if(BUILD_EXTERNAL AND IS_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/External)
+ endif()
+ 
+ option(ALLOW_EXTERNAL_SPIRV_TOOLS "Allows to build against installed SPIRV-Tools-opt" OFF)
+-if(NOT TARGET SPIRV-Tools-opt)
++if(NOT TARGET SPIRV-Tools)
+     if(ALLOW_EXTERNAL_SPIRV_TOOLS)
+         # Look for external SPIR-V Tools build, if not building in-tree
+         message(STATUS "Trying to find local SPIR-V tools")
+-        find_package(SPIRV-Tools-opt)
+-        if(NOT TARGET SPIRV-Tools-opt)
+-            if(ENABLE_OPT)
+-                message(WARNING "ENABLE_OPT set but SPIR-V tools not found! Disabling SPIR-V optimization.")
+-            endif()
+-            set(ENABLE_OPT OFF)
+-        endif()
++	find_package(PkgConfig REQUIRED)
++	pkg_check_modules(SPIRV_TOOLS REQUIRED SPIRV-Tools)
+     else()
+         if(ENABLE_OPT)
+             message(SEND_ERROR "ENABLE_OPT set but SPIR-V tools not found. Please run update_glslang_sources.py, "
+diff --git a/External/CMakeLists.txt b/External/CMakeLists.txt
+index cbabd2e3..8caf4583 100644
+--- a/External/CMakeLists.txt
++++ b/External/CMakeLists.txt
+@@ -68,7 +68,7 @@ if(BUILD_TESTING)
+     endif()
+ endif()
+ 
+-if(ENABLE_OPT AND NOT TARGET SPIRV-Tools-opt)
++if(ENABLE_OPT AND NOT TARGET SPIRV-Tools)
+     if(IS_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/spirv-tools)
+         set(SPIRV_SKIP_TESTS ON CACHE BOOL "Skip building SPIRV-Tools tests")
+         add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/spirv-tools spirv-tools)
+diff --git a/SPIRV/CMakeLists.txt b/SPIRV/CMakeLists.txt
+index a80e74ed..bbd5ccad 100644
+--- a/SPIRV/CMakeLists.txt
++++ b/SPIRV/CMakeLists.txt
+@@ -103,10 +103,10 @@ if(ENABLE_OPT)
+         PRIVATE ${spirv-tools_SOURCE_DIR}/include
+         PRIVATE ${spirv-tools_SOURCE_DIR}/source
+     )
+-    target_link_libraries(SPIRV PRIVATE MachineIndependent SPIRV-Tools-opt)
++    target_link_libraries(SPIRV PRIVATE MachineIndependent ${SPIRV_TOOLS_LIBRARIES})
+     target_include_directories(SPIRV PUBLIC
+-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../External>
+-        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/External>)
++        $<BUILD_INTERFACE:${CMAKE_PREFIX_PATH}/include>
++	$<INSTALL_INTERFACE:${CMAKE_PREFIX_PATH}/include>)
+ else()
+     target_link_libraries(SPIRV PRIVATE MachineIndependent)
+ endif()
+-- 
+2.34.1
+
