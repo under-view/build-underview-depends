@@ -1,8 +1,9 @@
 # Build vulkan-tools v1.3.231
 
+PV="1.3.268"
 
 do_return_version_vulkan-tools() {
-	echo "vulkan-tools v1.3.231"
+	echo "vulkan-tools v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_vulkan-tools() {
 
 do_fetch_vulkan-tools() {
 	msg="Cloning vulkan-tools"
-	clone_and_checkout "${PACKAGES_DIR}/vulkan-tools" "v1.3.231" "https://github.com/KhronosGroup/Vulkan-Tools.git" "e52fa1cf2d95503d28f9d020800cbab15aaa304b" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/vulkan-tools" "v${PV}" "https://github.com/KhronosGroup/Vulkan-Tools.git" "1532001f7edae559af1988293eec90bc5e2607d5" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
