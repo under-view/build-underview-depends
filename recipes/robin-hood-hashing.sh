@@ -18,7 +18,7 @@ do_clean_robin-hood-hashing() {
 
 do_fetch_robin-hood-hashing() {
 	msg="Cloning robin-hood-hashing"
-	clone_and_checkout "${PACKAGES_DIR}/robin-hood-hashing" "3.11.5" "https://github.com/martinus/robin-hood-hashing.git" "9145f963d80d6a02f0f96a47758050a89184a3ed" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/robin-hood-hashing" "3.11.5" "https://github.com/martinus/robin-hood-hashing.git" "9145f963d80d6a02f0f96a47758050a89184a3ed" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
