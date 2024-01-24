@@ -1,13 +1,14 @@
-# Build vulkan-validation-layers v1.3.230
+# Build vulkan-validation-layers v1.3.268
 
+PV="1.3.268"
 
 do_return_version_vulkan-validation-layers() {
-	echo "vulkan-validation-layers v1.3.230"
+	echo "vulkan-validation-layers v${PV}"
 }
 
 
 do_return_depends_vulkan-validation-layers() {
-	echo "vulkan-headers spirv-headers spirv-tools robin-hood-hashing"
+	echo "vulkan-headers vulkan-loader spirv-headers spirv-tools glslang vulkan-utility-libraries"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_vulkan-validation-layers() {
 
 do_fetch_vulkan-validation-layers() {
 	msg="Cloning Vulkan-ValidationLayers"
-	clone_and_checkout "${PACKAGES_DIR}/vulkan-validation-layers" "v1.3.230" "https://github.com/KhronosGroup/Vulkan-ValidationLayers.git" "81d18b6afb8e2abb521d8565a97630ec7dc5d621" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/vulkan-validation-layers" "v${PV}" "https://github.com/KhronosGroup/Vulkan-ValidationLayers.git" "3c64adb4e052062fc60b6580c365429fddfbcfbf" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
@@ -34,7 +35,8 @@ do_configure_vulkan-validation-layers() {
 	cmake -G "${CMAKEGENTYPE}" \
 	      -S "${PACKAGES_DIR}/vulkan-validation-layers" \
 	      -B "${PACKAGES_DIR}/vulkan-validation-layers/build" \
-	      -DVulkanRegistry_DIR="${INSTALLPREFIX}/share/vulkan/registry" \
+	      -DBUILD_TESTS="OFF" \
+	      -DUSE_ROBIN_HOOD_HASHING="OFF" \
 	      -DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}" \
 	      -DCMAKE_PREFIX_PATH="${INSTALLPREFIX}" \
 	      -DCMAKE_INSTALL_PREFIX="${INSTALLPREFIX}" || return $FAILURE
