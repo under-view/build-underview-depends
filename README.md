@@ -9,6 +9,8 @@ Builds all dependencies used directly when developing underview software
 
 ## Dependencies
 
+Project currently utilizes GCC 13.
+
 **Debian**
 ```sh
 $ sudo apt update -y && sudo apt upgrade -y
@@ -30,8 +32,12 @@ $ mainline --install 6.3.4
 Switching GCC version
 
 ```sh
-$ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 100 --slave /usr/bin/g++ g++ /usr/bin/g++-12 --slave /usr/bin/gcov gcov /usr/bin/gcov-12
-$ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 90 --slave /usr/bin/g++ g++ /usr/bin/g++-11 --slave /usr/bin/gcov gcov /usr/bin/gcov-11
+$ sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+$ sudo aptitude update -y
+$ sudo aptitude install -y gcc-13 g++-13 gcc-12 g++12 gcc-11 g++11
+$ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 100 --slave /usr/bin/g++ g++ /usr/bin/g++-13 --slave /usr/bin/gcov gcov /usr/bin/gcov-13
+$ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 90 --slave /usr/bin/g++ g++ /usr/bin/g++-12 --slave /usr/bin/gcov gcov /usr/bin/gcov-12
+$ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 80 --slave /usr/bin/g++ g++ /usr/bin/g++-11 --slave /usr/bin/gcov gcov /usr/bin/gcov-11
 $ sudo update-alternatives --config gcc
 ```
 
