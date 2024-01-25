@@ -18,7 +18,7 @@ $ sudo apt update -y && sudo apt upgrade -y
 $ sudo apt install -y aptitude
 $ sudo aptitude install -y build-essential cmake clang automake autoconf libtool flex bison m4 yasm dos2unix
 $ sudo aptitude install -y pkg-config python3-pip ninja-build curl wget git gperf texinfo libmount-dev
-$ sudo python3 -m pip install meson==0.61.4 Mako jinja2
+$ sudo python3 -m pip install meson==0.63.0 Mako jinja2
 
 # Update Kernel Version >= 5.20.0
 $ sudo add-apt-repository ppa:cappelikan/ppa -y
@@ -47,7 +47,7 @@ $ sudo update-alternatives --config gcc
 $ sudo pacman -Syyu --noconfirm
 $ sudo pacman -S --noconfirm base-devel cmake clang wget zip yasm dos2unix
 $ sudo pacman -S --noconfirm python3 python-pip ninja curl git gperf
-$ sudo python3 -m pip install meson==0.61.4 Mako jinja2
+$ sudo python3 -m pip install meson==0.63.0 Mako jinja2
 ```
 
 ## Usage
