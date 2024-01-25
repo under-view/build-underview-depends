@@ -1,8 +1,9 @@
-# Build xshmfence v1.3
+# Build xshmfence v1.3.2
 
+PV="1.3.2"
 
 do_return_version_xshmfence() {
-	echo "xshmfence v1.3"
+	echo "xshmfence v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_xshmfence() {
 
 do_fetch_xshmfence() {
 	msg="Cloning xshmfence"
-	clone_and_checkout "${PACKAGES_DIR}/xshmfence" "libxshmfence-1.3" "https://gitlab.freedesktop.org/xorg/lib/libxshmfence.git" "f38b2e73071ba516127f8f5ae47f48df58dc9d53" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/xshmfence" "libxshmfence-${PV}" "https://gitlab.freedesktop.org/xorg/lib/libxshmfence.git" "edbb7d9e5f3912fe521f0cfe5ae416bb9ca83633" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
