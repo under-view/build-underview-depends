@@ -1,8 +1,9 @@
-# Build xkbcommon v1.4.0
+# Build xkbcommon v1.6.0
 
+PV="1.6.0"
 
 do_return_version_xkbcommon() {
-	echo "libxkbcommon v1.4.0"
+	echo "libxkbcommon v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_xkbcommon() {
 
 do_fetch_xkbcommon() {
 	msg="Cloning xkbcommon"
-	clone_and_checkout "${PACKAGES_DIR}/xkbcommon" "xkbcommon-1.4.0" "https://github.com/xkbcommon/libxkbcommon.git" "ea6580cc3913d93655ecf92a5913de652315efc3" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/xkbcommon" "xkbcommon-${PV}" "https://github.com/xkbcommon/libxkbcommon.git" "d2a08f761c796733e42fac4099f5c38d443e88e1" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
@@ -38,6 +39,7 @@ do_configure_xkbcommon() {
 	      -Denable-x11="true" \
 	      -Denable-wayland="true" \
 	      -Denable-docs="false" \
+	      -Dbash-completion-path="${INSTALLPREFIX}/usr/share/bash-completion/completions" \
 	      "${PACKAGES_DIR}/xkbcommon/build" \
 	      "${PACKAGES_DIR}/xkbcommon" || return $FAILURE
 
