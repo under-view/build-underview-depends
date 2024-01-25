@@ -1,8 +1,9 @@
 # Build atk v2.38.0
 
+PV="2.38.0"
 
 do_return_version_atk() {
-	echo "atk v2.38.0"
+	echo "atk v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_atk() {
 
 do_fetch_atk() {
 	msg="Cloning atk"
-	clone_and_checkout "${PACKAGES_DIR}/atk" "2.38.0" "https://gitlab.gnome.org/GNOME/atk.git" "f1051ba57a2110c46a136a48f4d60a405bc2c3f5" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/atk" "${PV}" "https://gitlab.gnome.org/GNOME/atk.git" "f1051ba57a2110c46a136a48f4d60a405bc2c3f5" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
