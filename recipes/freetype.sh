@@ -1,8 +1,9 @@
-# Build freetype v6.18.2
+# Build freetype v2.13.2
 
+PV="2.13.2"
 
 do_return_version_freetype() {
-	echo "freetype v6.18.2"
+	echo "freetype v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_freetype() {
 
 do_fetch_freetype() {
 	msg="Cloning freetype"
-	clone_and_checkout "${PACKAGES_DIR}/freetype" "VER-2-12-0" "https://gitlab.freedesktop.org/freetype/freetype" "e50798b72043c8b378caa46e0a854519f9028ae4" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/freetype" "VER-2-13-2" "https://gitlab.freedesktop.org/freetype/freetype" "920c5502cc3ddda88f6c7d85ee834ac611bb11cc" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
