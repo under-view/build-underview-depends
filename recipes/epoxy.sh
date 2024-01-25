@@ -1,8 +1,9 @@
 # Build epoxy 1.5.10
 
+PV="1.5.10"
 
 do_return_version_epoxy() {
-	echo "epoxy v1.5.10"
+	echo "epoxy v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_epoxy() {
 
 do_fetch_epoxy() {
 	msg="Cloning epoxy"
-	clone_and_checkout "${PACKAGES_DIR}/epoxy" "1.5.10" "https://github.com/anholt/libepoxy.git" "c84bc9459357a40e46e2fec0408d04fbdde2c973" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/epoxy" "${PV}" "https://github.com/anholt/libepoxy.git" "c84bc9459357a40e46e2fec0408d04fbdde2c973" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
