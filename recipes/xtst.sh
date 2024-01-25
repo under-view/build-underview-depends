@@ -1,8 +1,9 @@
-# Build libxtst v1.2.3
+# Build libxtst v1.2.4
 
+PV="1.2.4"
 
 do_return_version_xtst() {
-	echo "libxtst v1.2.3"
+	echo "libxtst v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_xtst() {
 
 do_fetch_xtst() {
 	msg="Cloning libxtst"
-	clone_and_checkout "${PACKAGES_DIR}/xtst" "libXtst-1.2.3" "https://gitlab.freedesktop.org/xorg/lib/libxtst.git" "9f5621a410f18149d4c76b02daa7f1a98b4a2c16" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/xtst" "libXtst-${PV}" "https://gitlab.freedesktop.org/xorg/lib/libxtst.git" "99b89c3bcb0ebb0b6dd86bfdc9d276715eaea889" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
