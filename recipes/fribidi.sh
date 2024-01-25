@@ -1,8 +1,9 @@
-# Build fribidi 1.0.11
+# Build fribidi v1.0.13
 
+PV="v1.0.13"
 
 do_return_version_fribidi() {
-	echo "fribidi v1.0.11"
+	echo "fribidi ${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_fribidi() {
 
 do_fetch_fribidi() {
 	msg="Cloning fribidi"
-	clone_and_checkout "${PACKAGES_DIR}/fribidi" "v1.0.11" "https://github.com/fribidi/fribidi.git" "247fddc3599e3fe7b1b5cc21020c9eb51e662637" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/fribidi" "${PV}" "https://github.com/fribidi/fribidi.git" "b54871c339dabb7434718da3fed2fa63320997e5" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
