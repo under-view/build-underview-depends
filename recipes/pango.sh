@@ -1,8 +1,9 @@
-# Build pango v1.50.7
+# Build pango v1.51.1
 
+PV="1.51.1"
 
 do_return_version_pango() {
-	echo "pango v1.50.7"
+	echo "pango v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_pango() {
 
 do_fetch_pango() {
 	msg="Cloning pango"
-	clone_and_checkout "${PACKAGES_DIR}/pango" "1.50.7" "https://gitlab.gnome.org/GNOME/pango.git" "a2ccd36a42e039d3600b04fe37fdc47f267d90c7" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/pango" "${PV}" "https://gitlab.gnome.org/GNOME/pango.git" "dfdbb8b55effc0feb72a1981944acaf20ee71354" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
