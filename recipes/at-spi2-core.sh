@@ -1,8 +1,9 @@
-# Build at-spi2-core v2.44.1
+# Build at-spi2-core v2.50.0
 
+PV="2.50.0"
 
 do_return_version_at-spi2-core() {
-	echo "at-spi2-core v2.44.1"
+	echo "at-spi2-core v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_at-spi2-core() {
 
 do_fetch_at-spi2-core() {
 	msg="Cloning at-spi2-core"
-	clone_and_checkout "${PACKAGES_DIR}/at-spi2-core" "AT_SPI2_CORE_2_44_1" "https://gitlab.gnome.org/GNOME/at-spi2-core.git" "9a1f0aec0b7dc55360310b6d02c2b7798511268f" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/at-spi2-core" "AT_SPI2_CORE_2_50_0" "https://gitlab.gnome.org/GNOME/at-spi2-core.git" "f711b03a59673a340ebdd2a266c57ad4393a0e71" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
@@ -35,7 +36,7 @@ do_configure_at-spi2-core() {
 	      --buildtype="${MESON_BUILD_TYPE}" \
 	      --prefix="${INSTALLPREFIX}" \
 	      --libdir="${INSTALLPREFIX}/lib" \
-	      -Ddocs="false" -Dx11="yes" \
+	      -Ddocs="false" -Dx11="enabled" \
 	      "${PACKAGES_DIR}/at-spi2-core/build" \
 	      "${PACKAGES_DIR}/at-spi2-core" || return $FAILURE
 
