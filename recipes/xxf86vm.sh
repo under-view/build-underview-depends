@@ -1,8 +1,9 @@
-# Build xxf86vm v1.1.4
+# Build xxf86vm v1.1.5
 
+PV="1.1.5"
 
 do_return_version_xxf86vm() {
-	echo "xxf86vm v1.1.4"
+	echo "xxf86vm v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_xxf86vm() {
 
 do_fetch_xxf86vm() {
 	msg="Cloning xxf86vm"
-	clone_and_checkout "${PACKAGES_DIR}/xxf86vm" "libXxf86vm-1.1.4" "https://gitlab.freedesktop.org/xorg/lib/libXxf86vm.git" "92d18649e92566ccc3abeba244adabda249cce1b" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/xxf86vm" "libXxf86vm-${PV}" "https://gitlab.freedesktop.org/xorg/lib/libXxf86vm.git" "7fe2d41f164d3015216c1079cc7fbce1eea90c98" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
