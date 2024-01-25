@@ -1,8 +1,9 @@
-# Build libxml2 v2.9.13
+# Build libxml2 v2.11.5
 
+PV="v2.11.5"
 
 do_return_version_libxml2() {
-	echo "libxml2 v2.9.13"
+	echo "libxml2 v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_libxml2() {
 
 do_fetch_libxml2() {
 	msg="Cloning libxml2"
-	clone_and_checkout "${PACKAGES_DIR}/libxml2" "v2.9.13" "https://gitlab.gnome.org/GNOME/libxml2.git" "a075d256fd9ff15590b86d981b75a50ead124fca" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/libxml2" "${PV}" "https://gitlab.gnome.org/GNOME/libxml2.git" "2b998a4ffbdfea04fc6a620721abc690a15743af" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
