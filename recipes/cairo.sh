@@ -1,8 +1,9 @@
-# Build cairo v1.17.6
+# Build cairo v1.18.0
 
+PV="1.18.0"
 
 do_return_version_cairo() {
-	echo "cairo v1.17.6"
+	echo "cairo v${PV}"
 }
 
 
@@ -19,7 +20,7 @@ do_clean_cairo() {
 
 do_fetch_cairo() {
 	msg="Cloning cairo"
-	clone_and_checkout "${PACKAGES_DIR}/cairo" "1.17.6" "https://gitlab.freedesktop.org/cairo/cairo.git" "b43e7c6f3cf7855e16170a06d3a9c7234c60ca94" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/cairo" "${PV}" "https://gitlab.freedesktop.org/cairo/cairo.git" "3909090108bb2db55330e3eb148aebe664735363" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
