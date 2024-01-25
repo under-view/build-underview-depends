@@ -1,8 +1,9 @@
-# Build xfixes v6.0.0
+# Build xfixes v6.0.1
 
+PV="6.0.1"
 
 do_return_version_xfixes() {
-	echo "xfixes v6.0.0"
+	echo "xfixes v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_xfixes() {
 
 do_fetch_xfixes() {
 	msg="Cloning xfixes"
-	clone_and_checkout "${PACKAGES_DIR}/xfixes" "libXfixes-6.0.0" "https://gitlab.freedesktop.org/xorg/lib/libxfixes.git" "6fe3bd64dd82f704ed91478acb4c99ab5c00be16" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/xfixes" "libXfixes-${PV}" "https://gitlab.freedesktop.org/xorg/lib/libxfixes.git" "c1cab28e27dd1c5a81394965248b57e490ccf2ca" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
@@ -31,6 +32,8 @@ do_patch_xfixes() {
 
 
 do_configure_xfixes() {
+	mkdir -p "${PACKAGES_DIR}/xfixes/m4"
+
 	cd "${PACKAGES_DIR}/xfixes"
 	./autogen.sh --prefix="${INSTALLPREFIX}" || { cd "${CUR_DIR}" ; return $FAILURE ; }
 	cd "${CUR_DIR}"
