@@ -1,8 +1,9 @@
-# Build libpng v1.6.37
+# Build libpng v1.6.40
 
+PV="1.6.40"
 
 do_return_version_libpng() {
-	echo "libpng v1.6.37"
+	echo "libpng v${PV}"
 }
 
 
@@ -18,8 +19,9 @@ do_clean_libpng() {
 
 do_fetch_libpng() {
 
-	[[ -f "${WORKING_DIR}/downloads/libpng-1.6.37.tar.gz" ]] || {
-		wget "https://versaweb.dl.sourceforge.net/project/libpng/libpng16/1.6.37/libpng-1.6.37.tar.gz" -O "${WORKING_DIR}/downloads/libpng-1.6.37.tar.gz"
+	[[ -f "${WORKING_DIR}/downloads/libpng-${PV}.tar.gz" ]] || {
+		wget "https://versaweb.dl.sourceforge.net/project/libpng/libpng16/${PV}/libpng-${PV}.tar.gz" \
+		     -O "${WORKING_DIR}/downloads/libpng-${PV}.tar.gz"
 		[[ $? -ne 0 ]] && return $FAILURE
 
 		# Just encase libpng directory get magically created
@@ -27,10 +29,10 @@ do_fetch_libpng() {
 	}
 
 	[[ -d "${PACKAGES_DIR}/libpng" ]] || {
-		tar xfz "${WORKING_DIR}/downloads/libpng-1.6.37.tar.gz" -C "${PACKAGES_DIR}"
+		tar xfz "${WORKING_DIR}/downloads/libpng-${PV}.tar.gz" -C "${PACKAGES_DIR}"
 		[[ $? -ne 0 ]] && return $FAILURE
 
-		mv "${PACKAGES_DIR}/libpng-1.6.37" "${PACKAGES_DIR}/libpng"
+		mv "${PACKAGES_DIR}/libpng-${PV}" "${PACKAGES_DIR}/libpng"
 	}
 
 	return $SUCCESS
