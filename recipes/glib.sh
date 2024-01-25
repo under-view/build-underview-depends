@@ -1,8 +1,9 @@
-# Build glib v2.72.1
+# Build glib v2.78.3
 
+PV="2.78.3"
 
 do_return_version_glib() {
-	echo "glib 2.72.1"
+	echo "glib v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_glib() {
 
 do_fetch_glib() {
 	msg="Cloning glib"
-	clone_and_checkout "${PACKAGES_DIR}/glib" "2.72.1" "https://gitlab.gnome.org/GNOME/glib.git" "38d076a5fda2714c3d494ad805d8fe993bc371bc" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/glib" "${PV}" "https://gitlab.gnome.org/GNOME/glib.git" "03f7c1fbf3a3784cb4c3604f83ca3645e9225577" "${msg}" || return $FAILURE
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
