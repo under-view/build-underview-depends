@@ -1,8 +1,9 @@
-# Build gobject-introspection v1.72.0
+# Build gobject-introspection v1.78.1
 
+PV="1.78.1"
 
 do_return_version_gobject-introspection() {
-	echo "gobject-introspection v1.72.0"
+	echo "gobject-introspection v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_gobject-introspection() {
 
 do_fetch_gobject-introspection() {
 	msg="Cloning gobject-introspection"
-	clone_and_checkout "${PACKAGES_DIR}/gobject-introspection" "1.72.0" "https://gitlab.gnome.org/GNOME/gobject-introspection.git" "c1ce7d179cfce327162bd206cdf2808bd9bd0cc7" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/gobject-introspection" "${PV}" "https://gitlab.gnome.org/GNOME/gobject-introspection.git" "a0e8c17fcf58c6ea79f2887fa7d9f2b180f152b1" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
