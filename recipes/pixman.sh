@@ -1,8 +1,9 @@
 # Build pixman v0.42.2
 
+PV="0.42.2"
 
 do_return_version_pixman() {
-	echo "pixman v0.42.2"
+	echo "pixman v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_pixman() {
 
 do_fetch_pixman() {
 	msg="Cloning pixman"
-	clone_and_checkout "${PACKAGES_DIR}/pixman" "pixman-0.42.2" "https://gitlab.freedesktop.org/pixman/pixman" "37216a32839f59e8dcaa4c3951b3fcfc3f07852c" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/pixman" "pixman-${PV}" "https://gitlab.freedesktop.org/pixman/pixman" "37216a32839f59e8dcaa4c3951b3fcfc3f07852c" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
