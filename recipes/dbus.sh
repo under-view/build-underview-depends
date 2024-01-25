@@ -1,8 +1,9 @@
-# Build dbus v1.13.22
+# Build dbus v1.14.10
 
+PV="1.14.10"
 
 do_return_version_dbus() {
-	echo "dbus v1.13.22"
+	echo "dbus v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_dbus() {
 
 do_fetch_dbus() {
 	msg="Cloning dbus"
-	clone_and_checkout "${PACKAGES_DIR}/dbus" "dbus-1.13.22" "https://gitlab.freedesktop.org/dbus/dbus.git" "0381298e4565b2dff34c682c8e3d38731d07bc16" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/dbus" "dbus-${PV}" "https://gitlab.freedesktop.org/dbus/dbus.git" "fa05c11a0047f2927e76d08f9fcf6638ded7ff50" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
