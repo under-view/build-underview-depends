@@ -1,8 +1,9 @@
-# Build gdk-pixbuf v2.42.8
+# Build gdk-pixbuf v2.42.10
 
+PV="2.42.10"
 
 do_return_version_gdk-pixbuf() {
-	echo "gdk-pixbuf v2.42.8"
+	echo "gdk-pixbuf v${PV}"
 }
 
 
@@ -19,7 +20,7 @@ do_clean_gdk-pixbuf() {
 
 do_fetch_gdk-pixbuf() {
 	msg="Cloning gdk-pixbuf"
-	clone_and_checkout "${PACKAGES_DIR}/gdk-pixbuf" "2.42.8" "https://gitlab.gnome.org/GNOME/gdk-pixbuf.git" "bca00032ad68d0b0aa2c1f7558db931e52bd9cd2" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/gdk-pixbuf" "${PV}" "https://gitlab.gnome.org/GNOME/gdk-pixbuf.git" "9ac257eb38f772fec4253e8051743029e75a2acd" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
