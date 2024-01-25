@@ -1,8 +1,9 @@
-# Build fontconfig 2.14.0
+# Build fontconfig v2.15.0
 
+PV="2.15.0"
 
 do_return_version_fontconfig() {
-	echo "fontconfig v2.14.0"
+	echo "fontconfig v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_fontconfig() {
 
 do_fetch_fontconfig() {
 	msg="Cloning fontconfig"
-	clone_and_checkout "${PACKAGES_DIR}/fontconfig" "2.14.0" "https://gitlab.freedesktop.org/fontconfig/fontconfig.git" "911b19f19f1334d51c452756f9ce222c1101097b" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/fontconfig" "${PV}" "https://gitlab.freedesktop.org/fontconfig/fontconfig.git" "72b9a48f57de6204d99ce1c217b5609ee92ece9b" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
