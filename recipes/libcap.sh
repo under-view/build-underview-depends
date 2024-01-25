@@ -1,8 +1,9 @@
-# Build libcap v2.64
+# Build libcap v2.69
 
+PV="2.69"
 
 do_return_version_libcap() {
-	echo "libcap v2.64"
+	echo "libcap v${PV}"
 }
 
 
@@ -17,8 +18,8 @@ do_clean_libcap() {
 
 
 do_fetch_libcap() {
-	[[ -f "${WORKING_DIR}/downloads/libcap-2.64.tar.xz" ]] || {
-		wget https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.64.tar.xz -O "${WORKING_DIR}/downloads/libcap-2.64.tar.xz" > /dev/null
+	[[ -f "${WORKING_DIR}/downloads/libcap-${PV}.tar.xz" ]] || {
+		wget "https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-${PV}.tar.xz" -O "${WORKING_DIR}/downloads/libcap-${PV}.tar.xz" > /dev/null 2>&1
 		[[ $? -ne 0 ]] && return $FAILURE
 
 		# Just encase libcap folder was created somehow
@@ -26,12 +27,12 @@ do_fetch_libcap() {
 	}
 
 	[[ -d "${PACKAGES_DIR}/libcap" ]] || {
-		tar xf "${WORKING_DIR}/downloads/libcap-2.64.tar.xz" -C "${PACKAGES_DIR}" || return $FAILURE
+		tar xf "${WORKING_DIR}/downloads/libcap-${PV}.tar.xz" -C "${PACKAGES_DIR}" || return $FAILURE
 		[[ $? -ne 0 ]] && return $FAILURE
 
 		wait $!
 
-		mv "${PACKAGES_DIR}/libcap-2.64" "${PACKAGES_DIR}/libcap"
+		mv "${PACKAGES_DIR}/libcap-${PV}" "${PACKAGES_DIR}/libcap"
 	}
 
 	return $SUCCESS
