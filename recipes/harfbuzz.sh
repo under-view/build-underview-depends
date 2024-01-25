@@ -1,8 +1,9 @@
-# Build harfbuzz 4.2.0
+# Build harfbuzz v8.3.0
 
+PV="8.3.0"
 
 do_return_version_harfbuzz() {
-	echo "harfbuzz v4.2.0"
+	echo "harfbuzz v${PV}"
 }
 
 
@@ -19,7 +20,7 @@ do_clean_harfbuzz() {
 
 do_fetch_harfbuzz() {
 	msg="Cloning harfbuzz"
-	clone_and_checkout "${PACKAGES_DIR}/harfbuzz" "4.2.0" "https://github.com/harfbuzz/harfbuzz.git" "9d5730b958974bc9db95e46e6bad52e9e9cd6e1c" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/harfbuzz" "${PV}" "https://github.com/harfbuzz/harfbuzz.git" "894a1f72ee93a1fd8dc1d9218cb3fd8f048be29a" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
