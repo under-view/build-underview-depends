@@ -1,8 +1,9 @@
-# Build libxi 1.8
+# Build libxi 1.8.1
 
+PV="1.8.1"
 
 do_return_version_xi() {
-	echo "xi v1.8"
+	echo "xi v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_xi() {
 
 do_fetch_xi() {
 	msg="Cloning libXi"
-	clone_and_checkout "${PACKAGES_DIR}/xi" "libXi-1.8" "https://gitlab.freedesktop.org/xorg/lib/libxi.git" "f24d7f43ab4d97203e60677a3d42e11dbc80c8b4" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/xi" "libXi-${PV}" "https://gitlab.freedesktop.org/xorg/lib/libxi.git" "3a7503ec7703f10de17c622ea22b7bff736cea74" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
@@ -31,6 +32,8 @@ do_patch_xi() {
 
 
 do_configure_xi() {
+	mkdir -p "${PACKAGES_DIR}/xi/m4"
+
 	cd "${PACKAGES_DIR}/xi"
 	./autogen.sh --prefix="${INSTALLPREFIX}" || { cd "${CUR_DIR}" ; return $FAILURE ; }
 	cd "${CUR_DIR}"
