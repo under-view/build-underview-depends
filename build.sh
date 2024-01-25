@@ -169,7 +169,7 @@ do_choose_pkgs() {
 	          vulkan-utility-libraries vulkan-loader spirv-headers spirv-tools glslang shaderc
 	          vulkan-validation-layers vulkan-tools libdrm xfixes xshmfence xxf86vm glvnd mesa libcap
 		  systemd glib gobject-introspection libpng pixman freetype harfbuzz libxml2 fontconfig cairo
-		  fribidi pango gdk-pixbuf epoxy atk xkbcommon xi dbus xtst at-spi2-core at-spi2-atk gtk mtdev
+		  fribidi pango gdk-pixbuf epoxy atk xkbcommon xi dbus xtst at-spi2-core gtk mtdev
 		  libevdev libgudev libwacom libinput seatd xcb-render-util hwdata display-info wlroots gmp
 		  gdb openxr-sdk-utils eigen monado)
 

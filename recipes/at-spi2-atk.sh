@@ -1,8 +1,9 @@
 # Build at-spi2-atk v2.38.0
 
+PV="2.38.0"
 
 do_return_version_at-spi2-atk() {
-	echo "at-spi2-atk v2.38.0"
+	echo "at-spi2-atk v${PV}"
 }
 
 
@@ -19,7 +20,7 @@ do_clean_at-spi2-atk() {
 
 do_fetch_at-spi2-atk() {
 	msg="Cloning at-spi2-atk"
-	clone_and_checkout "${PACKAGES_DIR}/at-spi2-atk" "AT_SPI2_ATK_2_38_0" "https://gitlab.gnome.org/GNOME/at-spi2-atk.git" "b91a111f040a09e804428a81e6de214e4962247b" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/at-spi2-atk" "AT_SPI2_ATK_2_38_0" "https://gitlab.gnome.org/GNOME/at-spi2-atk.git" "b91a111f040a09e804428a81e6de214e4962247b" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
