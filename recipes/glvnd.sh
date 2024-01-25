@@ -1,8 +1,9 @@
-# Build glvnd v1.5.0
+# Build glvnd v1.7.0
 
+PV="v1.7.0"
 
 do_return_version_glvnd() {
-	echo "glvnd v1.5.0"
+	echo "glvnd ${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_glvnd() {
 
 do_fetch_glvnd() {
 	msg="Cloning glvnd"
-	clone_and_checkout "${PACKAGES_DIR}/glvnd" "v1.5.0" "https://gitlab.freedesktop.org/glvnd/libglvnd.git" "c7cdf0cc4395b57563294d1f340b6bb1b95366a0" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/glvnd" "${PV}" "https://gitlab.freedesktop.org/glvnd/libglvnd.git" "faa23f21fc677af5792825dc30cb1ccef4bf33a6" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
