@@ -1,8 +1,9 @@
-# Build libdrm 2.4.114
+# Build libdrm v2.4.119
 
+PV="2.4.119"
 
 do_return_version_libdrm() {
-	echo "libdrm 2.4.114"
+	echo "libdrm v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_libdrm() {
 
 do_fetch_libdrm() {
 	msg="Cloning mesa drm (libdrm)"
-	clone_and_checkout "${PACKAGES_DIR}/libdrm" "libdrm-2.4.114" "https://gitlab.freedesktop.org/mesa/drm" "b9ca37b3134861048986b75896c0915cbf2e97f9" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/libdrm" "libdrm-${PV}" "https://gitlab.freedesktop.org/mesa/drm" "fc5f2239f3b7abacb9398b2f939f538dd195e860" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
