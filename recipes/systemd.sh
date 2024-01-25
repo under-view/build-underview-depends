@@ -1,8 +1,9 @@
-# Build systemd v250
+# Build systemd v254.4
 
+PV="v254.4"
 
 do_return_version_systemd() {
-	echo "systemd v250"
+	echo "systemd ${PV}"
 }
 
 
@@ -19,7 +20,7 @@ do_clean_systemd() {
 
 do_fetch_systemd() {
 	msg="Cloning systemd"
-	clone_and_checkout "${PACKAGES_DIR}/systemd" "v250" "https://github.com/systemd/systemd.git" "a420d71793bcbc1539a63be60f83cdc14373ea4a" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/systemd" "${PV}" "https://github.com/systemd/systemd-stable.git" "2e7504449a51fb38db9cd2da391c6434f82def51" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
