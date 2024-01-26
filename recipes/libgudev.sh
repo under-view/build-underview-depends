@@ -1,8 +1,9 @@
-# Build libgudev v1.0
+# Build libgudev v238
 
+PV="238"
 
 do_return_version_libgudev() {
-	echo "libgudev v1.0"
+	echo "libgudev v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_libgudev() {
 
 do_fetch_libgudev() {
 	msg="Cloning libgudev"
-	clone_and_checkout "${PACKAGES_DIR}/libgudev" "237" "https://gitlab.gnome.org/GNOME/libgudev.git" "dff7a794e55d6ad7a10e8edacd73aa047593e74c" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/libgudev" "${PV}" "https://gitlab.gnome.org/GNOME/libgudev.git" "df7c9c9940160307aaeb31347f4776a46f8736a9" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
