@@ -1,8 +1,9 @@
 # Build xcb-render-util v0.3.10
 
+PV="0.3.10"
 
 do_return_version_xcb-render-util() {
-	echo "xcb-render-util v0.3.10"
+	echo "xcb-render-util v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_xcb-render-util() {
 
 do_fetch_xcb-render-util() {
 	msg="Cloning xcb-render-util"
-	clone_and_checkout "${PACKAGES_DIR}/xcb-render-util" "xcb-util-renderutil-0.3.10" "https://gitlab.freedesktop.org/xorg/lib/libxcb-render-util.git" "5293d8b6165f23b9f7a8bcc903da0e4d7a75984c" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/xcb-render-util" "xcb-util-renderutil-${PV}" "https://gitlab.freedesktop.org/xorg/lib/libxcb-render-util.git" "5293d8b6165f23b9f7a8bcc903da0e4d7a75984c" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	git -C "${PACKAGES_DIR}/xcb-render-util" submodule update --init
