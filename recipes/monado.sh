@@ -1,8 +1,9 @@
-# Build monado v1.0.25
+# Build monado HEAD
 
+PV="HEAD"
 
 do_return_version_monado() {
-	echo "monado v1.0.25"
+	echo "monado ${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_monado() {
 
 do_fetch_monado() {
 	msg="Cloning Monado"
-	clone_and_checkout "${PACKAGES_DIR}/monado" "main" "https://gitlab.freedesktop.org/monado/monado.git" "74d82ff37fe19f74876472ea00d9223df4dff764" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/monado" "main" "https://gitlab.freedesktop.org/monado/monado.git" "112dc3197fc09a7479c1e3861b103de206a3df0c" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
