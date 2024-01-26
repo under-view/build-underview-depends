@@ -1,8 +1,9 @@
 # Build display-info v0.1.1
 
+PV="0.1.1"
 
 do_return_version_display-info() {
-	echo "display-info v0.1.1"
+	echo "display-info v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_display-info() {
 
 do_fetch_display-info() {
 	msg="Cloning display-info"
-	clone_and_checkout "${PACKAGES_DIR}/display-info" "0.1.1" "https://gitlab.freedesktop.org/emersion/libdisplay-info.git" "92b031749c0fe84ef5cdf895067b84a829920e25" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/display-info" "${PV}" "https://gitlab.freedesktop.org/emersion/libdisplay-info.git" "92b031749c0fe84ef5cdf895067b84a829920e25" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
