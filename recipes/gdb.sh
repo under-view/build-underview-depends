@@ -1,13 +1,14 @@
-# Build gdb v12.1
+# Build gdb v14.1
 
+PV="14.1"
 
 do_return_version_gdb() {
-	echo "gdb v12.1"
+	echo "gdb v${PV}"
 }
 
 
 do_return_depends_gdb() {
-	echo "zlib gmp"
+	echo "zlib gmp mpfr"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_gdb() {
 
 do_fetch_gdb() {
 	msg="Cloning gdb"
-	clone_and_checkout "${PACKAGES_DIR}/gdb" "gdb-12.1-release" "git://sourceware.org/git/binutils-gdb.git" "e53a8e8685685c97588f8319d993ea6cd5635e47" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/gdb" "gdb-${PV}-release" "git://sourceware.org/git/binutils-gdb.git" "6bda1c19bcd16eff8488facb8a67d52a436f70e7" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
@@ -34,6 +35,8 @@ do_configure_gdb() {
 	cd "${PACKAGES_DIR}/gdb"
 
 	./configure --prefix="${INSTALLPREFIX}" \
+	            --with-mpfr-include="${INSTALLPREFIX}/include" \
+	            --with-gmp-include="${INSTALLPREFIX}/include" \
 		    --includedir="${INSTALLPREFIX}/include" \
 		    --libdir="${INSTALLPREFIX}/lib" \
 		    --bindir="${INSTALLPREFIX}/bin" || { cd "${CUR_DIR}" ; return $FAILURE ; }
