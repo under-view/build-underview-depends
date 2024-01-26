@@ -1,8 +1,9 @@
 # Build openxr-sdk-utils v1.0.25
 
+PV="1.0.25"
 
 do_return_version_openxr-sdk-utils() {
-	echo "openxr-sdk-utils v1.0.25"
+	echo "openxr-sdk-utils v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_openxr-sdk-utils() {
 
 do_fetch_openxr-sdk-utils() {
 	msg="Cloning openxr-sdk-utils"
-	clone_and_checkout "${PACKAGES_DIR}/openxr-sdk-utils" "release-1.0.25" "https://github.com/KhronosGroup/OpenXR-SDK-Source.git" "15c3d8eb99994e5365d6b6f96eefaf4c51a65a9d" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/openxr-sdk-utils" "release-${PV}" "https://github.com/KhronosGroup/OpenXR-SDK-Source.git" "15c3d8eb99994e5365d6b6f96eefaf4c51a65a9d" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
