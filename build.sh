@@ -170,8 +170,8 @@ do_choose_pkgs() {
 	          vulkan-validation-layers vulkan-tools libdrm xfixes xshmfence xxf86vm glvnd mesa libcap
 		  systemd glib gobject-introspection libpng pixman freetype harfbuzz libxml2 fontconfig cairo
 		  fribidi pango gdk-pixbuf epoxy atk xkbcommon xi dbus xtst at-spi2-core gtk mtdev
-		  libevdev libgudev libwacom libinput seatd xcb-render-util hwdata display-info wlroots gmp
-		  gdb openxr-sdk-utils eigen monado)
+		  libevdev libgudev libwacom libinput seatd xcb-render-util hwdata display-info wlroots
+		  gmp mpfr gdb openxr-sdk-utils eigen monado)
 
 	chmod 0755 "${CUR_DIR}/recipes"/*
 	return $SUCCESS
