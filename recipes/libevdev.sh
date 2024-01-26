@@ -1,8 +1,9 @@
-# Build libevdev v1.12.1
+# Build libevdev v1.13.1
 
+PV="1.13.1"
 
 do_return_version_libevdev() {
-	echo "libevdev v1.12.1"
+	echo "libevdev v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_libevdev() {
 
 do_fetch_libevdev() {
 	msg="Cloning libevdev"
-	clone_and_checkout "${PACKAGES_DIR}/libevdev" "libevdev-1.12.1" "https://gitlab.freedesktop.org/libevdev/libevdev.git" "8ced382eb800ce01da1d6a9b9da2f1159f9042e0" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/libevdev" "libevdev-${PV}" "https://gitlab.freedesktop.org/libevdev/libevdev.git" "4582559b668f45fcd1486ce5f21f20df49db6d02" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
