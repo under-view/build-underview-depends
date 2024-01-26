@@ -1,8 +1,9 @@
-# Build libwacom v2.2.0
+# Build libwacom v2.8.0
 
+PV="2.8.0"
 
 do_return_version_libwacom() {
-	echo "libwacom v2.2.0"
+	echo "libwacom v2.8.0"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_libwacom() {
 
 do_fetch_libwacom() {
 	msg="Cloning libwacom"
-	clone_and_checkout "${PACKAGES_DIR}/libwacom" "libwacom-2.2.0" "https://github.com/linuxwacom/libwacom.git" "be485deca03157b0dbd702c7acaf35b71378be9e" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/libwacom" "libwacom-${PV}" "https://github.com/linuxwacom/libwacom.git" "f5b92814320d0a5745b50b7b36103843ad23e299" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
