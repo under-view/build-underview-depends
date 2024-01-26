@@ -1,8 +1,9 @@
-# Build hwdata v0.369
+# Build hwdata v0.377
 
+PV="v0.377"
 
 do_return_version_hwdata() {
-	echo "hwdata v0.369"
+	echo "hwdata ${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_hwdata() {
 
 do_fetch_hwdata() {
 	msg="Cloning hwdata"
-	clone_and_checkout "${PACKAGES_DIR}/hwdata" "v0.369" "https://github.com/vcrhonek/hwdata.git" "ced93f9d1c15e45e35378e82b8da96027e58174a" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/hwdata" "${PV}" "https://github.com/vcrhonek/hwdata.git" "7c46440af001d0bc8230b6f009b73a25b614e032" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
