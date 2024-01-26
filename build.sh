@@ -164,7 +164,7 @@ do_configure_build_vars() {
 # source all scripts to get access to function/task to execute
 ############################################################################
 do_choose_pkgs() {
-	RECIPES+=(zlib elfutils llvm libffi pciaccess xorg-macros xorgproto xcbproto cmocka wayland
+	RECIPES+=(zlib elfutils llvm libffi ncurses pciaccess xorg-macros xorgproto xcbproto cmocka wayland
 	          wayland-protocols xdmcp xau xcb xcb-ewmh xtrans x11 xext xrender xrandr cglm vulkan-headers
 	          vulkan-utility-libraries vulkan-loader spirv-headers spirv-tools glslang shaderc
 	          vulkan-validation-layers vulkan-tools libdrm xfixes xshmfence xxf86vm glvnd mesa libcap
