@@ -1,8 +1,9 @@
-# Build monado v3.4.0
+# Build eigen v3.4.0
 
+PV="3.4.0"
 
 do_return_version_eigen() {
-	echo "eigen v3.4.0"
+	echo "eigen v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_eigen() {
 
 do_fetch_eigen() {
 	msg="Cloning eigen"
-	clone_and_checkout "${PACKAGES_DIR}/eigen" "3.4.0" "https://gitlab.com/libeigen/eigen.git" "3147391d946bb4b6c68edd901f2add6ac1f31f8c" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/eigen" "${PV}" "https://gitlab.com/libeigen/eigen.git" "3147391d946bb4b6c68edd901f2add6ac1f31f8c" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
