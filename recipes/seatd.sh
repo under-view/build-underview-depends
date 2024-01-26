@@ -1,8 +1,9 @@
-# Build seatd v0.7.0
+# Build seatd v0.8.0
 
+PV="0.8.0"
 
 do_return_version_seatd() {
-	echo "seatd v0.7.0"
+	echo "seatd v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_seatd() {
 
 do_fetch_seatd() {
 	msg="Cloning seatd"
-	clone_and_checkout "${PACKAGES_DIR}/seatd" "0.7.0" "https://github.com/kennylevinsen/seatd.git" "a803ba0502cccf147eec7fbcacd11c5b8643c0e0" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/seatd" "${PV}" "https://github.com/kennylevinsen/seatd.git" "3e9ef69f14f630a719dd464f3c90a7932f1c8296" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
