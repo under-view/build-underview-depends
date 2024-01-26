@@ -1,8 +1,9 @@
-# Build gmp v6.2.1
+# Build gmp v6.3.0
 
+PV="6.3.0"
 
 do_return_version_gmp() {
-	echo "gmp v6.2.1"
+	echo "gmp v${PV}"
 }
 
 
@@ -17,8 +18,8 @@ do_clean_gmp() {
 
 
 do_fetch_gmp() {
-	[[ -f "${WORKING_DIR}/downloads/gmp-2.64.tar.xz" ]] || {
-		wget https://gmplib.org/download/gmp/gmp-6.2.1.tar.xz -O "${WORKING_DIR}/downloads/gmp-6.2.1.tar.xz" > /dev/null
+	[[ -f "${WORKING_DIR}/downloads/gmp-${PV}.tar.xz" ]] || {
+		wget https://gmplib.org/download/gmp/gmp-${PV}.tar.xz -O "${WORKING_DIR}/downloads/gmp-${PV}.tar.xz" > /dev/null
 		[[ $? -ne 0 ]] && return $FAILURE
 
 		# Just encase gmp folder was created somehow
@@ -26,12 +27,12 @@ do_fetch_gmp() {
 	}
 
 	[[ -d "${PACKAGES_DIR}/gmp" ]] || {
-		tar xf "${WORKING_DIR}/downloads/gmp-6.2.1.tar.xz" -C "${PACKAGES_DIR}" || return $FAILURE
+		tar xf "${WORKING_DIR}/downloads/gmp-${PV}.tar.xz" -C "${PACKAGES_DIR}" || return $FAILURE
 		[[ $? -ne 0 ]] && return $FAILURE
 
 		wait $!
 
-		mv "${PACKAGES_DIR}/gmp-6.2.1" "${PACKAGES_DIR}/gmp"
+		mv "${PACKAGES_DIR}/gmp-${PV}" "${PACKAGES_DIR}/gmp"
 	}
 
 	return $SUCCESS
