@@ -1,8 +1,9 @@
-# Build libinput v1.20.1
+# Build libinput v1.24.0
 
+PV="1.24.0"
 
 do_return_version_libinput() {
-	echo "libinput v1.20.1"
+	echo "libinput v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_libinput() {
 
 do_fetch_libinput() {
 	msg="Cloning libinput"
-	clone_and_checkout "${PACKAGES_DIR}/libinput" "1.20.1" "https://gitlab.freedesktop.org/libinput/libinput.git" "562f7bcee0bf513824d30be31e2a64c40d5f2ee1" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/libinput" "${PV}" "https://gitlab.freedesktop.org/libinput/libinput.git" "1680f2fbaa63a91739012c6b57988ab1918ea0b7" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
