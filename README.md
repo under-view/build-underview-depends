@@ -16,7 +16,7 @@ Project currently utilizes GCC 13.
 $ sudo apt update -y && sudo apt upgrade -y
 # reboot
 $ sudo apt install -y aptitude
-$ sudo aptitude install -y build-essential cmake clang automake autoconf libtool flex bison m4 yasm dos2unix
+$ sudo aptitude install -y build-essential cmake clang automake autoconf autopoint libtool flex bison m4 yasm dos2unix
 $ sudo aptitude install -y pkg-config python3-pip ninja-build curl wget git gperf texinfo libmount-dev
 $ sudo python3 -m pip install meson==0.63.0 Mako jinja2
 
