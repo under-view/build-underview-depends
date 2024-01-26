@@ -1,8 +1,9 @@
-# Build wlroots v0.17.2-dev
+# Build wlroots v0.18.0-dev
 
+PV="0.18.0-dev"
 
 do_return_version_wlroots() {
-	echo "wlroots v0.17.2-dev"
+	echo "wlroots v${PV}"
 }
 
 
@@ -18,7 +19,7 @@ do_clean_wlroots() {
 
 do_fetch_wlroots() {
 	msg="Cloning wlroots"
-	clone_and_checkout "${PACKAGES_DIR}/wlroots" "master" "https://gitlab.freedesktop.org/wlroots/wlroots.git" "6830bfc17fd94709e2cdd4da0af989f102a26e59" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/wlroots" "master" "https://gitlab.freedesktop.org/wlroots/wlroots.git" "5d639394f3e83b01596dcd166a44a9a1a2583350" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
