@@ -173,6 +173,9 @@ do_choose_pkgs() {
 		  libevdev libgudev libwacom libinput seatd xcb-render-util hwdata display-info wlroots
 		  gmp mpfr gdb openxr-sdk-utils eigen monado)
 
+	# Underview specific recipes
+	RECIPES+=(libcando)
+
 	chmod 0755 "${CUR_DIR}/recipes"/*
 	return $SUCCESS
 }
