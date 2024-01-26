@@ -88,6 +88,6 @@ do_update_artifacts_linux-pam() {
 
 
 do_check_is_built_linux-pam() {
-	[[ -f "${INSTALLPREFIX}/lib/pkgconfig/linux-pam.pc" ]] && return $SUCCESS
+	[[ -f "${INSTALLPREFIX}/include/security/pam_appl.h" ]] && return $SUCCESS
 	return $FAILURE
 }
