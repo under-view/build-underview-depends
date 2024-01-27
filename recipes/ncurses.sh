@@ -76,7 +76,8 @@ do_install_ncurses() {
 
 
 do_update_artifacts_ncurses() {
-	:
+	rm "${INSTALLPREFIX}/bin/clear"
+	return $SUCCESS
 }
 
 
