@@ -136,7 +136,7 @@ do_configure_build_vars() {
 	export INSTALLPREFIX="${BUILD_OUTPUT_DIR}"
 	export ACLOCAL="aclocal -I ${BUILD_OUTPUT_DIR}/share/aclocal"
 	export ACLOCAL_PATH="${BUILD_OUTPUT_DIR}/share/aclocal"
-	export PATH="${WORKING_DIR}/build_output/bin:${PATH}"
+	export PATH="${BUILD_OUTPUT_DIR}/bin:${BUILD_OUTPUT_DIR}/sbin:${PATH}"
 	export PKG_CONFIG_PATH="${BUILD_OUTPUT_DIR}/lib/pkgconfig:${PKG_CONFIG_PATH}"
 	export LDFLAGS="-Wl,--disable-new-dtags -Wl,-rpath=${BUILD_OUTPUT_DIR}/lib -L${BUILD_OUTPUT_DIR}/lib"
 
