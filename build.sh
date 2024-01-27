@@ -165,10 +165,10 @@ do_configure_build_vars() {
 ############################################################################
 do_choose_pkgs() {
 	RECIPES+=(zlib elfutils llvm libffi ncurses libxcrypt pciaccess xorg-macros xorgproto xcbproto
-	          cmocka wayland wayland-protocols xdmcp xau xcb xcb-ewmh xtrans x11 xext xrender xrandr cglm
-	          vulkan-headers vulkan-utility-libraries vulkan-loader spirv-headers spirv-tools glslang shaderc
-	          vulkan-validation-layers vulkan-tools libdrm xfixes xshmfence xxf86vm glvnd mesa libcap
-		  systemd glib gobject-introspection libpng pixman freetype harfbuzz libxml2 linux-pam
+	          cmocka wayland wayland-protocols xdmcp xau xcb xcb-ewmh xtrans x11 xext xrender xrandr
+	          cglm vulkan-headers vulkan-utility-libraries vulkan-loader spirv-headers spirv-tools glslang
+	          shaderc vulkan-validation-layers vulkan-tools libdrm xfixes xshmfence xxf86vm glvnd mesa glib
+		  gobject-introspection libpng pixman freetype harfbuzz libxml2 linux-pam libcap util-linux systemd
 	          fontconfig cairo fribidi pango gdk-pixbuf epoxy atk xkbcommon xi dbus xtst at-spi2-core gtk mtdev
 		  libevdev libgudev libwacom libinput seatd xcb-render-util hwdata display-info wlroots
 		  gmp mpfr gdb openxr-sdk-utils eigen monado)
