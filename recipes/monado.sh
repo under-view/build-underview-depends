@@ -32,6 +32,7 @@ do_patch_monado() {
 
 
 do_configure_monado() {
+	CFLAGS="-I${INSTALLPREFIX}/include" \
 	cmake -G "${CMAKEGENTYPE}" \
 	      -S "${PACKAGES_DIR}/monado" \
 	      -B "${PACKAGES_DIR}/monado/build" \
