@@ -19,9 +19,9 @@ do_clean_xcb-ewmh() {
 
 do_fetch_xcb-ewmh() {
 	msg="Cloning libxcb-ewmh"
-	clone_and_checkout "${PACKAGES_DIR}/xcb-ewmh" "xcb-util-wm-${PV}" "https://gitlab.freedesktop.org/xorg/lib/libxcb-wm.git" "24eb17df2e1245885e72c9d4bbb0a0f69f0700f2" "${msg}" || return $FAILURE
+	clone_and_checkout "${PACKAGES_DIR}/xcb-ewmh" "xcb-util-wm-${PV}" "https://gitlab.freedesktop.org/xorg/lib/libxcb-wm.git" "0c6681e465c9cc7b1fbb60778ba1eaa61ab01a14" "${msg}" || return $FAILURE
 
-	git -C "${PACKAGES_DIR}/xcb-ewmh" submodule update --init
+	git -C "${PACKAGES_DIR}/xcb-ewmh" submodule update --init --recursive
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	return $SUCCESS
