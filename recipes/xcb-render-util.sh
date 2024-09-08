@@ -19,7 +19,7 @@ do_clean_xcb-render-util() {
 
 do_fetch_xcb-render-util() {
 	msg="Cloning xcb-render-util"
-	clone_and_checkout "${PACKAGES_DIR}/xcb-render-util" "xcb-util-renderutil-${PV}" "https://gitlab.freedesktop.org/xorg/lib/libxcb-render-util.git" "5293d8b6165f23b9f7a8bcc903da0e4d7a75984c" "${msg}"
+	clone_and_checkout "${PACKAGES_DIR}/xcb-render-util" "xcb-util-renderutil-${PV}" "https://gitlab.freedesktop.org/xorg/lib/libxcb-render-util.git" "5ad9853d6ddcac394d42dd2d4e34436b5db9da39" "${msg}"
 	[[ $? -ne 0 ]] && return $FAILURE
 
 	git -C "${PACKAGES_DIR}/xcb-render-util" submodule update --init
